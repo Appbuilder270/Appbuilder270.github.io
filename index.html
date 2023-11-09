@@ -80,8 +80,9 @@
 												xhr.onload = function() {
 												// Update the page with the returned value
 												//document.getElementById("result").innerHTML = this.responseText;
-												var newWindow = window.open();
-												newWindow.document.write(this.responseText);
+												//var newWindow = window.open();
+												//newWindow.document.write(this.responseText);
+												window.location.href = "index2.html?result=" + encodeURIComponent(this.responseText);
 												};
 												xhr.send();
 											}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results Page</title>
+</head>
+<body>
+  <h1>Survey Says:</h1>
+  <p id="result"></p>
+  <script>
+    // Get the value of the "result" query parameter from the URL
+    var result = decodeURIComponent(window.location.search.replace("?result=", ""));
+    // Update the "result" element with the value
+    document.getElementById("result").innerHTML = result;
+  </script>
+</body>
+</html>
