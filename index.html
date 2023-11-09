@@ -10,6 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			#mytest {
+				margin-left: : 10px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -51,11 +56,37 @@
 										<a href="#" class="bordered-feature-image"><img src="images/banner2.jpg" alt="" /></a>
 									
 										<!-- Dropdown Input Box -->
-										<select>
+										<select id="myselect">
 											<option value="option1">Option 1</option>
 											<option value="option2">Option 2</option>
 											<option value="option3">Option 3</option>
+											<option value="option4">Option 4</option>
+											<option value="option5">Option 5</option>
 										</select>
+
+										<!-- Text Input Box -->
+										<input type="text" id="mytext" placeholder="Enter text here">
+
+										
+										<!-- JavaScript Code -->
+										<script>
+											// Listen for changes to the select element
+											document.getElementById("mySelect").addEventListener("change", function() {
+											// Check if the selected option is "Option 2"
+											if (this.value === "option2") {
+												// Send an AJAX request to the Python script
+												var xhr = new XMLHttpRequest();
+												xhr.open("GET", "first_script.py", true);
+												xhr.onload = function() {
+												// Update the page with the returned value
+												document.getElementById("result").innerHTML = this.responseText;
+												};
+												xhr.send();
+											}
+											});
+										</script>
+
+
 								</div>
 							</div>
 						</div>
