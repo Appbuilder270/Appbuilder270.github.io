@@ -79,7 +79,9 @@
 												xhr.open("GET", "first_script.py", true);
 												xhr.onload = function() {
 												// Update the page with the returned value
-												document.getElementById("result").innerHTML = this.responseText;
+												//document.getElementById("result").innerHTML = this.responseText;
+												var newWindow = window.open();
+												newWindow.document.write(this.responseText);
 												};
 												xhr.send();
 											}
