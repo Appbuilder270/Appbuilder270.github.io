@@ -78,10 +78,10 @@
 												var xhr = new XMLHttpRequest();
 												xhr.open("GET", "first_script.py", true);
 												xhr.onload = function() {
-												// Update the page with the returned value
-												//document.getElementById("result").innerHTML = this.responseText;
-												//var newWindow = window.open();
-												//newWindow.document.write(this.responseText);
+												// Parse the JSON string returned by the Python script
+											    var data = JSON.parse(this.responseText);
+      											// Get the value property from the parsed JSON object
+     											var result = data.value;
 												window.location.href = "index2.html?result=" + encodeURIComponent(this.responseText);
 												};
 												xhr.send();
