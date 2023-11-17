@@ -34,8 +34,9 @@ fetch(`${site}?${params}`)
         const value3 = item.wind.speed;
         table.push({ Value1: value1, Value2: value2, Value3: value3 });
       }
-
-      console.table(table); // Display the table in the console
+        
+        const resultElement = document.getElementById('result');
+        resultElement.innerHTML = JSON.stringify(table); // Update the content of the element
     })
     .catch(error => {
       console.error(`Error: ${error.message}`);
