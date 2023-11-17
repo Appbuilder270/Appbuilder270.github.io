@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results Page</title>
+</head>
+<body>
+  <h1>Survey Says:</h1>
+  <p id="result"></p>
+  
+  <script>
+  const https = require('https');
+
+const site = "https://api.openweathermap.org/data/2.5/forecast";
+const token1 = "9d";
+const zip_code = "63102";
+const units1 = "imperial";
+const mode1 = "json";
+
+const params = new URLSearchParams({
+  zip: zip_code,
+  units: units1,
+  mode: mode1,
+  appid: token1
+}).toString();
+
+https.get(`${site}?${params}`, (response) => {
+  let data = '';
+
+  response.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  response.on('end', () => {
+    const response_as_dict = JSON.parse(data);
+    const result = response_as_dict.list;
+
+    const table = [];
+
+    for (const item of result) {
+      const value1 = item.wind.deg;
+      const value2 = item.main.temp;
+      const value3 = item.wind.speed;
+      table.push({ Value1: value1, Value2: value2, Value3: value3 });
+    }
+
+    console.table(table); // Display the table in the console
+  });
+}).on('error', (error) => {
+  console.error(`Error: ${error.message}`);
+});
+</script> 
+</body>
+</html>
