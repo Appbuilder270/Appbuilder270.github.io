@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results Page</title>
+</head>
+<body>
+  <h1>Survey Says:</h1>
+  <p id="result"></p>
+  <script>
+    const https = require('https');
+
+    const site = "https://api.openweathermap.org/data/2.5/forecast";
+    const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
+    const zip_code = "63102";
+    const units1 = "imperial";
+    const mode1 = "json";
+
+    const params = new URLSearchParams({
+      zip: zip_code,
+      units: units1,
+      mode: mode1,
+      appid: token1
+    }).toString();
+
+    https.get(`${site}?${params}`, (response) => {
+      let data = '';
+
+      response.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      response.on('end', () => {
+        const response_as_dict = JSON.parse(data);
+        const result = response_as_dict.list;
+
+        const temp_list2 = [];
+
+        for (const item of result) {
+          const temp_cur2 = item.wind.deg;
+          temp_list2.push(temp_cur2);
+        }
+
+        // Update the "result" element with the fetched data
+        document.getElementById("result").innerHTML = temp_list2.join(", ");
+      });
+    }).on('error', (error) => {
+      console.error(`Error: ${error.message}`);
+    });
+  </script>
+</body>
+</html>
