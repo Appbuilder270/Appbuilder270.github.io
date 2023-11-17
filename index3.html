@@ -7,10 +7,8 @@
   <h1>Survey Says:</h1>
   <p id="result"></p>
   <script>
-    const https = require('https');
-
     const site = "https://api.openweathermap.org/data/2.5/forecast";
-    const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
+    const token1 = "9d9d66b2a166252faa852b4b5558e5e5e4";
     const zip_code = "63102";
     const units1 = "imperial";
     const mode1 = "json";
@@ -22,16 +20,10 @@
       appid: token1
     }).toString();
 
-    https.get(`${site}?${params}`, (response) => {
-      let data = '';
-
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      response.on('end', () => {
-        const response_as_dict = JSON.parse(data);
-        const result = response_as_dict.list;
+    fetch(`${site}?${params}`)
+      .then(response => response.json())
+      .then(data => {
+        const result = data.list;
 
         const temp_list2 = [];
 
@@ -42,10 +34,10 @@
 
         // Update the "result" element with the fetched data
         document.getElementById("result").innerHTML = temp_list2.join(", ");
+      })
+      .catch(error => {
+        console.error(`Error: ${error.message}`);
       });
-    }).on('error', (error) => {
-      console.error(`Error: ${error.message}`);
-    });
   </script>
 </body>
 </html>
