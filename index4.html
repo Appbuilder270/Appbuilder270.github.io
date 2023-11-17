@@ -9,7 +9,7 @@
   
   <script>
 const site = "https://api.openweathermap.org/data/2.5/forecast";
-const token1 = "9d";
+const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
 const zip_code = "63102";
 const units1 = "imperial";
 const mode1 = "json";
@@ -21,31 +21,25 @@ const params = new URLSearchParams({
   appid: token1
 }).toString();
 
-https.get(`${site}?${params}`, (response) => {
-  let data = '';
+fetch(`${site}?${params}`)
+    .then(response => response.json())
+    .then(response_as_dict => {
+      const result = response_as_dict.list;
 
-  response.on('data', (chunk) => {
-    data += chunk;
-  });
+      const table = [];
 
-  response.on('end', () => {
-    const response_as_dict = JSON.parse(data);
-    const result = response_as_dict.list;
+      for (const item of result) {
+        const value1 = item.wind.deg;
+        const value2 = item.main.temp;
+        const value3 = item.wind.speed;
+        table.push({ Value1: value1, Value2: value2, Value3: value3 });
+      }
 
-    const table = [];
-
-    for (const item of result) {
-      const value1 = item.wind.deg;
-      const value2 = item.main.temp;
-      const value3 = item.wind.speed;
-      table.push({ Value1: value1, Value2: value2, Value3: value3 });
-    }
-
-    console.table(table); // Display the table in the console
-  });
-}).on('error', (error) => {
-  console.error(`Error: ${error.message}`);
-});
-</script> 
+      console.table(table); // Display the table in the console
+    })
+    .catch(error => {
+      console.error(`Error: ${error.message}`);
+    });
+</script>
 </body>
 </html>
