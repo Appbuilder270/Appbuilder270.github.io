@@ -68,56 +68,18 @@
 										<input type="text" id="mytext" placeholder="Enter text here">
 
 										<!-- JavaScript Code -->
+										
 										<script>
-											// Listen for changes to the select element
-											document.getElementById("myselect").addEventListener("change", function() {
+										// Listen for changes to the select element
+										document.getElementById("myselect").addEventListener("change", function() {
 											// Check if the selected option is "Option 2"
 											if (this.value === "option2") {
-												// Send an AJAX request to a server endpoint
-												var xhr = new XMLHttpRequest();
-												xhr.open("POST", "/process_option", true);
-												xhr.setRequestHeader("Content-Type", "application/json");
-										
-												// Define the data to be sent (option value)
-												var data = JSON.stringify({ option: this.value });
-										
-												xhr.onload = function() {
-												if (xhr.status === 200) {
-													// Handle the response from the server
-													var response = JSON.parse(xhr.responseText);
-													window.location.href = "index3.html?result=" + encodeURIComponent(response.result);
-												} else {
-													console.error("Request failed with status: " + xhr.status);
-												}
-												};
-										
-												xhr.send(data);
+											// Redirect the user to index3.html
+											window.location.href = "index3.html";
 											}
-											});
-										</script>
-  
-										<!-- JavaScript Code -->
-										//<script>
-										//	// Listen for changes to the select element
-										//	document.getElementById("myselect").addEventListener("change", function() {
-										//	// Check if the selected option is "Option 2"
-										//	if (this.value === "option2") {
-										//		// Send an AJAX request to the Python script
-										//		var xhr = new XMLHttpRequest();
-										//		xhr.open("GET", "first_script.py", true);
-										//		xhr.onload = function() {
-										//		// Parse the JSON string returned by the Python script
-										//	    //var data = JSON.parse(this.responseText);
-      									//		// Get the value property from the parsed JSON object
-     									//		//var result = data.value;
-										//		window.location.href = "index2.html?result=" + encodeURIComponent(this.responseText);
-										//		};
-										//		xhr.send();
-										//	}
-										//	});
-										//</script>
-
-
+										});
+										</script>	
+									
 								</div>
 							</div>
 						</div>
