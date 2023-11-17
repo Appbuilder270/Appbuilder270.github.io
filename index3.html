@@ -23,6 +23,8 @@
     fetch(`${site}?${params}`)
       .then(response => response.json())
       .then(data => {
+        console.log("API response:", data); // Debugging statement
+
         const result = data.list;
 
         if (result) {
