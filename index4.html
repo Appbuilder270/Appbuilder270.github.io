@@ -22,22 +22,45 @@ const params = new URLSearchParams({
 }).toString();
 
 fetch(`${site}?${params}`)
-    .then(response => response.json())
-    .then(response_as_dict => {
-      const result = response_as_dict.list;
+  .then(response => response.json())
+  .then(response_as_dict => {
+    const result = response_as_dict.list;
 
-      const table = [];
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
 
-      for (const item of result) {
-        const value1 = item.wind.deg;
-        const value2 = item.main.temp;
-        const value3 = item.wind.speed;
-        table.push({ Value1: value1, Value2: value2, Value3: value3 });
+    // Create table header
+    const headerRow = document.createElement('tr');
+    const headers = ['Wind Speed', 'Temprature', 'Wind Speed'];
+    for (const header of headers) {
+      const th = document.createElement('th');
+      th.textContent = header;
+      headerRow.appendChild(th);
+    }
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create table rows
+    for (const item of result) {
+      const row = document.createElement('tr');
+      const value1 = item.wind.deg;
+      const value2 = item.main.temp;
+      const value3 = item.wind.speed;
+      const values = [value1, value2, value3];
+      for (const value of values) {
+        const td = document.createElement('td');
+        td.textContent = value;
+        row.appendChild(td);
       }
-        
-        const resultElement = document.getElementById('result');
-        resultElement.innerHTML = JSON.stringify(table); // Update the content of the element
-    })
+      tbody.appendChild(row);
+    }
+    table.appendChild(tbody);
+
+    const resultElement = document.getElementById('result');
+    resultElement.innerHTML = ''; // Clear the content of the element
+    resultElement.appendChild(table); // Update the content of the element
+  });
     .catch(error => {
       console.error(`Error: ${error.message}`);
     });
