@@ -2,8 +2,44 @@
 <html>
 <head>
   <title>Results Page</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+
 </head>
-<body>
+<body class ="subpage">
+
+
+
+    
+<div id="page-wrapper">
+
+<!-- Header -->
+<section id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Logo -->
+                    <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+
+                <!-- Nav -->
+                    <nav id="nav">
+                        <a href="index.html">Homepage</a>
+                        <a href="threecolumn.html">Three Column</a>
+                        <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                        <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                    </nav>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
   <h1>Survey Says:</h1>
   <p id="result"></p>
   
@@ -32,7 +68,7 @@ fetch(`${site}?${params}`)
 
     // Create table header
     const headerRow = document.createElement('tr');
-    const headers = ['Wind Direction', 'Temprature', 'Wind Speed'];
+    const headers = ['Date Time','Wind Direction', 'Temprature', 'Wind Speed'];
     for (const header of headers) {
       const th = document.createElement('th');
       th.textContent = header;
@@ -47,7 +83,20 @@ fetch(`${site}?${params}`)
       const value1 = item.wind.deg;
       const value2 = item.main.temp;
       const value3 = item.wind.speed;
-      const values = [value1, value2, value3];
+
+      const utcTime = item.dt_txt; // Assuming dt_txt contains UTC time
+
+      const [dateString, timeString] = utcTime.split(' ');
+      const [year, month, day] = dateString.split('-');
+      const [hour, minute, second] = timeString.split(':');
+
+      const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute, second);
+      const centralTime = new Date(utcTimestamp).toLocaleString('en-US', { timeZone: 'America/Chicago' });
+
+    //    const centralTime = new Date(utcTime).toLocaleString('en-US', { timeZone: 'America/Chicago' });
+
+      
+      const values = [centralTime, value1, value2, value3];
       for (const value of values) {
         const td = document.createElement('td');
         td.textContent = value;
@@ -65,5 +114,16 @@ fetch(`${site}?${params}`)
       console.error(`Error: ${error.message}`);
     });
 </script>
+
+</div>
+
+<!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
 </body>
 </html>
