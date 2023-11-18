@@ -68,7 +68,7 @@ fetch(`${site}?${params}`)
 
     // Create table header
     const headerRow = document.createElement('tr');
-    const headers = ['Date Time','Wind Direction', 'Temprature', 'Wind Speed'];
+    const headers = [' Date & Time...',' Wind... ', ' Temp... ', ' Speed...', ' Pressure...'];
     for (const header of headers) {
       const th = document.createElement('th');
       th.textContent = header;
@@ -81,8 +81,11 @@ fetch(`${site}?${params}`)
     for (const item of result) {
       const row = document.createElement('tr');
       const value1 = item.wind.deg;
-      const value2 = item.main.temp;
+      const value2 = (item.main.temp).toFixed(0);
       const value3 = item.wind.speed;
+      const value4 = item.main.pressure;
+      const b_press = (value4 * 0.02953).toFixed(2);
+
 
       const utcTime = item.dt_txt; // Assuming dt_txt contains UTC time
 
@@ -96,7 +99,7 @@ fetch(`${site}?${params}`)
     //    const centralTime = new Date(utcTime).toLocaleString('en-US', { timeZone: 'America/Chicago' });
 
       
-      const values = [centralTime, value1, value2, value3];
+      const values = [centralTime, value1, value2, value3, b_press];
       for (const value of values) {
         const td = document.createElement('td');
         td.textContent = value;
