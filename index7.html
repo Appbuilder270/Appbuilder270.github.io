@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results Page</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+
+</head>
+<body class ="subpage">
+
+
+
+    
+<div id="page-wrapper">
+
+<!-- Header -->
+<section id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Logo -->
+                    <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+
+                <!-- Nav -->
+                    <nav id="nav">
+                        <a href="index.html">Homepage</a>
+                        <a href="threecolumn.html">Three Column</a>
+                        <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                        <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                    </nav>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <h1>Wind Speed for the next 5 days:</h1>
+  <canvas id="myChart"></canvas>
+  <script>
+    const site = "https://api.openweathermap.org/data/2.5/forecast";
+    const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
+    const zip_code = "63102";
+    const units1 = "imperial";
+    const mode1 = "json";
+
+    const params = new URLSearchParams({
+      zip: zip_code,
+      units: units1,
+      mode: mode1,
+      appid: token1
+    }).toString();
+
+    fetch(`${site}?${params}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("API response:", data); // Debugging statement
+
+        const result = data.list;
+
+        if (result) {
+          const temp_list2 = [];
+          const dt_txt_list = [];
+
+          for (const item of result) {
+            const temp_cur2 = item.main.temp;
+            const dt_txt_cur = item.dt_txt;
+            temp_list2.push(temp_cur2);
+            dt_txt_list.push(dt_txt_cur);
+          }
+
+          // Create the chart
+          new Chart(document.getElementById('myChart'), {
+            type: 'line',
+            data: {
+                labels: temp_list2.map((dt_txt_cur, index) => `Data ${index + 1}: ${dt_txt_cur}`),
+              datasets: [{
+                label: 'Temperature',
+                data: temp_list2,
+                borderColor: 'blue',
+                fill: false
+              },
+              {
+                label: 'Freezing Point',
+                data: Array(temp_list2.length).fill(32),
+                borderColor: 'red',
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        } else {
+          console.error("Error: Response data does not contain the expected structure");
+        }
+      })
+      .catch(error => {
+        console.error(`Error: ${error.message}`);
+      });
+  </script>
+</div>
+</body>
+</html>
