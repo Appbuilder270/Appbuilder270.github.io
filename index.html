@@ -57,11 +57,11 @@
 									
 										<!-- Dropdown Input Box -->
 										<select id="myselect">
-											<option value="option1">Option 1</option>
+											<option value="option1">- - Pick One - - </option>
 											<option value="option2">STL - Wind Direction</option>
-											<option value="option3">STL - Weather Date</option>
-											<option value="option4">Option 4</option>
-											<option value="option5">Option 5</option>
+											<option value="option3">STL - Weather Data</option>
+											<option value="option4">STL - Windspeed Graph</option>
+											<option value="option5">STL - Temp Graph</option>
 										</select>
 
 										<!-- Text Input Box -->
@@ -80,6 +80,14 @@
 											if (this.value === "option3") {
 											// Redirect the user to index4.html
 											window.location.href = "index4.html";
+											}
+											if (this.value === "option4") {
+											// Redirect the user to index6.html
+											window.location.href = "index6.html";
+											}
+											if (this.value === "option5") {
+											// Redirect the user to index7.html
+											window.location.href = "index7.html";
 											}
 										});
 										</script>	
