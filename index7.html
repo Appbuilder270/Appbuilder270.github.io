@@ -84,7 +84,7 @@
           new Chart(document.getElementById('myChart'), {
             type: 'line',
             data: {
-                labels: temp_list2.map((dt_txt_cur, index) => `Data ${index + 1}: ${dt_txt_cur}`),
+                labels: dt_txt_list.map((dt_txt_cur, index) => `${dt_txt_cur}`),
               datasets: [{
                 label: 'Temperature',
                 data: temp_list2,
