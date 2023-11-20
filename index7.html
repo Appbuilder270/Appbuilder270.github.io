@@ -4,7 +4,7 @@
   <title>Results Page</title>
 
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
 
 
@@ -84,7 +84,19 @@
           new Chart(document.getElementById('myChart'), {
             type: 'line',
             data: {
-                labels: dt_txt_list.map((dt_txt_cur, index) => `${dt_txt_cur}`),
+                labels: dt_txt_list.map((dt_txt_cur, index) => //`${dt_txt_cur}`),
+                {
+                const utcTime = dt_txt_cur;
+                const [dateString, timeString] = utcTime.split(' ');
+                const [year, month, day] = dateString.split('-');
+                const [hour, minute, second] = timeString.split(':');
+
+                const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute, second);
+                const centralTime = new Date(utcTimestamp).toLocaleString('en-US', { timeZone: 'America/Chicago' });
+
+                return centralTime;
+                }),  
+                
               datasets: [{
                 label: 'Temperature',
                 data: temp_list2,
