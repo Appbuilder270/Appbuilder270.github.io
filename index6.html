@@ -41,14 +41,11 @@
 
 
 
-<p id="result"></p>
-
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+
+
   <h1>Wind Speed for the next 5 days:</h1>
   <canvas id="myChart"></canvas>
   <script>
@@ -74,17 +71,32 @@
 
         if (result) {
           const temp_list2 = [];
+          const dt_txt_list = [];
 
           for (const item of result) {
             const temp_cur2 = item.wind.speed;
+            const dt_txt_cur = item.dt_txt;
             temp_list2.push(temp_cur2);
+            dt_txt_list.push(dt_txt_cur);
           }
 
           // Create the chart
           new Chart(document.getElementById('myChart'), {
             type: 'line',
             data: {
-              labels: temp_list2.map((_, index) => `Data ${index + 1}`),
+              labels: dt_txt_list.map((dt_txt_cur, index) => //`Data ${index + 1}`),
+              {
+                const utcTime = dt_txt_cur;
+                const [dateString, timeString] = utcTime.split(' ');
+                const [year, month, day] = dateString.split('-');
+                const [hour, minute, second] = timeString.split(':');
+
+                const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute, second);
+                const centralTime = new Date(utcTimestamp).toLocaleString('en-US', { timeZone: 'America/Chicago' });
+
+                return centralTime;
+                }),  
+
               datasets: [{
                 label: 'Wind Speed',
                 data: temp_list2,
@@ -115,5 +127,14 @@
         console.error(`Error: ${error.message}`);
       });
   </script>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>
