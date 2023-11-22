@@ -58,7 +58,7 @@
 										<!-- Dropdown Input Box -->
 										<select id="myselect">
 											<option value="option1">- - Pick One - - </option>
-											<option value="option2">STL - Wind Direction</option>
+											<option value="option2">STL - Notes App</option>
 											<option value="option3">STL - Weather Data</option>
 											<option value="option4">STL - Windspeed Graph</option>
 											<option value="option5">STL - Temp Graph</option>
@@ -67,7 +67,7 @@
 
 
 
-										
+
 										<!-- Text Input Box -->
 										<input type="text" id="mytext" placeholder="Enter text here">
 										<button onclick="saveNote()">Save</button>
@@ -75,29 +75,32 @@
 										
 										<script>
 										function saveNote() {
-											// Get the current date and time
+											 // Get the current date and time
 											const currentDate = new Date();
 											const dateTime = currentDate.toLocaleString();
-										  
+
 											// Get the note contents from the input box
 											const noteInput = document.getElementById("noteInput");
 											const noteContents = noteInput.value;
-										  
+
 											// Store the date, time, and note contents somewhere (e.g., an array, local storage, or a server)
-										  
+
 											// Example: Store in an array
 											const note = {
-											  dateTime: dateTime,
-											  contents: noteContents
+												dateTime: dateTime,
+												contents: noteContents
 											};
 											const notesArray = []; // Array to store notes
 											notesArray.push(note);
-										  
+
 											// Clear the input box
 											noteInput.value = "";
-										  
-											// Do something with the stored note (e.g., display it, save it to a database, etc.)
-											console.log("Note saved:", note);
+
+											// Display the saved note on the page
+											const notesList = document.getElementById("notesList");
+											const noteItem = document.createElement("li");
+											noteItem.textContent = `${dateTime}: ${noteContents}`;
+											notesList.appendChild(noteItem);
 										  }
 										  </script>
 
@@ -113,8 +116,8 @@
 										document.getElementById("myselect").addEventListener("change", function() {
 											// Check if the selected option is "Option 2"
 											if (this.value === "option2") {
-											// Redirect the user to index3.html
-											window.location.href = "index3.html";
+											// Redirect the user to index8.html
+											window.location.href = "index8.html";
 											}
 											if (this.value === "option3") {
 											// Redirect the user to index4.html
