@@ -64,11 +64,50 @@
 											<option value="option5">STL - Temp Graph</option>
 										</select>
 
+
+
+
+										
 										<!-- Text Input Box -->
 										<input type="text" id="mytext" placeholder="Enter text here">
+										<button onclick="saveNote()">Save</button>
+										
+										
+										<script>
+										function saveNote() {
+											// Get the current date and time
+											const currentDate = new Date();
+											const dateTime = currentDate.toLocaleString();
+										  
+											// Get the note contents from the input box
+											const noteInput = document.getElementById("noteInput");
+											const noteContents = noteInput.value;
+										  
+											// Store the date, time, and note contents somewhere (e.g., an array, local storage, or a server)
+										  
+											// Example: Store in an array
+											const note = {
+											  dateTime: dateTime,
+											  contents: noteContents
+											};
+											const notesArray = []; // Array to store notes
+											notesArray.push(note);
+										  
+											// Clear the input box
+											noteInput.value = "";
+										  
+											// Do something with the stored note (e.g., display it, save it to a database, etc.)
+											console.log("Note saved:", note);
+										  }
+										  </script>
+
+
+
+
+
 
 										<!-- JavaScript Code -->
-										
+								
 										<script>
 										// Listen for changes to the select element
 										document.getElementById("myselect").addEventListener("change", function() {
