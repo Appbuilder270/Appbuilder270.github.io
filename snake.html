@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Yellowsotne River at Livingstone, MT</h1>
+  <canvas id="chart"></canvas>
+
+  <script>
+    // Define the API endpoint and parameters for the streamflow data
+    const url = 'https://waterservices.usgs.gov/nwis/dv/';
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const ninetyDaysAgo = new Date();
+    ninetyDaysAgo.setDate(yesterday.getDate() - 90);
+    const ninetyDaysAgoStr = ninetyDaysAgo.toISOString().split('T')[0];
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    const parameters = {
+    format: 'json',
+    sites: '06192500',
+    startDT: ninetyDaysAgoStr,
+    endDT: yesterdayStr,
+      parameterCd: '00060'
+    };
+
+    // Make a request to the USGS API
+    fetch(url + '?' + new URLSearchParams(parameters))
+      .then(response => response.json())
+      .then(data => {
+        // Access the data from the response
+        const time_series = data.value.timeSeries[0].values[0].value;
+
+        // Extract the dates and values from the time series data
+        const dates = time_series.map(entry => entry.dateTime);
+        const values = time_series.map(entry => entry.value);
+
+        // Create a chart using Chart.js
+        const ctx = document.getElementById('chart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dates,
+            datasets: [{
+              label: 'Streamflow - Cubic feet per second',
+              data: values,
+              borderColor: 'blue',
+              fill: false
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Date'
+                }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Value'
+                }
+              }
+            }
+          }
+        });
+
+        // Create a table element
+        const table = document.createElement('table');
+
+        // Create table headers
+        const headerRow = document.createElement('tr');
+        const dateHeader = document.createElement('th');
+        dateHeader.textContent = 'Date';
+        const valueHeader = document.createElement('th');
+        valueHeader.textContent = 'Value';
+        headerRow.appendChild(dateHeader);
+        headerRow.appendChild(valueHeader);
+        table.appendChild(headerRow);
+
+        // Iterate over the time series data and create table rows
+        time_series.forEach(entry => {
+          const row = document.createElement('tr');
+          const dateCell = document.createElement('td');
+          dateCell.textContent = entry.dateTime;
+          const valueCell = document.createElement('td');
+          valueCell.textContent = entry.value;
+          row.appendChild(dateCell);
+          row.appendChild(valueCell);
+          table.appendChild(row);
+        });
+
+        // Append the table to the body of the web page
+        document.body.appendChild(table);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  </script>
+</body>
+</html>
