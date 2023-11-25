@@ -1,122 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
   <title>Note Taking App</title>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-  
-  
-  </head>
-  <body class ="subpage">
-  
-  
-  
-      
-  <div id="page-wrapper">
-  
-  <!-- Header -->
-  <section id="header">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-  
-                  <!-- Logo -->
-                      <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
-  
-                  <!-- Nav -->
-                      <nav id="nav">
-                          <a href="index.html">Homepage</a>
-                          <a href="threecolumn.html">Three Column</a>
-                          <!--<a href="twocolumn1.html">Two Column #1</a>-->
-                          <!--<a href="twocolumn2.html">Two Column #2</a>-->
-                      </nav>
-  
-              </div>
-          </div>
-      </div>
-  </section>
-  
-
-
-
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body>
-  <h1>Note Taking App</h1>
-  <input type="text" id="noteInput" placeholder="Enter your note">
-  <button onclick="saveNote()">Submit</button>
+<body class="subpage">
+  <div id="page-wrapper">
+    <!-- Header -->
+    <section id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Logo -->
+            <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+            <!-- Nav -->
+            <nav id="nav">
+              <a href="index.html">Homepage</a>
+              <a href="threecolumn.html">Three Column</a>
+              <!--<a href="twocolumn1.html">Two Column #1</a>-->
+              <!--<a href="twocolumn2.html">Two Column #2</a>-->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h1>Note Taking App</h1>
+    <input type="text" id="noteInput" placeholder="Enter your note">
+    <button onclick="saveNote()">Submit</button>
+    <ul id="notesList"></ul>
 
-  <ul id="notesList"></ul>
-
-  <script>
-    // Function to retrieve saved notes from local storage
-    function getSavedNotes() {
-      const savedNotes = localStorage.getItem("notes");
-      if (savedNotes) {
-        return JSON.parse(savedNotes);
+    <script>
+      // Function to retrieve saved notes from local storage
+      function getSavedNotes() {
+        const savedNotes = localStorage.getItem("notes");
+        if (savedNotes) {
+          return JSON.parse(savedNotes);
+        }
+        return [];
       }
-      return [];
+
+      // Function to save notes to local storage
+      function saveNotes(notes) {
+        localStorage.setItem("notes", JSON.stringify(notes));
+      }
+
+      // Function to display notes on page load
+      function displayNotes() {
+        const notesList = document.getElementById("notesList");
+        notesList.innerHTML = ""; // Clear the notes list
+
+        const savedNotes = getSavedNotes();
+        savedNotes.forEach((note) => {
+          const noteItem = createNoteItem(note);
+          notesList.appendChild(noteItem);
+        });
+      }
+
+      // Function to create a note item
+      function createNoteItem(note) {
+  const { id, dateTime, contents } = note;
+
+  const noteItem = document.createElement("li");
+
+  const noteText = document.createElement("span");
+  noteText.textContent = `${dateTime}: ${contents}`;
+  noteItem.appendChild(noteText);
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", () => {
+    const updatedNote = prompt("Enter the updated note:", contents);
+    if (updatedNote) {
+      note.contents = updatedNote;
+      noteText.textContent = `${dateTime}: ${updatedNote}`;
+      saveNotes(getSavedNotes());
     }
+  });
 
-    // Function to save notes to local storage
-    function saveNotes(notes) {
-      localStorage.setItem("notes", JSON.stringify(notes));
-    }
-
-    // Function to display notes on page load
-    function displayNotes() {
-      const notesList = document.getElementById("notesList");
-      notesList.innerHTML = ""; // Clear the notes list
-
-      const savedNotes = getSavedNotes();
-      savedNotes.forEach((note) => {
-        const noteItem = document.createElement("li");
-        noteItem.textContent = note;
-        notesList.appendChild(noteItem);
-      });
-    }
-
-    // Function to save a new note
-    function saveNote() {
-      // Get the current date and time
-      const currentDate = new Date();
-      const dateTime = currentDate.toLocaleString();
-
-      // Get the note contents from the input box
-      const noteInput = document.getElementById("noteInput");
-      const noteContents = noteInput.value;
-
-      // Create a new list item for the note
-      const noteItem = document.createElement("li");
-      noteItem.textContent = `${dateTime}: ${noteContents}`;
-
-      // Append the note to the notes list
-      const notesList = document.getElementById("notesList");
-      notesList.appendChild(noteItem);
-
-      // Save the note to local storage
-      const savedNotes = getSavedNotes();
-      savedNotes.push(`${dateTime}: ${noteContents}`);
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => {
+    const savedNotes = getSavedNotes();
+    const index = savedNotes.findIndex((n) => n.id === id);
+    if (index > -1) {
+      savedNotes.splice(index, 1);
       saveNotes(savedNotes);
-
-      // Clear the input box
-      noteInput.value = "";
+      displayNotes(); // Refresh the notes display after deletion
     }
+  });
 
-    // Display the saved notes on page load
-    displayNotes();
-  </script>
+  noteItem.appendChild(editButton);
+  noteItem.appendChild(deleteButton);
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+  return noteItem;
+}
+      // Function to save a new note
+      function saveNote() {
+        const currentDate = new Date();
+        const dateTime = currentDate.toLocaleString();
 
+        const noteInput = document.getElementById("noteInput");
+        const noteContents = noteInput.value;
 
+        const note = {
+          id: Date.now(),
+          dateTime: dateTime,
+          contents: noteContents
+        };
+
+        const notesList = document.getElementById("notesList");
+        const noteItem = createNoteItem(note);
+        notesList.appendChild(noteItem);
+
+        const savedNotes = getSavedNotes();
+        savedNotes.push(note);
+        saveNotes(savedNotes);
+
+        noteInput.value = "";
+      }
+
+      // Display the saved notes on page load
+      displayNotes();
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </div>
 </body>
 </html>
