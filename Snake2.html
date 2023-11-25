@@ -5,7 +5,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>Yellowsotne River at Livingston, MT</h1>
+  <h1>Yellowstone River at Livingston, MT</h1>
   <canvas id="chart"></canvas>
 
   <script>
@@ -14,14 +14,14 @@
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const ninetyDaysAgo = new Date();
-    ninetyDaysAgo.setDate(yesterday.getDate() - 90);
+    ninetyDaysAgo.setDate(yesterday.getDate() - 270);
     const ninetyDaysAgoStr = ninetyDaysAgo.toISOString().split('T')[0];
     const yesterdayStr = yesterday.toISOString().split('T')[0];
     const parameters = {
-    format: 'json',
-    sites: '06192500',
-    startDT: ninetyDaysAgoStr,
-    endDT: yesterdayStr,
+      format: 'json',
+      sites: '06192500,13013650', // Add the site 13013650 to the sites parameter
+      startDT: ninetyDaysAgoStr,
+      endDT: yesterdayStr,
       parameterCd: '00060'
     };
 
@@ -30,24 +30,35 @@
       .then(response => response.json())
       .then(data => {
         // Access the data from the response
-        const time_series = data.value.timeSeries[0].values[0].value;
+        const time_series_1 = data.value.timeSeries[0].values[0].value; // Data for site 06192500
+        const time_series_2 = data.value.timeSeries[1].values[0].value; // Data for site 13013650
 
         // Extract the dates and values from the time series data
-        const dates = time_series.map(entry => entry.dateTime);
-        const values = time_series.map(entry => entry.value);
+        const dates_1 = time_series_1.map(entry => entry.dateTime);
+        const values_1 = time_series_1.map(entry => entry.value);
+        const dates_2 = time_series_2.map(entry => entry.dateTime);
+        const values_2 = time_series_2.map(entry => entry.value);
 
         // Create a chart using Chart.js
         const ctx = document.getElementById('chart').getContext('2d');
         new Chart(ctx, {
           type: 'line',
           data: {
-            labels: dates,
-            datasets: [{
-              label: 'Streamflow - Cubic feet per second',
-              data: values,
-              borderColor: 'blue',
-              fill: false
-            }]
+            labels: dates_1, // Use dates from site 06192500 as labels
+            datasets: [
+              {
+                label: 'Yellowstone Streamflow - CF/sec (06192500)',
+                data: values_1, // Use values from site 06192500
+                borderColor: 'blue',
+                fill: false
+              },
+              {
+                label: 'Snake Streamflow - CF/sec (13013650)',
+                data: values_2, // Use values from site 13013650
+                borderColor: 'red',
+                fill: false
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -83,8 +94,8 @@
         headerRow.appendChild(valueHeader);
         table.appendChild(headerRow);
 
-        // Iterate over the time series data and create table rows
-        time_series.forEach(entry => {
+        // Iterate over the time series data for site 06192500 and create table rows
+        time_series_1.forEach(entry => {
           const row = document.createElement('tr');
           const dateCell = document.createElement('td');
           dateCell.textContent = entry.dateTime;
