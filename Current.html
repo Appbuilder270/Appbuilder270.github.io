@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results Page</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  
+  
+  </head>
+  <body class ="subpage">
+  
+  
+  
+      
+  <div id="page-wrapper">
+  
+  <!-- Header -->
+  <section id="header">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+  
+                  <!-- Logo -->
+                      <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+  
+                  <!-- Nav -->
+                      <nav id="nav">
+                          <a href="index.html">Homepage</a>
+                          <a href="threecolumn.html">Three Column</a>
+                          <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                          <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                      </nav>
+  
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+
+    <style>
+        /* CSS styles */
+        body {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+
+    <style>
+        /* Styling for the section */
+        #output {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Styling for the headings */
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    
+        /* Styling for the data items */
+        p {
+            margin: 10px 0;
+        }
+    
+        strong {
+            font-weight: bold;
+        }
+    
+        span {
+            font-weight: normal;
+            color: #666;
+        }
+    </style>
+
+<h1>Live Data Pull for Saint Charles, MO . . .</h1>
+
+</body>
+
+   
+    <div id="output1">
+
+        <style>
+            p {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+        </style>
+
+
+        <p><strong>Current Time:</strong> <span id="currentTime"></span></p>
+        <p><strong>Sunrise Time:</strong> <span id="sunriseTime"></span></p>
+        <p><strong>Sunset Time:</strong> <span id="sunsetTime"></span></p>
+        <p><strong>Current Temp:</strong> <span id="temp"></span>°</p>
+        <p><strong>Wind Right Now:</strong> <span id="wind"></span> mph</p>
+        <p><strong>Weather Description:</strong> <span id="weatherDescription"></span></p>
+        <p><strong>Wind Direction:</strong> <span id = "wind_deg"></span></p>
+        <p><strong>Wind Description:</strong><span id = "wind_desc"></span></p>
+
+    
+    </div>
+
+
+    <h1>And here's your wind detail . . .</h1>
+   <div id="output2">
+
+        <style>
+            p {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+        </style>
+
+
+        <p><strong>Wind Right Now:</strong> <span id="wind2"></span> mph</p>
+        <p><strong>Wind Direction:</strong> <span id = "wind_deg2"></span></p>
+        <p><strong>Wind Description:</strong><span id = "wind_desc2"></span></p>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
+    <script> 
+        const site1 = "https://api.openweathermap.org/data/3.0/onecall";
+        const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
+        const zip_code = "63124";
+        let units1 = "imperial";
+        const mode1 = "json";
+
+        // FOR ST CHARLES
+        const lat1 = "38.7881";
+        const lon1 = "-90.4974";
+        units1 = "imperial";
+        const start1 = "1656730800";
+
+        const params = new URLSearchParams({
+            lat: lat1,
+            lon: lon1,
+            units: units1,
+            appid: token1
+        });
+
+        fetch(site1 + "?" + params)
+    .then(response => response.json())
+    .then(data => {
+        const result = data.current;
+        const convertedData = {
+            dt: result.dt,
+            sunrise: result.sunrise,
+            sunset: result.sunset,
+            temp: result.temp,
+            wind: result.wind_speed,
+            weatherDescription: result.weather[0].description,
+            wind_deg: result.wind_deg
+            // ... other data ...
+        };
+        console.log(convertedData);
+        // Use the convertedData object as needed
+
+        // Convert UTC timestamp to Central time
+        const utcTime = luxon.DateTime.fromSeconds(convertedData.dt, { zone: 'utc' });
+        const centralTime = utcTime.setZone('America/Chicago');
+
+        // Format the Central time and sunrise time
+        const currentTime = centralTime.toFormat('MM/dd/yyyy h:mm:ss');
+        const sunriseTime = luxon.DateTime.fromSeconds(convertedData.sunrise, { zone: 'utc' })
+            .setZone('America/Chicago')
+            .toFormat('MM/dd/yyyy h:mm:ss');
+        const sunsetTime = luxon.DateTime.fromSeconds(convertedData.sunset, { zone: 'utc' })
+            .setZone('America/Chicago')
+            .toFormat('MM/dd/yyyy h:mm:ss');
+
+        // Update the HTML elements with the converted times
+        document.getElementById('currentTime').textContent = currentTime;
+        document.getElementById('sunriseTime').textContent = sunriseTime;
+        document.getElementById('sunsetTime').textContent = sunsetTime; 
+        document.getElementById('temp').textContent = convertedData.temp;
+        document.getElementById('wind').textContent = convertedData.wind;
+        document.getElementById('weatherDescription').textContent = convertedData.weatherDescription;
+        document.getElementById('wind_deg').textContent = convertedData.wind_deg;
+        
+        document.getElementById('wind_deg2').textContent = convertedData.wind_deg;
+        document.getElementById('wind2').textContent = convertedData.wind;
+        
+
+
+
+
+
+        // Logic for wind description
+        let wind_desc;
+
+        if (convertedData.wind_deg >= 1 && convertedData.wind_deg <= 30) {
+            wind_desc = "North";
+        } else if (convertedData.wind_deg >= 31 && convertedData.wind_deg <= 120) {
+            wind_desc = "East";
+        } else if (convertedData.wind_deg >= 121 && convertedData.wind_deg <= 160) {
+            wind_desc = "SouthEast";
+        } else if (convertedData.wind_deg >= 161 && convertedData.wind_deg <= 210) {
+            wind_desc = "South";
+        } else if (convertedData.wind_deg >= 211 && convertedData.wind_deg <= 240) {
+            wind_desc = "SouthWest";
+        } else if (convertedData.wind_deg >= 241 && convertedData.wind_deg <= 300) {
+            wind_desc = "West";
+        } else if (convertedData.wind_deg >= 301 && convertedData.wind_deg <= 330) {
+            wind_desc = "NorthWest";
+        } else if (convertedData.wind_deg >= 331 && convertedData.wind_deg <= 360) {
+            wind_desc = "North";
+        }
+
+        document.getElementById('wind_desc').textContent = wind_desc;
+        document.getElementById('wind_desc2').textContent = wind_desc;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+    </script>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+</body>
+</html>
