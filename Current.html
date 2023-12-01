@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
+<body>
+
     <title>Results Page</title>
 
     <meta charset="utf-8" />
@@ -37,24 +38,18 @@
           </div>
       </div>
   </section>
-  
-
-
-    <style>
-        /* CSS styles */
-        body {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
-</head>
 
 
 
 
-<body>
+
+
+
+
+
+
+
+
 
     <style>
         /* Styling for the section */
@@ -75,8 +70,10 @@
         /* Styling for the data items */
         p {
             margin: 10px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
         }
-    
+
         strong {
             font-weight: bold;
         }
@@ -87,53 +84,26 @@
         }
     </style>
 
-<h1>Live Data Pull for Saint Charles, MO . . .</h1>
-
-</body>
-
-   
-    <div id="output1">
-
-        <style>
-            p {
-                border-bottom: 1px solid #ccc;
-                padding-bottom: 5px;
-            }
-        </style>
 
 
+    <h1>Live Data Pull . . .</h1>
+    <div id="output">
+        <p style="color: navy;"><strong>Right Now</strong></p>
         <p><strong>Current Time:</strong> <span id="currentTime"></span></p>
+        <p><strong>Current Temp:</strong> <span id="temp"></span> °F</p>
+        <p><strong>Weather Description:</strong> <span id="weatherDescription"></span></p>
+        <p style="color: navy;"><strong>Sunrise/Sunset</strong></p>
         <p><strong>Sunrise Time:</strong> <span id="sunriseTime"></span></p>
         <p><strong>Sunset Time:</strong> <span id="sunsetTime"></span></p>
-        <p><strong>Current Temp:</strong> <span id="temp"></span>°</p>
-        <p><strong>Wind Right Now:</strong> <span id="wind"></span> mph</p>
-        <p><strong>Weather Description:</strong> <span id="weatherDescription"></span></p>
-        <p><strong>Wind Direction:</strong> <span id = "wind_deg"></span></p>
-        <p><strong>Wind Description:</strong><span id = "wind_desc"></span></p>
 
-    
     </div>
-
 
     <h1>And here's your wind detail . . .</h1>
-   <div id="output2">
-
-        <style>
-            p {
-                border-bottom: 1px solid #ccc;
-                padding-bottom: 5px;
-            }
-        </style>
-
-
-        <p><strong>Wind Right Now:</strong> <span id="wind2"></span> mph</p>
-        <p><strong>Wind Direction:</strong> <span id = "wind_deg2"></span></p>
-        <p><strong>Wind Description:</strong><span id = "wind_desc2"></span></p>
-
+    <div id="output">
+        <p><strong>Wind Right Now: </strong> <span id="wind"></span> mph</p>
+        <p><strong>Wind Direction: </strong> <span id = "wind_deg"></span>°</p>
+        <p><strong>Wind Description: </strong><span id = "wind_desc"></span></p>    
     </div>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
     <script> 
@@ -194,13 +164,6 @@
         document.getElementById('wind').textContent = convertedData.wind;
         document.getElementById('weatherDescription').textContent = convertedData.weatherDescription;
         document.getElementById('wind_deg').textContent = convertedData.wind_deg;
-        
-        document.getElementById('wind_deg2').textContent = convertedData.wind_deg;
-        document.getElementById('wind2').textContent = convertedData.wind;
-        
-
-
-
 
 
         // Logic for wind description
@@ -225,13 +188,13 @@
         }
 
         document.getElementById('wind_desc').textContent = wind_desc;
-        document.getElementById('wind_desc2').textContent = wind_desc;
     })
     .catch(error => {
         console.error("Error:", error);
     });
 
     </script>
+
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
