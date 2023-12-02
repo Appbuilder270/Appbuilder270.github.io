@@ -59,12 +59,14 @@
 										<select id="myselect">
 											<option value="option1">- - Pick One - - </option>
 											<option value="option2">Notes App</option>
+											<option disabled>----------------</option>
 											<option value="option3">STL - Weather Data</option>
 											<option value="option4">STL - Windspeed Graph</option>
 											<option value="option5">STL - Temp Graph</option>
 											<option value="option6">Yellowstone River</option>
 											<option value="option7">Yellowstone & Snake</option>
-
+											<option disabled>----------------</option>
+											<option value="option8">Ticker News</option>
 										</select>
 
 
@@ -97,6 +99,10 @@
 											if (this.value === "option7") {
 											// Redirect the user to snake2.html
 											window.location.href = "Snake2.html";
+											}
+											if (this.value === "option8") {
+											// Redirect the user to ticker_news.html
+											window.location.href = "ticker_news.html";
 											}
 										});
 										</script>	

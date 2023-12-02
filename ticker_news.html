@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <h1>Enter up to three tickers (i.e. AAPL,GE,JPM)</h1>
+    <input type="text" id="tickerInput" placeholder="Enter tickers">
+    <button onclick="updateTickList()">Update</button>
+  
+    <ul id="resultList"></ul>
+  
+    <script>
+        let tickList = [];
+
+        function updateTickList() {
+            const tickerInput = document.getElementById("tickerInput");
+            if (tickerInput.value) {
+                tickList = tickerInput.value.split(",");
+            }
+
+            const resultList = document.getElementById("resultList");
+            resultList.innerHTML = ""; // Clear previous results
+
+            tickList.forEach((ticker) => {
+                const site = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=bOBJRAaoOCfgRpHdLlN2ZNH0Wn3KoenF`;
+
+                fetch(site)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const result = data.results;
+                        console.log(ticker);
+                        console.log(result);
+
+                        const resultList = document.getElementById("resultList");
+                        if (resultList) {
+                            let previousTicker = null;
+
+                            result.forEach((item) => {
+                            if (ticker !== previousTicker) {
+                                const tickerItem = document.createElement("li");
+                                tickerItem.textContent = "Ticker: " + ticker;
+                                resultList.appendChild(tickerItem);
+
+                                previousTicker = ticker;
+                            }
+
+                            const listItem = document.createElement("li");
+                            listItem.textContent = new Date(item.published_utc).toLocaleString("en-US", { timeZone: "America/Chicago" }) + " " + item.title;
+                            resultList.appendChild(listItem);
+                            });
+                        } else {
+                            console.error("Element with id 'resultList' not found.");
+                        }
+                        })
+                        .catch((error) => {
+                        console.error(error);
+                        });
+            });
+        }
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
