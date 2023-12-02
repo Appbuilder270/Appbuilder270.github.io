@@ -29,7 +29,7 @@
     </div>
 
     <h1>Enter up to three tickers (i.e. AAPL,GE,JPM)</h1>
-    <input type="text" id="tickerInput" placeholder="Enter tickers">
+    <input type="text" id="tickerInput" placeholder="Enter tickers" oninput="this.value = this.value.toUpperCase()">
     <button onclick="updateTickList()">Update</button>
   
     <ul id="resultList"></ul>
