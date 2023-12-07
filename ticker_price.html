@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <h1>Enter a ticker (i.e. AAPL, GE, JPM)</h1>
+   
+    <input type="text" id="tickerInput" placeholder="Enter a ticker" oninput="this.value = this.value.toUpperCase()">
+    <button onclick="updateTickList()">Update</button>
+  
+    <ul id="resultList"></ul>
+    <canvas id="chart"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            updateTickList();
+        });
+        function updateTickList() {
+            const tickerInput = document.getElementById("tickerInput");
+            const symbol = tickerInput.value.toUpperCase(); // Get the value from the text box and convert to uppercase
+
+            if (symbol) {
+                const apiKey = '94KJC4FJQ2Y2P231';
+                const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
+            
+            fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data); // For debugging purposes
+                const json_data = data;
+
+                const time_series = json_data["Time Series (Daily)"];
+                const daily_data = Object.entries(time_series).map(([date, values]) => [new Date(date), values["4. close"]]);
+
+                // Reverse the order of the data
+                daily_data.reverse();
+
+                const dates = daily_data.map(([date]) => date);
+                const closeValues = daily_data.map(([, close]) => close);
+
+                const resultList = document.getElementById("resultList");
+                resultList.innerHTML = ""; // Clear previous results
+
+                
+                // Create a line chart
+                const chartElement = document.getElementById("chart");
+                new Chart(chartElement, {
+                    type: "line",
+                    data: {
+                        labels: dates,
+                        datasets: [
+                            {
+                                label: "Close Values",
+                                data: closeValues,
+                                borderColor: "blue",
+                                fill: false,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                    },
+                });
+
+
+//daily_data.forEach(([date, close]) => {
+                //    const listItem = document.createElement("li");
+                 //   listItem.textContent = `${date}: ${close}`;
+                 //   resultList.appendChild(listItem);
+                 daily_data.forEach(([date, close]) => {
+                    const listItem = document.createElement("li");
+                    const localDate = date.toLocaleString(undefined, { timeZone: 'America/Chicago' }); // Replace 'your-time-zone' with your actual time zone
+                    listItem.textContent = `${localDate}: ${close}`;
+                    resultList.appendChild(listItem);
+
+                });
+
+
+
+
+
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+            }
+        }
+    </script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
