@@ -47,10 +47,10 @@
             resultList.innerHTML = ""; // Clear previous results
 
             tickList.forEach((ticker) => {
-                const apiKey = process.env.POLY_API;
-                const site = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${apiKey}`;
+                //const apiKey = process.env.POLY_API;
+                //const site = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=${apiKey}`;
                 
-                //const site = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=bOBJRAaoOCfgRpHdLlN2ZNH0Wn3KoenF`;
+                const site = `https://api.polygon.io/v2/reference/news?ticker=${ticker}&apiKey=bOBJRAaoOCfgRpHdLlN2ZNH0Wn3KoenF`;
 
                 fetch(site)
                     .then((response) => response.json())
