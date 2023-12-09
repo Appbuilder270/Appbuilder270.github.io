@@ -5,6 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        #tickerSection {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            max-width: 200px;
+        }
+    </style>
 </head>
 <body class="subpage">
     <div id="page-wrapper">
@@ -28,92 +38,84 @@
         </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <h1>Enter a ticker (i.e. AAPL, GE, JPM)</h1>
-   
-    <input type="text" id="tickerInput" placeholder="Enter a ticker" oninput="this.value = this.value.toUpperCase()">
-    <button onclick="updateTickList()">Update</button>
-  
-    <ul id="resultList"></ul>
+
+    <script>
+    function handleKeyDown(event) {
+        if (event.keyCode === 13) {
+            updateTickList();
+        }
+    }</script>
+
+
+    <div id="tickerSection">
+        <h1>Enter a ticker (i.e. AAPL, GE, JPM)</h1>
+        <input type="text" id="tickerInput" placeholder="Enter tickers" oninput="this.value = this.value.toUpperCase()" onkeydown="handleKeyDown(event)">        
+        <button onclick="updateTickList()">Update</button>
+    </div>
+
     <canvas id="chart"></canvas>
+    <ul id="resultList"></ul>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             updateTickList();
         });
+
         function updateTickList() {
             const tickerInput = document.getElementById("tickerInput");
-            const symbol = tickerInput.value.toUpperCase(); // Get the value from the text box and convert to uppercase
+            const symbol = tickerInput.value.toUpperCase();
 
             if (symbol) {
                 const apiKey = '94KJC4FJQ2Y2P231';
                 const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
-            
-            fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data); // For debugging purposes
-                const json_data = data;
 
-                const time_series = json_data["Time Series (Daily)"];
-                const daily_data = Object.entries(time_series).map(([date, values]) => [new Date(date), values["4. close"]]);
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        const json_data = data;
 
-                // Reverse the order of the data
-                daily_data.reverse();
+                        const time_series = json_data["Time Series (Daily)"];
+                        const daily_data = Object.entries(time_series).map(([date, values]) => [date, values["4. close"]]);
 
-                const dates = daily_data.map(([date]) => date);
-                const closeValues = daily_data.map(([, close]) => close);
+                        daily_data.reverse();
 
-                const resultList = document.getElementById("resultList");
-                resultList.innerHTML = ""; // Clear previous results
+                        const resultList = document.getElementById("resultList");
+                        resultList.innerHTML = "";
 
-                
-                // Create a line chart
-                const chartElement = document.getElementById("chart");
-                new Chart(chartElement, {
-                    type: "line",
-                    data: {
-                        labels: dates,
-                        datasets: [
-                            {
-                                label: "Close Values",
-                                data: closeValues,
-                                borderColor: "blue",
-                                fill: false,
+                        const chartElement = document.getElementById("chart");
+                        new Chart(chartElement, {
+                            type: "line",
+                            data: {
+                                labels: daily_data.map(([date]) => date),
+                                datasets: [
+                                    {
+                                        label: "Daily Close Prices",
+                                        data: daily_data.map(([, close]) => close),
+                                        borderColor: "blue",
+                                        fill: false,
+                                    },
+                                ],
                             },
-                        ],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                    },
-                });
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
+                            },
+                        });
 
-
-//daily_data.forEach(([date, close]) => {
-                //    const listItem = document.createElement("li");
-                 //   listItem.textContent = `${date}: ${close}`;
-                 //   resultList.appendChild(listItem);
-                 daily_data.forEach(([date, close]) => {
-                    const listItem = document.createElement("li");
-                    const localDate = date.toLocaleString(undefined, { timeZone: 'America/Chicago' }); // Replace 'your-time-zone' with your actual time zone
-                    listItem.textContent = `${localDate}: ${close}`;
-                    resultList.appendChild(listItem);
-
-                });
-
-
-
-
-
-
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
+                        daily_data.forEach(([date, close]) => {
+                            const listItem = document.createElement("li");
+                            listItem.textContent = `${date}: ${close}`;
+                            resultList.appendChild(listItem);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             }
         }
     </script>
+
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
