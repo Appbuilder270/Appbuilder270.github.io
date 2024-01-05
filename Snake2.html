@@ -75,11 +75,19 @@
         const time_series_1 = data.value.timeSeries[0].values[0].value; // Data for site 06192500
         const time_series_2 = data.value.timeSeries[1].values[0].value; // Data for site 13013650
 
+
+        // Filter out the bad values (-999999) for time_series_1
+        const filtered_time_series_1 = time_series_1.filter(entry => Number(entry.value) !== -999999);
+
+        // Filter out the bad values (-999999) for time_series_2
+        const filtered_time_series_2 = time_series_2.filter(entry => Number(entry.value) !== -999999);
+
+
         // Extract the dates and values from the time series data
-        const dates_1 = time_series_1.map(entry => entry.dateTime);
-        const values_1 = time_series_1.map(entry => entry.value);
-        const dates_2 = time_series_2.map(entry => entry.dateTime);
-        const values_2 = time_series_2.map(entry => entry.value);
+        const dates_1 = filtered_time_series_1.map(entry => entry.dateTime);
+        const values_1 = filtered_time_series_1.map(entry => entry.value);
+        const dates_2 = filtered_time_series_2.map(entry => entry.dateTime);
+        const values_2 = filtered_time_series_2.map(entry => entry.value);
 
         // Create a chart using Chart.js
         const ctx = document.getElementById('chart').getContext('2d');
