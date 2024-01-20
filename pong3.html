@@ -6,10 +6,28 @@
     #gameCanvas {
       background-color: black;
     }
+    button {
+      display: block;
+      margin-top: 10px;
+      font-size: 16px;
+      padding: 5px 10px;
+      width: 100px;
+      margin-left: 10px;
+      color: white; /* White text for better visibility on colored backgrounds */
+      border: none; /* Optional: removes the default border */
+    }
+    #moveUp {
+      background-color: rgb(10, 85, 10); /* Green background for the 'Move Up' button */
+    }
+    #moveDown {
+      background-color: rgb(116, 10, 10); /* Red background for the 'Move Down' button */
+    }
   </style>
 </head>
 <body>
   <canvas id="gameCanvas" width="800" height="400"></canvas>
+  <button id="moveUp">Up</button>
+  <button id="moveDown">Down</button>
 
   <script>
     const canvas = document.getElementById('gameCanvas');
@@ -25,7 +43,7 @@
     let paddleWidth = 10;
     let paddleHeight = 50;
     let ballRadius = 10;
-    let gameInterval; // Variable to store the game interval ID
+    let gameInterval;
 
     function update() {
       movePaddle();
@@ -71,10 +89,9 @@
         ballSpeedX *= -1;
       }
 
-      // Check if the ball has moved off the left side of the canvas
       if (ballX + ballRadius < 0) {
-        clearInterval(gameInterval); // Stop updating the game
-        gameOver(); // Call game over logic
+        clearInterval(gameInterval);
+        gameOver();
       }
     }
 
@@ -90,13 +107,27 @@
     }
 
     function gameOver() {
-      // Add your game over logic here
-      alert("Game Over! Your score: " + score);
+      alert("Game Over..... Your score: " + score);
     }
 
     function startGame() {
-      gameInterval = setInterval(update, 16); // Store the interval ID
+      gameInterval = setInterval(update, 16);
     }
+
+    function movePaddleUp() {
+      if (paddleY > 0) {
+        paddleY -= 10;
+      }
+    }
+
+    function movePaddleDown() {
+      if (paddleY < canvas.height - paddleHeight) {
+        paddleY += 10;
+      }
+    }
+
+    document.getElementById('moveUp').addEventListener('click', movePaddleUp);
+    document.getElementById('moveDown').addEventListener('click', movePaddleDown);
 
     window.addEventListener('load', startGame);
   </script>
