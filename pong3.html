@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Single Player Pong</title>
+  <style>
+    #gameCanvas {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const context = canvas.getContext('2d');
+
+    let paddleX = 1;
+    let paddleY = canvas.height / 2;
+    let ballX = canvas.width / 2;
+    let ballY = canvas.height / 2;
+    let ballSpeedX = 5;
+    let ballSpeedY = 5;
+    let score = 0;
+    let paddleWidth = 10;
+    let paddleHeight = 50;
+    let ballRadius = 10;
+    let gameInterval; // Variable to store the game interval ID
+
+    function update() {
+      movePaddle();
+      moveBall();
+      draw();
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowUp' && paddleY > 0) {
+        paddleY -= 10;
+      } else if (event.key === 'ArrowDown' && paddleY < canvas.height - paddleHeight) {
+        paddleY += 10;
+      }
+    });
+
+    canvas.addEventListener('touchstart', function(event) {
+      const touchY = event.touches[0].clientY;
+      if (touchY < paddleY && paddleY > 0) {
+        paddleY -= 10;
+      } else if (touchY > paddleY + paddleHeight && paddleY < canvas.height - paddleHeight) {
+        paddleY += 10;
+      }
+    });
+
+    function movePaddle() {
+      // Paddle movement logic is handled by event listeners
+    }
+
+    function moveBall() {
+      ballX += ballSpeedX;
+      ballY += ballSpeedY;
+
+      if (ballY - ballRadius <= 0 || ballY + ballRadius >= canvas.height) {
+        ballSpeedY *= -1;
+      }
+
+      if (ballX - ballRadius <= paddleWidth && ballY > paddleY && ballY < paddleY + paddleHeight) {
+        ballSpeedX *= -1;
+        score++;
+      }
+
+      if (ballX + ballRadius >= canvas.width) {
+        ballSpeedX *= -1;
+      }
+
+      // Check if the ball has moved off the left side of the canvas
+      if (ballX + ballRadius < 0) {
+        clearInterval(gameInterval); // Stop updating the game
+        gameOver(); // Call game over logic
+      }
+    }
+
+    function draw() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = 'white';
+      context.fillRect(paddleX, paddleY, paddleWidth, paddleHeight);
+      context.beginPath();
+      context.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+      context.fill();
+      context.font = '20px Arial';
+      context.fillText('Score: ' + score, 10, 30);
+    }
+
+    function gameOver() {
+      // Add your game over logic here
+      alert("Game Over! Your score: " + score);
+    }
+
+    function startGame() {
+      gameInterval = setInterval(update, 16); // Store the interval ID
+    }
+
+    window.addEventListener('load', startGame);
+  </script>
+</body>
+</html>
