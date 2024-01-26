@@ -5,6 +5,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            margin: 0 10px; /* Add space on the left and right margins */
+        }
+
+        #resultList li {
+            border-bottom: 1px solid #04442b; /* Add a hairline under each headline */
+            padding-bottom: 5px; /* Add some space below each headline */
+        }
+    </style>
+
+
+
 </head>
 <body class="subpage">
     <div id="page-wrapper">
@@ -66,14 +79,15 @@
                             result.forEach((item) => {
                             if (ticker !== previousTicker) {
                                 const tickerItem = document.createElement("li");
-                                tickerItem.textContent = "Ticker: " + ticker;
+                                tickerItem.innerHTML = "<strong style='color: #8B0000; font-weight: bold;'>Ticker: " + ticker + "</strong>";
+                                //tickerItem.textContent = "Ticker: " + ticker;
                                 resultList.appendChild(tickerItem);
 
                                 previousTicker = ticker;
                             }
 
                             const listItem = document.createElement("li");
-                            listItem.textContent = new Date(item.published_utc).toLocaleString("en-US", { timeZone: "America/Chicago" }) + " " + item.title;
+                            listItem.textContent = new Date(item.published_utc).toLocaleString("en-US", { timeZone: "America/Chicago" }) + "  -- " + item.title;
                             resultList.appendChild(listItem);
                             });
                         } else {
