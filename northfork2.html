@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XML Data Example</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        window.onload = function() {
+            fetchData();
+        }
+
+        function fetchData() {
+            fetch('https://water.weather.gov/ahps2/hydrograph_to_xml.php?gage=nfvu1&output=xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "text/xml");
+                    const datumElements = xmlDoc.getElementsByTagName('datum');
+                    let dataArr = [];
+                    let forecastStart = null;
+                    for (let i = 0; i < datumElements.length; i++) {
+                        const validElement = datumElements[i].getElementsByTagName('valid')[0];
+                        const secondaryElement = datumElements[i].getElementsByTagName('secondary')[0];
+                        if (validElement && secondaryElement) {
+                            const utcDate = new Date(validElement.textContent);
+                            const mtnDate = new Date(utcDate.toLocaleString("en-US", {timeZone: "America/Denver"}));
+                            const secondary = (parseFloat(secondaryElement.textContent) * 1000).toFixed(2);
+                            // Only include values on the hour
+                            if (mtnDate.getMinutes() === 0 && mtnDate.getSeconds() === 0) {
+                                dataArr.push([mtnDate.getTime(), parseFloat(secondary)]);
+                                // Check if the date is in the future
+                                if (mtnDate.getTime() > Date.now() && forecastStart === null) {
+                                    forecastStart = mtnDate.getTime();
+                                }
+                            }
+                        }
+                    }
+                    // Sort the data array in ascending order by date
+                    dataArr.sort((a, b) => a[0] - b[0]);
+
+                    // Create a line chart
+                    Highcharts.chart('myChart', {
+                        title: {
+                            text: 'Streamflow (cfs)'
+                        },
+                        xAxis: {
+                            type: 'datetime',
+                            plotBands: [{
+                                from: forecastStart,
+                                to: dataArr[dataArr.length - 1][0],
+                                color: 'rgba(68, 170, 213, 0.1)'
+                            }]
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Cubic feet per second (cfs)'
+                            }
+                        },
+                        series: [{
+                            name: 'Actual/Forecast',
+                            data: dataArr,
+                            color: 'rgb(75, 192, 192)'
+                        }]
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>North Fork Virgin River - Springdale, UT</h1>
+    <div id="myChart" style="height: 400px; width: 100%;"></div>
+</body>
+</html>
