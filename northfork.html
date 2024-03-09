@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XML Data Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.onload = function() {
+            fetchData();
+        }
+
+        function fetchData() {
+            fetch('https://water.weather.gov/ahps2/hydrograph_to_xml.php?gage=nfvu1&output=xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "text/xml");
+                    const datumElements = xmlDoc.getElementsByTagName('datum');
+                    let dataArr = [];
+                    for (let i = 0; i < datumElements.length; i++) {
+                        const validElement = datumElements[i].getElementsByTagName('valid')[0];
+                        const secondaryElement = datumElements[i].getElementsByTagName('secondary')[0];
+                        if (validElement && secondaryElement) {
+                            const utcDate = new Date(validElement.textContent);
+                            const mtnDate = new Date(utcDate.toLocaleString("en-US", {timeZone: "America/Denver"}));
+                            const secondary = (parseFloat(secondaryElement.textContent) * 1000).toFixed(2);
+                            // Only include values on the hour
+                            if (mtnDate.getMinutes() === 0 && mtnDate.getSeconds() === 0) {
+                                dataArr.push({date: mtnDate, flow: secondary});
+                            }
+                        }
+                    }
+                    // Sort the data array in ascending order by date
+                    dataArr.sort((a, b) => a.date - b.date);
+                    let output = '';
+                    let dates = [];
+                    let flows = [];
+                    let minFlows = [];
+                    let maxFlow = Math.max(...dataArr.map(o => o.flow), 0);
+                    let minFlow = Math.min(...dataArr.map(o => o.flow), 0);
+                    for (let i = 0; i < dataArr.length; i++) {
+                        output += `Date: ${dataArr[i].date.toLocaleString()}, Flow: ${dataArr[i].flow}\n`;
+                        dates.push(dataArr[i].date);
+                        flows.push(dataArr[i].flow);
+                        minFlows.push(i === 71 ? maxFlow : minFlow);
+                    }
+                    document.getElementById('xmlData').textContent = output;
+
+                    // Create a line chart
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dates,
+                            datasets: [{
+                                label: 'Streamflow (cfs)',
+                                data: flows,
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1
+                            }, {
+                                label: 'Forecast to the Right',
+                                data: minFlows,
+                                fill: false,
+                                borderColor: 'rgb(255, 0, 0)',
+                                tension: 0.1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    ticks: {
+                                        stepSize: 50 // Adjust this value to change the distance between marks on the y-axis
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>North Fork Virgin River - Springdale, UT</h1>
+    <pre id="xmlData"></pre>
+    <div style="height: 400px; width: 100%;">
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+</html>
+<!--     -->
+<!-- The above code is a simple example of how to fetch XML data from an external webpage and display it in a line chart using Chart.js. -->
