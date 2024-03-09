@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XML Data Example</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        window.onload = function() {
+            fetchData();
+        }
+
+        function fetchData() {
+            fetch('https://water.weather.gov/ahps2/hydrograph_to_xml.php?gage=cagm7&output=xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "text/xml");
+                    const datumElements = xmlDoc.getElementsByTagName('datum');
+                    let dataArr = [];
+                    let actionStageArr = [];
+                    let majorFloodingArr = [];
+                    let forecastStart = null;
+                    for (let i = 0; i < datumElements.length; i++) {
+                        const validElement = datumElements[i].getElementsByTagName('valid')[0];
+                        const primaryElement = datumElements[i].getElementsByTagName('primary')[0];
+                        if (validElement && primaryElement) {
+                            const utcDate = new Date(validElement.textContent);
+                            const mtnDate = new Date(utcDate.toLocaleString("en-US", {timeZone: "America/Denver"}));
+                            const primary = parseFloat(primaryElement.textContent);
+                            // Only include values on the hour
+                            if (mtnDate.getMinutes() === 0 && mtnDate.getSeconds() === 0) {
+                                dataArr.push([mtnDate.getTime(), primary]);
+                                actionStageArr.push([mtnDate.getTime(), 28]);
+                                majorFloodingArr.push([mtnDate.getTime(), 34]);
+                                // Check if the date is in the future
+                                if (mtnDate.getTime() > Date.now() && forecastStart === null) {
+                                    forecastStart = mtnDate.getTime();
+                                }
+                            }
+                        }
+                    }
+                    // Sort the data array in ascending order by date
+                    dataArr.sort((a, b) => a[0] - b[0]);
+
+                    // Create a line chart
+                    Highcharts.chart('myChart', {
+                        title: {
+                            text: 'Lock & Dam 25'
+                        },
+                        xAxis: {
+                            type: 'datetime',
+                            plotBands: [{
+                                from: forecastStart,
+                                to: dataArr[dataArr.length - 1][0],
+                                color: 'rgba(68, 170, 213, 0.1)'
+                            }]
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Gage Height (ft)'
+                            }
+                        },
+                        series: [{
+                            name: 'Actual & Forecast',
+                            data: dataArr,
+                            color: 'rgba(0, 0, 128, 0.8)',
+                            lineWidth: 5,
+                        }, {
+                            name: 'Action Stage',
+                            data: actionStageArr,
+                            color: 'rgba(255, 140, 0)',
+                            dashStyle: 'shortdash',
+                            lineWidth: 3,
+                            marker: {
+                                enabled: false
+                            }
+                        }, {
+                            name: 'Major Flooding',
+                            data: majorFloodingArr,
+                            color: 'rgba(210, 20, 60)',
+                            dashStyle: 'shortdash',
+                            lineWidth: 3,
+                            marker: {
+                                enabled: false
+                            }
+                        }]
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Mississippi River at Winfield, MO</h1>
+    <div id="myChart" style="height: 400px; width: 100%;"></div>
+</body>
+</html>
