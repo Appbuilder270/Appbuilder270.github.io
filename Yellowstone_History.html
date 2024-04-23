@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Yellowstone River</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+
+
+    <body class="subpage">
+        <div id="page-wrapper">
+          <!-- Header -->
+          <section id="header">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Logo -->
+                  <h1><a href="index.html" id="logo">Cedar, Cork, and Leather</a></h1>
+                  <!-- Nav -->
+                  <nav id="nav">
+                    <a href="index.html">Homepage</a>
+                    <a href="threecolumn.html">Three Column</a>
+                    <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                    <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+    <title>Streamflow Data</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Calculate yesterday's date
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        var yesterday_str = yesterday.toISOString().split('T')[0];
+
+        // Define the API endpoint and parameters for the streamflow data
+        var url = 'https://waterservices.usgs.gov/nwis/dv/';
+        var parameters = {
+            format: 'json',
+            sites: '06192500',
+            startDT: '2010-01-01',
+            endDT: yesterday_str,
+            parameterCd: '00060'
+        };
+
+        // Create the full URL
+        var fullUrl = url + '?' + new URLSearchParams(parameters);
+
+        // Fetch the data from the API
+        fetch(fullUrl)
+            .then(response => response.json())
+            .then(data => {
+                var timeSeries = data.value.timeSeries[0].values[0].value;
+
+                // Convert the data to the format required by Highcharts
+                var dataArr = timeSeries.map(item => {
+                    var date = new Date(item.dateTime).getTime();
+                    var value = parseFloat(item.value);
+                     // Ignore the value if it's -999999
+                     if (value === -999999) {
+                        return null;
+                    }
+                    return [date, value];
+                }).filter(item => item !== null);
+
+                // Sort the data array in ascending order by date
+                dataArr.sort((a, b) => a[0] - b[0]);
+
+                // Create the chart
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'Yellowstone Streamflow Rates - Last 14 Years'
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Streamflow Rate (cubic feet per second)'
+                        }
+                    },
+                    series: [{
+                        name: 'Current',
+                        data: dataArr
+                    }]
+                });
+            });
+    </script>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</div>
+
+</body>
+</html>
