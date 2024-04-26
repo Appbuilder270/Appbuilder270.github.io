@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Yellowstone River</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+
+
+    <body class="subpage">
+        <div id="page-wrapper">
+          <!-- Header -->
+          <section id="header">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Logo -->
+                  <h1><a href="index.html" id="logo">Cedar, Cork, and Leather</a></h1>
+                  <!-- Nav -->
+                  <nav id="nav">
+                    <a href="index.html">Homepage</a>
+                    <a href="threecolumn.html">Three Column</a>
+                    <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                    <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <div id="container" style="width:100%; height:400px;"></div>
+
+    <script>
+        // Get the current date and the date 160 days ago
+        var now = new Date();
+        var startThisYear = new Date();
+        startThisYear.setDate(startThisYear.getDate() - 160);
+
+        var url = 'https://waterservices.usgs.gov/nwis/dv/';
+        var parameters = {
+            format: 'json',
+            sites: '06192500',
+            parameterCd: '00060'
+        };
+
+        function fetchData(yearsAgo) {
+            var startPastYear = new Date(now.getFullYear() - yearsAgo, now.getMonth(), now.getDate());
+            startPastYear.setDate(startPastYear.getDate() - 160);
+            var endPastYear = new Date(startPastYear);
+            endPastYear.setDate(endPastYear.getDate() + 160);
+
+            var fullUrlPastYear = url + '?' + new URLSearchParams({
+                ...parameters,
+                startDT: startPastYear.toISOString().split('T')[0],
+                endDT: endPastYear.toISOString().split('T')[0]
+            });
+            
+            return fetch(fullUrlPastYear)
+                .then(response => response.json())
+                .then(data => {
+                    var timeSeries = data.value.timeSeries[0].values[0].value;
+                    return timeSeries.map(item => {
+                        var date = new Date(item.dateTime);
+                        // Calculate the offset in days from the start date of that year
+                        var daysOffset = Math.round((date - startPastYear) / (1000 * 60 * 60 * 24));
+                        // Create a new date object starting from startThisYear plus the offset in days
+                        var adjustedDate = new Date(startThisYear);
+                        adjustedDate.setDate(adjustedDate.getDate() + daysOffset);
+                        var value = parseFloat(item.value);
+                        if (value === -999999 || value === null) {
+                            return null;
+                        }
+                        return [adjustedDate.getTime(), value];
+                    }).filter(item => item !== null);
+                });
+        }
+
+        Promise.all([0, 1, 2, 3, 4 ].map(yearsAgo => fetchData(yearsAgo)))
+            .then(dataArrays => {
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: 'Streamflow Data Comparison'
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Streamflow (cfs)'
+                        }
+                    },
+                    series: dataArrays.map((data, index) => ({
+                        name: `${index} Year${index !== 1 ? 's' : ''} Ago`,
+                        data: data
+                    }))
+                });
+            });
+    </script>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</div>
+
+
+
+</body>
+</html>
