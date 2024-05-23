@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Little Rain Gage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    
+    <style>
+        #zipcode {
+            margin-top: 10px;
+            margin-left: 10px;  /* Space to the left */
+            margin-bottom: 10px;  /* Space below */
+        }
+    </style>
+
+  </head>
+
+
+
+    <body class="subpage">
+        <div id="page-wrapper">
+          <!-- Header -->
+          <section id="header">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Logo -->
+                  <h1><a href="index.html" id="logo">Cedar, Cork, and Leather</a></h1>
+                  <!-- Nav -->
+                  <nav id="nav">
+                    <a href="index.html">Homepage</a>
+                    <a href="threecolumn.html">Three Column</a>
+                    <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                    <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        function fetchAndPlotData() {
+            // Get the zipcode from the input
+            var zipcode = document.getElementById('zipcode').value;
+
+            // Get today's date and the date 60 days ago
+            var now = new Date();
+            var sixtyDaysAgo = new Date();
+            sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+
+            // Get the same dates for one, two, and three years ago
+            var lastYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+            var sixtyDaysAgoLastYear = new Date(sixtyDaysAgo.getFullYear() - 1, sixtyDaysAgo.getMonth(), sixtyDaysAgo.getDate());
+
+            var twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+            var sixtyDaysAgoTwoYearsAgo = new Date(sixtyDaysAgo.getFullYear() - 2, sixtyDaysAgo.getMonth(), sixtyDaysAgo.getDate());
+
+            var threeYearsAgo = new Date(now.getFullYear() - 3, now.getMonth(), now.getDate());
+            var sixtyDaysAgoThreeYearsAgo = new Date(sixtyDaysAgo.getFullYear() - 3, sixtyDaysAgo.getMonth(), sixtyDaysAgo.getDate());
+
+            var fourYearsAgo = new Date(now.getFullYear() - 4, now.getMonth(), now.getDate());
+            var sixtyDaysAgoFourYearsAgo = new Date(sixtyDaysAgo.getFullYear() - 4, sixtyDaysAgo.getMonth(), sixtyDaysAgo.getDate());
+
+            // Fetch the data for this year, last year, two years ago, and three years ago
+            var dataPromiseThisYear = fetchData(zipcode, sixtyDaysAgo, now);
+            var dataPromiseLastYear = fetchData(zipcode, sixtyDaysAgoLastYear, lastYear);
+            var dataPromiseTwoYearsAgo = fetchData(zipcode, sixtyDaysAgoTwoYearsAgo, twoYearsAgo);
+            var dataPromiseThreeYearsAgo = fetchData(zipcode, sixtyDaysAgoThreeYearsAgo, threeYearsAgo);
+            var dataPromiseFourYearsAgo = fetchData(zipcode, sixtyDaysAgoFourYearsAgo, fourYearsAgo);
+
+            // Wait for all data fetches to complete
+            Promise.all([dataPromiseThisYear, dataPromiseLastYear, dataPromiseTwoYearsAgo, dataPromiseThreeYearsAgo, dataPromiseFourYearsAgo])
+                .then(([sumThisYear, sumLastYear, sumTwoYearsAgo, sumThreeYearsAgo, sumFourYearsAgo]) => {
+                    // Create the chart
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Total Rainfall Over 60 Days'
+                        },
+                        xAxis: {
+                            categories: ['This Year', 'Last Year', 'Two Years Ago', 'Three Years Ago', 'Four Years Ago']
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Rainfall (inches)'
+                            }
+                        },
+                        series: [{
+                            name: 'This Year',
+                            data: [sumThisYear],
+                            color: 'crimson'
+                        }, {
+                            name: 'Last Year',
+                            data: [sumLastYear]
+                        }, {
+                            name: 'Two Years Ago',
+                            data: [sumTwoYearsAgo]
+                        }, {
+                            name: 'Three Years Ago',
+                            data: [sumThreeYearsAgo]
+                        }, {
+                            name: 'Four Years Ago',
+                            data: [sumFourYearsAgo]    
+                        }]
+                    });
+                });
+        }
+
+        // Function to fetch data from the API and sum the rainfall data
+        function fetchData(address, startDT, endDT) {
+            var url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${address}/${startDT.toISOString().split('T')[0]}/${endDT.toISOString().split('T')[0]}?unitGroup=us&key=5BRM4LLKT8CYY9ZE7TV6R96A6&include=days&elements=datetime,precip`;
+            return fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    return data.days.reduce((sum, item) => sum + item.precip, 0);
+                });
+        }
+    </script>
+</head>
+<body>
+    <input id="zipcode" type="text" placeholder="Enter Zip Code">
+    <button onclick="fetchAndPlotData()">Fetch and Plot Data</button>
+    <div id="container" style="width:100%; height:400px;"></div>
+
+
+     <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</div>
+
+
+</body>
+</html>
