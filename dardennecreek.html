@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dardenne Creek</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+
+
+    <body class="subpage">
+        <div id="page-wrapper">
+          <!-- Header -->
+          <section id="header">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Logo -->
+                  <h1><a href="index.html" id="logo"> Cork and Leather</a></h1>
+                  <!-- Nav -->
+                  <nav id="nav">
+                    <a href="index.html">Homepage</a>
+                    <a href="threecolumn.html">Three Column</a>
+                    <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                    <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>JSON Data Example</title>
+              <script src="https://code.highcharts.com/highcharts.js"></script>
+              <script>
+                  window.onload = function() {
+                      fetchData();
+                  }
+          
+                  function fetchData() {
+                      fetch('https://api.water.noaa.gov/nwps/v1/gauges/DRCM7/stageflow/observed')
+                          .then(response => response.json())
+                          .then(data => {
+                              let dataArr = [];
+                              let forecastStart = null;
+                              for (let i = 0; i < data.data.length; i++) {
+                                  const validTime = new Date(data.data[i].validTime);
+                                  const mtnDate = new Date(validTime.toLocaleString("en-US", {timeZone: "America/Chicago"}));
+                                  const primary = data.data[i].primary;
+                                  // Only include values on the hour
+                                  if (mtnDate.getMinutes() === 0 && mtnDate.getSeconds() === 0) {
+                                      dataArr.push([mtnDate.getTime(), primary]);
+                                      // Check if the date is in the future
+                                      if (mtnDate.getTime() > Date.now() && forecastStart === null) {
+                                          forecastStart = mtnDate.getTime();
+                                      }
+                                  }
+                              }
+                              // Sort the data array in ascending order by date
+                              dataArr.sort((a, b) => a[0] - b[0]);
+          
+                              // Create a line chart
+                              Highcharts.chart('myChart', {
+                                  title: {
+                                      text: 'Dardenne Creek at St. Charles, MO'
+                                  },
+                                  xAxis: {
+                                      type: 'datetime',
+                                      plotBands: [{
+                                          from: forecastStart,
+                                          to: dataArr[dataArr.length - 1][0],
+                                          color: 'rgba(68, 170, 213, 0.1)'
+                                      }]
+                                  },
+                                  yAxis: {
+                                     title: {
+                                          text: 'Gage height (ft)'
+                                      },
+                                      
+                                  },
+                                  series: [{
+                                      name: 'Creek Level',
+                                      data: dataArr
+                                  }]
+                              });
+                          })
+                          .catch(error => {
+                              console.error('Error:', error);
+                          });
+                  }
+              </script>
+          </head>
+          <body>
+              <h1>Dardenne Creek Data</h1>
+              <div id="myChart" style="height: 400px; width: 100%;"></div>
+          </body>
+          </html>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </div>
+
+
+</body>
+</html>
