@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dardenne Creek</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+
+
+    <body class="subpage">
+        <div id="page-wrapper">
+          <!-- Header -->
+          <section id="header">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Logo -->
+                  <h1><a href="index.html" id="logo"> Cork and Leather</a></h1>
+                  <!-- Nav -->
+                  <nav id="nav">
+                    <a href="index.html">Homepage</a>
+                    <a href="threecolumn.html">Three Column</a>
+                    <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                    <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <!DOCTYPE html>
+          <html>
+          <head>
+        <title>JSON Data Example</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <script>
+        window.onload = function() {
+            fetchData();
+        }
+
+        function fetchData() {
+            Promise.all([
+                fetch('https://api.water.noaa.gov/nwps/v1/gauges/DRCM7/stageflow/observed'),
+                fetch('https://api.water.noaa.gov/nwps/v1/gauges/DRCM7/stageflow/forecast')
+            ]).then(function (responses) {
+                return Promise.all(responses.map(function (response) {
+                    return response.json();
+                }));
+            }).then(function (data) {
+                const observedData = data[0];
+                const forecastData = data[1];
+                let dataArr = [];
+        let forecastStart = null;
+
+        // Process observedData and forecastData to fill dataArr and forecastStart
+        // This is just an example, you'll need to adjust this to match your data structure
+        [observedData, forecastData].forEach(dataset => {
+            for (let i = 0; i < dataset.data.length; i++) {
+                const validTime = new Date(dataset.data[i].validTime);
+                const mtnDate = new Date(validTime.toLocaleString("en-US", {timeZone: "America/Chicago"}));
+                const primary = dataset.data[i].primary;
+                if (mtnDate.getMinutes() === 0 && mtnDate.getSeconds() === 0) {
+                    dataArr.push([mtnDate.getTime(), primary]);
+                    if (mtnDate.getTime() > Date.now() && forecastStart === null) {
+                        forecastStart = mtnDate.getTime();
+                    }
+                }
+            }
+        });
+
+        dataArr.sort((a, b) => a[0] - b[0]);
+ 
+          
+ // Create a line chart
+ Highcharts.chart('myChart', {
+     title: {
+         text: 'Dardenne Creek at St. Charles, MO'
+     },
+     xAxis: {
+         type: 'datetime',
+         plotBands: [{
+             from: forecastStart,
+             to: dataArr[dataArr.length - 1][0],
+             color: 'rgba(68, 170, 213, 0.1)'
+         }]
+     },
+     yAxis: {
+        title: {
+             text: 'Gage height (ft)'
+         },
+         
+     },
+     series: [{
+         name: 'Creek Level',
+         data: dataArr
+     }]
+ });
+            }).catch(function (error) {
+                console.error('Error:', error);
+            });
+        }   
+</script>
+
+
+        <h1>Dardenne Creek Data</h1>
+        <div id="myChart" style="height: 400px; width: 100%;"></div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </div>
+</body>
+</html>
