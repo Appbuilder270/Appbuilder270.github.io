@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+
 <head>
-    <title>Results Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/main.css" />
+    <title>Ticker Price</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <style>
         #tickerSection {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 10px;
+            margin-left: 10px;
             margin-bottom: 10px;
-            max-width: 200px;
+            max-width: 350px;
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body class="subpage">
     <div id="page-wrapper">
         <!-- Header -->
@@ -37,26 +43,25 @@
             </div>
         </section>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-    function handleKeyDown(event) {
-        if (event.keyCode === 13) {
-            updateTickList();
-        }
-    }</script>
 
 
+<body>
     <div id="tickerSection">
         <h1>Enter a ticker (i.e. AAPL, GE, JPM)</h1>
-        <input type="text" id="tickerInput" placeholder="Enter tickers" oninput="this.value = this.value.toUpperCase()" onkeydown="handleKeyDown(event)">        
+        <input type="text" id="tickerInput" placeholder="Enter tickers" oninput="this.value = this.value.toUpperCase()" onkeydown="handleKeyDown(event)">
         <button onclick="updateTickList()">Update</button>
     </div>
 
-    <canvas id="chart"></canvas>
+    <div id="chart"></div>
     <ul id="resultList"></ul>
 
     <script>
+        function handleKeyDown(event) {
+            if (event.keyCode === 13) {
+                updateTickList();
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             updateTickList();
         });
@@ -76,41 +81,36 @@
                         const json_data = data;
 
                         const time_series = json_data["Time Series (Daily)"];
-                        const daily_data = Object.entries(time_series).map(([date, values]) => [date, values["4. close"]]);
+                        const daily_data = Object.entries(time_series).map(([date, values]) => [date, parseFloat(values["4. close"])]);
 
                         daily_data.reverse();
 
+                        const dates = daily_data.map(item => item[0]);
+                        const prices = daily_data.map(item => item[1]);
+
+                        Highcharts.chart('chart', {
+                            title: {
+                                text: `Stock Prices for ${symbol}`
+                            },
+                            xAxis: {
+                                categories: dates
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Price'
+                                }
+                            },
+                            series: [{
+                                name: symbol,
+                                data: prices,
+                                color: '#00008B', // Dark blue
+                                lineWidth: 3, // Make the line thicker
+                                radius: 0 // 0 would make the dots dissappear 
+                            }]
+                        });
+
                         const resultList = document.getElementById("resultList");
                         resultList.innerHTML = "";
-
-                        const chartElement = document.getElementById("chart");
-                        new Chart(chartElement, {
-                            type: "line",
-                            data: {
-                                labels: daily_data.map(([date]) => date),
-                                datasets: [
-                                    {
-                                        label: "Daily Close Prices",
-                                        data: daily_data.map(([, close]) => close),
-                                        borderColor: "blue",
-                                        fill: false,
-                                    },
-                                ],
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: true,
-                            },
-                        });
-
-                        daily_data.forEach(([date, close]) => {
-                            const listItem = document.createElement("li");
-                            listItem.textContent = `${date}: ${close}`;
-                            resultList.appendChild(listItem);
-                        });
-                    })
-                    .catch((error) => {
-                        console.error(error);
                     });
             }
         }
@@ -122,5 +122,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
 </body>
 </html>
