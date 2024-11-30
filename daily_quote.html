@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <title>Quote of the Day </title>
+    
+</head>
+
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <style>
+        #quoteSection {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .quote {
+            margin-left: 20px; /* Add left margin */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            border-bottom: 1px solid #1e0c6b3e; /* Add a thin hairline under each quote */
+        }
+    </style>
+
+
+
+
+
+
+    <body class="subpage">
+        <div id="quoteSection">
+            <h1>Quotes of the Day</h1>
+            <button onclick="fetchQuotes()">Click Me to Get 3 Quotes</button>
+            <div id="quotesContainer"></div>
+        </div>
+        
+    
+        <script>
+            function fetchQuotes() {
+                const proxyUrl = 'https://api.allorigins.win/get?url=';
+                const targetUrl = encodeURIComponent('https://zenquotes.io/api/quotes');
+                fetch(proxyUrl + targetUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const quotesContainer = document.getElementById('quotesContainer');
+                        quotesContainer.innerHTML = '';
+                        const quotes = JSON.parse(data.contents);
+                        quotes.slice(0, 3).forEach(quote => { // Only take the first three quotes
+                            const quoteElement = document.createElement('div');
+                            quoteElement.className = 'quote';
+                            quoteElement.innerHTML = `<p>"${quote.q}" - ${quote.a}</p>`;
+                            quotesContainer.appendChild(quoteElement);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching quotes:', error));
+            }
+            </script>
+ 
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
