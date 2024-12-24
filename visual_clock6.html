@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <title>Start the day</title>
+    <style>
+        .container {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        .input-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px; /* Reduce the space between the boxes */
+            margin-bottom: 5px; /* Reduce the space between the boxes */
+        }
+        .input-container label {
+            width: 200px;
+            text-align: left;
+            padding-right: 10px;
+        }
+        .input-container input {
+            width: 200px;
+            padding: 4px; /* Increase the vertical size of the input boxes */
+            height: 35px; /* Increase the vertical size of the input boxes */
+            box-sizing: border-box;
+        }
+        .content-container {
+            padding-left: 10px; /* Add buffer on the left side */
+            padding-right: 10px; /* Add buffer on the right side */
+        }
+        #milestoneMessages {
+            position: relative;
+            width: calc(100% - 20px); /* Adjust width to account for padding */
+            margin-top: 60px; /* Add space between the progress bar and the messages */
+            padding-left: 2px; /* Add padding on the left */
+            padding-right: 2px; /* Add padding on the right */
+        }
+        .milestone {
+            position: absolute;
+            height: 30px;
+            background-color: rgba(23, 208, 225, 0.908); /* Light blue background */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+        #progressBarContainer {
+            width: calc(100% - 20px); /* Adjust width to account for padding */
+            padding-left: 2px; /* Add padding on the left */
+            padding-right: 2px; /* Add padding on the right */
+        }
+        #progressBar {
+            height: 30px;
+            background-color: rgb(193, 14, 14);
+            transition: width 0.1s linear; /* Add transition for smooth progress */
+        }
+        #currentTime {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #timeContainer {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: smaller;
+            font-style: italic;
+        }
+        #hairline {
+            position: relative;
+            height: 1px;
+            background-color: black;
+            margin-bottom: 40px;
+            margin-top: 20px; /* Add space between the progress bar and the hairline */
+        }
+        .mark {
+            position: absolute;
+            height: 10px;
+            width: 1px;
+            background-color: black;
+        }
+        .label {
+            position: absolute;
+            top: 10px;
+            font-size: 10px;
+        }
+        .label.right {
+            right: 0;
+            transform: translateX(50%);
+        }
+    </style>
+</head>
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="container" id="inputSection">
+        <div class="input-container">
+            <label for="totalMinutes">Total minutes:</label>
+            <input type="number" id="totalMinutes" min="1" placeholder="Total minutes">
+        </div>
+        <div class="input-container">
+            <label for="milestone1">First message:</label>
+            <input type="text" id="milestone1" placeholder="First message">
+        </div>
+        <div class="input-container">
+            <label for="milestone2">Second message:</label>
+            <input type="text" id="milestone2" placeholder="Second message">
+        </div>
+        <div class="input-container">
+            <label for="milestone3">Third message:</label>
+            <input type="text" id="milestone3" placeholder="Third message">
+        </div>
+        <div class="input-container">
+            <label for="milestone4">Fourth message:</label>
+            <input type="text" id="milestone4" placeholder="Fourth message">
+        </div>
+        <button onclick="startProgressBar()">Start</button>
+    </div>
+    <div class="content-container">
+        <div id="currentTime"></div>
+        <div id="timeContainer">
+            <div id="startTime"></div>
+            <div id="finishTime"></div>
+        </div>
+        <div id="hairline">
+            <div class="mark" style="left: 0%;"></div>
+            <div class="label" style="left: 0%;">0%</div>
+            <div class="mark" style="left: 25%;"></div>
+            <div class="label" style="left: 25%;">25%</div>
+            <div class="mark" style="left: 50%;"></div>
+            <div class="label" style="left: 50%;">50%</div>
+            <div class="mark" style="left: 75%;"></div>
+            <div class="label" style="left: 75%;">75%</div>
+            <div class="mark" style="left: 100%;"></div>
+            <div class="label right" style="left: 100%;">100%</div>
+        </div>
+        <div id="progressBarContainer">
+            <div id="progressBar" style="width: 0%;"></div>
+        </div>
+        <div id="milestoneMessages"></div>
+    </div>
+
+    <audio id="bellSound" src="bell.mp3" preload="auto"></audio>
+
+    <script>
+        let progress = 0;
+        let totalMinutes = 0;
+        let intervalId;
+        let startTime;
+
+        function startProgressBar() {
+            const input = document.getElementById('totalMinutes');
+            totalMinutes = parseInt(input.value);
+            if (isNaN(totalMinutes) || totalMinutes <= 0) {
+                alert('Please enter a valid number of minutes.');
+                return;
+            }
+
+            // Hide the input section
+            document.getElementById('inputSection').style.display = 'none';
+
+            progress = 0;
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('milestoneMessages').innerHTML = '';
+            clearInterval(intervalId);
+            intervalId = setInterval(animateProgressBar, (totalMinutes * 60 * 1000) / 1000); // Increase frequency of updates
+
+            // Display start time and calculate finish time
+            startTime = new Date();
+            const finishTime = new Date(startTime.getTime() + totalMinutes * 60 * 1000);
+            document.getElementById('startTime').textContent = `Start: ${startTime.toLocaleTimeString()}`;
+            document.getElementById('finishTime').textContent = `Finish: ${finishTime.toLocaleTimeString()}`;
+
+            // Update current time continuously
+            updateCurrentTime();
+
+            // Display the first milestone message immediately
+            displayMilestoneMessage(0, 25, document.getElementById('milestone1').value);
+        }
+
+        function animateProgressBar() {
+            if (progress <= 1000) { // Adjust progress range to 1000 for smoother increments
+                document.getElementById('progressBar').style.width = (progress / 10) + '%'; // Adjust width calculation
+
+                // Display milestone messages at specific progress points
+                if (progress === 250) {
+                    displayMilestoneMessage(25, 50, document.getElementById('milestone2').value);
+                    playBellSound();
+                } else if (progress === 500) {
+                    displayMilestoneMessage(50, 75, document.getElementById('milestone3').value);
+                    playBellSound();
+                } else if (progress === 750) {
+                    displayMilestoneMessage(75, 100, document.getElementById('milestone4').value);
+                    playBellSound();
+                } else if (progress === 1000) {
+                    playBellSound();
+                }
+
+                // Increment progress
+                progress++;
+            } else {
+                clearInterval(intervalId);
+            }
+        }
+
+        function displayMilestoneMessage(startPercent, endPercent, message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'milestone';
+            messageElement.style.width = endPercent + '%';
+            messageElement.style.left = '0%';
+            messageElement.style.top = (startPercent / 25) * 30 + 'px'; // Adjust top position for each milestone
+            messageElement.textContent = message;
+            document.getElementById('milestoneMessages').appendChild(messageElement);
+        }
+
+        function playBellSound() {
+            const bellSound = document.getElementById('bellSound');
+            bellSound.play();
+        }
+
+        function updateCurrentTime() {
+            const currentTime = new Date().toLocaleTimeString();
+            document.getElementById('currentTime').textContent = `Current Time: ${currentTime}`;
+            setTimeout(updateCurrentTime, 1000); // Update every second
+        }
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
