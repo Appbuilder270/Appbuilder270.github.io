@@ -43,7 +43,7 @@
             padding-right: 2px; /* Add padding on the right */
         }
         .milestone {
-            position: absolute;
+            position: relative;
             height: 30px;
             background-color: rgba(23, 208, 225, 0.908); /* Light blue background */
             display: flex;
@@ -243,7 +243,7 @@
             messageElement.className = 'milestone';
             messageElement.style.width = endPercent + '%';
             messageElement.style.left = '0%';
-            messageElement.style.top = (startPercent / 25) * 30 + 'px'; // Adjust top position for each milestone
+            //messageElement.style.top = (startPercent / 25) * 30 + 'px'; // Adjust top position for each milestone
             messageElement.textContent = message;
             document.getElementById('milestoneMessages').appendChild(messageElement);
         }
