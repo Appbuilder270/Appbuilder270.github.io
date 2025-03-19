@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Temperatures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .city {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+            width: 200px;
+            color: #000;
+        }
+        .city-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .temperature {
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>City Temperatures</h1>
+    <div id="cities"></div>
+
+    <script>
+        const apiKey = "9d66b2a166252faa852b4b5558e5e5e4"; // Replace with your OpenWeather API key
+        const cities = [
+            { name: 'San Francisco', lat: 37.7749, lon: -122.4194 },
+            { name: 'Austin, Texas', lat: 30.2672, lon: -97.7431 },
+            { name: 'St. Louis', lat: 38.6270, lon: -90.1994 },
+            { name: 'Lake Forest', lat: 42.2586, lon: -87.8406 },
+            { name: 'Boston', lat: 42.3601, lon: -71.0589 },
+            { name: 'New York', lat: 40.7128, lon: -74.0060 },  
+            { name: 'Ocean Ridge', lat: 26.5259, lon: -80.0534 },
+            { name: 'Paris', lat: 48.8566, lon: 2.3522 }
+        ];
+
+        // Custom color scale function
+        function getColor(temp) {
+            if (temp < 32) {
+                return 'blue'; // Freezing or below
+            } else if (temp >= 32 && temp < 60) {
+                return 'lightblue'; // Cool
+            } else if (temp >= 60 && temp < 80) {
+                return 'yellow'; // Warm
+            } else {
+                return 'red'; // Hot
+            }
+        }
+
+        async function fetchTemperature(city) {
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=imperial&appid=${apiKey}`);
+                if (!response.ok) {
+                    throw new Error(`Error fetching data for ${city.name}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                return data.main.temp;
+            } catch (error) {
+                console.error(error);
+                return null;
+            }
+        }
+
+        async function displayTemperatures() {
+            const citiesContainer = document.getElementById('cities');
+            for (const city of cities) {
+                const temp = await fetchTemperature(city);
+                if (temp === null) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'city';
+                    errorDiv.textContent = `Could not fetch data for ${city.name}`;
+                    citiesContainer.appendChild(errorDiv);
+                    continue;
+                }
+
+                const color = getColor(temp); // Get the color based on the temperature
+
+                const cityDiv = document.createElement('div');
+                cityDiv.className = 'city';
+                cityDiv.style.backgroundColor = color; // Apply the color to the background
+
+                const cityName = document.createElement('div');
+                cityName.className = 'city-name';
+                cityName.textContent = city.name;
+
+                const temperature = document.createElement('div');
+                temperature.className = 'temperature';
+                temperature.textContent = `Temperature: ${temp}°F`;
+
+                cityDiv.appendChild(cityName);
+                cityDiv.appendChild(temperature);
+                citiesContainer.appendChild(cityDiv);
+            }
+        }
+
+        displayTemperatures();
+    </script>
+</body>
+</html>
