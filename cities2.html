@@ -27,10 +27,68 @@
         .temperature {
             font-size: 1em;
         }
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
     <h1>City Temperatures</h1>
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #0000FF;"></div>
+            <span>≤ 0°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #3366FF;"></div>
+            <span>1°F - 10°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #6699FF;"></div>
+            <span>11°F - 20°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #66CCFF;"></div>
+            <span>21°F - 30°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #66FFCC;"></div>
+            <span>31°F - 40°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #99FF66;"></div>
+            <span>41°F - 50°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #FFFF66;"></div>
+            <span>51°F - 60°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #FFCC66;"></div>
+            <span>61°F - 70°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #FF9966;"></div>
+            <span>71°F - 80°F</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #FF3333;"></div>
+            <span>≥ 81°F</span>
+        </div>
+    </div>
     <div id="cities"></div>
 
     <script>
@@ -48,14 +106,26 @@
 
         // Custom color scale function
         function getColor(temp) {
-            if (temp < 32) {
-                return 'blue'; // Freezing or below
-            } else if (temp >= 32 && temp < 60) {
-                return 'lightblue'; // Cool
-            } else if (temp >= 60 && temp < 80) {
-                return 'yellow'; // Warm
+            if (temp <= 0) {
+                return '#0000FF'; // Dark Blue
+            } else if (temp <= 10) {
+                return '#3366FF'; // Medium Blue
+            } else if (temp <= 20) {
+                return '#6699FF'; // Light Blue
+            } else if (temp <= 30) {
+                return '#66CCFF'; // Cyan
+            } else if (temp <= 40) {
+                return '#66FFCC'; // Light Green
+            } else if (temp <= 50) {
+                return '#99FF66'; // Green
+            } else if (temp <= 60) {
+                return '#FFFF66'; // Yellow
+            } else if (temp <= 70) {
+                return '#FFCC66'; // Orange
+            } else if (temp <= 80) {
+                return '#FF9966'; // Light Red
             } else {
-                return 'red'; // Hot
+                return '#FF3333'; // Bright Red
             }
         }
 
