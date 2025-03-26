@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Temperatures</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Yanone Kaffeesatz';
             text-align: center;
-            margin: 20px;
+            margin: 0px;
+        }
+
+        .full-width {
+            width: 98%; /* Make the container span the full width */
+            max-width: 100%; /* Remove any max-width restrictions */
+            padding: 1; /* Remove padding inside the container */
+            margin: 1; /* Remove margins */
         }
         .city {
             margin: 10px;
@@ -45,63 +53,87 @@
         }
     </style>
 </head>
-<body>
-    <h1>City Temperatures</h1>
-    <div class="legend">
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #0000FF;"></div>
-            <span>≤ 0°F</span>
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container full-width">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <h1>City Temperatures</h1>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #0000FF;"></div>
+                <span>≤ 0°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #3366FF;"></div>
+                <span>1°F - 10°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #6699FF;"></div>
+                <span>11°F - 20°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #66CCFF;"></div>
+                <span>21°F - 30°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #66FFCC;"></div>
+                <span>31°F - 40°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #99FF66;"></div>
+                <span>41°F - 50°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FFFF66;"></div>
+                <span>51°F - 60°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FFCC66;"></div>
+                <span>61°F - 70°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FF9966;"></div>
+                <span>71°F - 80°F</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FF3333;"></div>
+                <span>≥ 81°F</span>
+            </div>
         </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #3366FF;"></div>
-            <span>1°F - 10°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #6699FF;"></div>
-            <span>11°F - 20°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #66CCFF;"></div>
-            <span>21°F - 30°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #66FFCC;"></div>
-            <span>31°F - 40°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #99FF66;"></div>
-            <span>41°F - 50°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #FFFF66;"></div>
-            <span>51°F - 60°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #FFCC66;"></div>
-            <span>61°F - 70°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #FF9966;"></div>
-            <span>71°F - 80°F</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: #FF3333;"></div>
-            <span>≥ 81°F</span>
-        </div>
+        <div id="cities"></div>
     </div>
-    <div id="cities"></div>
 
     <script>
         const apiKey = "9d66b2a166252faa852b4b5558e5e5e4"; // Replace with your OpenWeather API key
         const cities = [
             { name: 'San Francisco', lat: 37.7749, lon: -122.4194 },
-            { name: 'Austin, Texas', lat: 30.2672, lon: -97.7431 },
+            { name: 'Austin', lat: 30.2672, lon: -97.7431 },
             { name: 'St. Louis', lat: 38.6270, lon: -90.1994 },
             { name: 'Lake Forest', lat: 42.2586, lon: -87.8406 },
             { name: 'Boston', lat: 42.3601, lon: -71.0589 },
             { name: 'New York', lat: 40.7128, lon: -74.0060 },  
             { name: 'Ocean Ridge', lat: 26.5259, lon: -80.0534 },
-            { name: 'Paris', lat: 48.8566, lon: 2.3522 }
+            { name: 'Paris, France', lat: 48.8566, lon: 2.3522 },
+            { name: 'London, England', lat: 51.5074, lon: -0.1278 } 
         ];
 
         // Custom color scale function
@@ -145,17 +177,22 @@
 
         async function displayTemperatures() {
             const citiesContainer = document.getElementById('cities');
+            const cityData = [];
+
+            // Fetch temperatures for all cities
             for (const city of cities) {
                 const temp = await fetchTemperature(city);
-                if (temp === null) {
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'city';
-                    errorDiv.textContent = `Could not fetch data for ${city.name}`;
-                    citiesContainer.appendChild(errorDiv);
-                    continue;
+                if (temp !== null) {
+                    cityData.push({ ...city, temp }); // Store city data along with temperature
                 }
+            }
 
-                const color = getColor(temp); // Get the color based on the temperature
+            // Sort cities by temperature (ascending order)
+            cityData.sort((a, b) => a.temp - b.temp);
+
+            // Display sorted cities
+            for (const city of cityData) {
+                const color = getColor(city.temp); // Get the color based on the temperature
 
                 const cityDiv = document.createElement('div');
                 cityDiv.className = 'city';
@@ -167,7 +204,7 @@
 
                 const temperature = document.createElement('div');
                 temperature.className = 'temperature';
-                temperature.textContent = `Temperature: ${temp}°F`;
+                temperature.textContent = `Temperature: ${city.temp}°F`;
 
                 cityDiv.appendChild(cityName);
                 cityDiv.appendChild(temperature);
@@ -177,5 +214,12 @@
 
         displayTemperatures();
     </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
