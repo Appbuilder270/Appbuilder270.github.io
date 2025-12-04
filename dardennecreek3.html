@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dardenne Creek</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <style>
+        /* Light bespoke styling on top of the Halcyonic base */
+        .river-hero {
+            background: linear-gradient(135deg, #0b3d91 0%, #1b84c5 45%, #0b3d91 100%);
+            color: #f6f7fb;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .river-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.2), transparent 35%),
+                        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.18), transparent 30%);
+            pointer-events: none;
+        }
+        .hero-title {
+            font-size: 2.1rem;
+            margin: 0 0 0.35rem;
+            letter-spacing: 0.02em;
+        }
+        .hero-subtitle {
+            margin: 0;
+            opacity: 0.92;
+            font-size: 1rem;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #f6f7fb;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .metric-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(12, 30, 66, 0.06);
+        }
+        .metric-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: #4d607a;
+            margin: 0 0 0.2rem;
+        }
+        .metric-value {
+            font-size: 1.35rem;
+            margin: 0;
+            color: #0b3d91;
+            font-weight: 700;
+        }
+        .metric-hint {
+            margin: 0.2rem 0 0;
+            color: #6c7b92;
+            font-size: 0.9rem;
+        }
+        .chart-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(12, 30, 66, 0.06);
+            margin-top: 1.8rem;
+        }
+        .chart-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        .chart-title {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #0b2549;
+        }
+        .chart-meta {
+            color: #50627d;
+            font-size: 0.9rem;
+        }
+        .badges {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 0.6rem;
+        }
+        .badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            background: #eef3ff;
+            color: #0b3d91;
+            border: 1px solid rgba(11, 61, 145, 0.15);
+        }
+        .status-ok {
+            background: #e4f5ec;
+            color: #1b7a42;
+            border-color: rgba(27, 122, 66, 0.2);
+        }
+        .status-warn {
+            background: #fff7e6;
+            color: #9a6b00;
+            border-color: rgba(154, 107, 0, 0.25);
+        }
+        .status-high {
+            background: #ffe8e6;
+            color: #b0302a;
+            border-color: rgba(176, 48, 42, 0.25);
+        }
+        .info-list {
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.4rem 1rem;
+        }
+        .info-list li {
+            color: #4a5971;
+            font-size: 0.95rem;
+        }
+        .muted {
+            color: #6c7b92;
+            font-size: 0.9rem;
+        }
+        @media screen and (max-width: 736px) {
+            .river-hero {
+                padding: 1.8rem 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo"> Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main -->
+        <section class="wrapper style1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="river-hero">
+                            <p class="pill">Live river intelligence • Dardenne Creek @ St. Charles, MO</p>
+                            <h2 class="hero-title">Creek stage &amp; short‑term outlook</h2>
+                            <p class="hero-subtitle">Automatic feed from NOAA NWPS • refreshed when the page opens</p>
+                            <div class="key-metrics">
+                                <div class="metric-card">
+                                    <p class="metric-label">Observed level</p>
+                                    <p class="metric-value" id="observed-value">--</p>
+                                    <p class="metric-hint" id="observed-time">Waiting for data...</p>
+                                </div>
+                                <div class="metric-card">
+                                    <p class="metric-label">Forecast peak</p>
+                                    <p class="metric-value" id="forecast-peak">--</p>
+                                    <p class="metric-hint" id="forecast-time">—</p>
+                                </div>
+                                <div class="metric-card">
+                                    <p class="metric-label">Status</p>
+                                    <p class="metric-value" id="status-label">—</p>
+                                    <p class="metric-hint" id="status-note">Tracking conditions</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3 class="chart-title">River stage (observed vs forecast)</h3>
+                                <div class="chart-meta" id="chart-meta">Central time • NOAA NWPS</div>
+                            </div>
+                            <div class="badges">
+                                <span class="badge">Blue: observed gauge</span>
+                                <span class="badge">Teal dash: forecast</span>
+                                <span class="badge">Shaded: forecast window</span>
+                            </div>
+                            <div id="myChart" style="height: 420px; margin-top: 0.8rem;"></div>
+                            <ul class="info-list">
+                                <li><strong>Data source:</strong> NOAA NWPS gauge DRCM7</li>
+                                <li><strong>Values:</strong> Stage in feet (primary reading)</li>
+                                <li><strong>Notes:</strong> Forecast window is shaded; times shown in CT</li>
+                                <li class="muted" id="data-updated">—</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer scripts -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                fetchAndRender();
+            });
+
+            async function fetchAndRender() {
+                try {
+                    const [observed, forecast] = await Promise.all([
+                        fetchJson('https://api.water.noaa.gov/nwps/v1/gauges/DRCM7/stageflow/observed'),
+                        fetchJson('https://api.water.noaa.gov/nwps/v1/gauges/DRCM7/stageflow/forecast')
+                    ]);
+
+                    const observedPoints = parseSeries(observed);
+                    const forecastPoints = parseSeries(forecast);
+                    const forecastStart = forecastPoints.find(p => p.x >= Date.now())?.x || forecastPoints[0]?.x;
+                    const latestObserved = observedPoints[observedPoints.length - 1];
+                    const peakForecast = forecastPoints.reduce((acc, cur) => cur.y > acc.y ? cur : acc, { y: -Infinity, x: null });
+
+                    updateMetrics(latestObserved, peakForecast);
+                    renderChart(observedPoints, forecastPoints, forecastStart);
+                    updateMeta(latestObserved, forecastPoints);
+                } catch (err) {
+                    console.error(err);
+                    setText('data-updated', 'Could not load data right now. Please refresh to try again.');
+                }
+            }
+
+            async function fetchJson(url) {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Request failed: ' + res.status);
+                return res.json();
+            }
+
+            function parseSeries(dataset) {
+                const points = [];
+                if (!dataset || !Array.isArray(dataset.data)) return points;
+                dataset.data.forEach(row => {
+                    const ts = new Date(row.validTime);
+                    const ct = new Date(ts.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+                    const value = Number(row.primary);
+                    if (!Number.isFinite(value)) return;
+                    points.push({ x: ct.getTime(), y: value });
+                });
+                points.sort((a, b) => a.x - b.x);
+                return points;
+            }
+
+            function renderChart(observedPoints, forecastPoints, forecastStart) {
+                Highcharts.chart('myChart', {
+                    chart: {
+                        backgroundColor: 'transparent',
+                        spacingTop: 10,
+                        style: { fontFamily: 'inherit' }
+                    },
+                    title: { text: null },
+                    credits: { enabled: false },
+                    legend: { enabled: false },
+                    xAxis: {
+                        type: 'datetime',
+                        labels: {
+                            format: '{value:%b %e, %l %p}',
+                            style: { color: '#3a4a63' }
+                        },
+                        plotBands: forecastStart ? [{
+                            from: forecastStart,
+                            to: forecastPoints[forecastPoints.length - 1]?.x || forecastStart,
+                            color: 'rgba(11, 61, 145, 0.06)'
+                        }] : []
+                    },
+                    yAxis: {
+                        title: { text: 'Stage (ft)' },
+                        gridLineColor: 'rgba(12, 30, 66, 0.08)',
+                        labels: { style: { color: '#3a4a63' } }
+                    },
+                    tooltip: {
+                        shared: true,
+                        xDateFormat: '%b %e, %Y • %l:%M %p',
+                        valueSuffix: ' ft',
+                        borderColor: '#0b3d91',
+                        backgroundColor: '#f7f9ff'
+                    },
+                    series: [
+                        {
+                            name: 'Observed',
+                            type: 'line',
+                            data: observedPoints,
+                            color: '#1a73e8',
+                            lineWidth: 3,
+                            marker: { enabled: false }
+                        },
+                        {
+                            name: 'Forecast',
+                            type: 'line',
+                            data: forecastPoints,
+                            color: '#009c9f',
+                            dashStyle: 'ShortDash',
+                            lineWidth: 3,
+                            marker: { enabled: false }
+                        }
+                    ]
+                });
+            }
+
+            function updateMetrics(latestObserved, peakForecast) {
+                if (latestObserved) {
+                    setText('observed-value', formatFeet(latestObserved.y));
+                    setText('observed-time', 'Updated ' + formatTime(latestObserved.x));
+                }
+                if (peakForecast && peakForecast.x) {
+                    setText('forecast-peak', formatFeet(peakForecast.y));
+                    setText('forecast-time', 'Peak forecast ' + formatTime(peakForecast.x));
+                } else {
+                    setText('forecast-peak', '--');
+                    setText('forecast-time', 'Forecast unavailable');
+                }
+
+                const status = categorize(latestObserved?.y);
+                setText('status-label', status.label);
+                const statusEl = document.getElementById('status-label');
+                statusEl.classList.remove('status-ok', 'status-warn', 'status-high');
+                statusEl.classList.add(status.className);
+                setText('status-note', status.note);
+            }
+
+            function updateMeta(latestObserved, forecastPoints) {
+                const updated = latestObserved ? 'Latest gauge: ' + formatTime(latestObserved.x) : 'Gauge time unavailable';
+                const forecastEnd = forecastPoints[forecastPoints.length - 1];
+                const forecastNote = forecastEnd ? 'Forecast thru ' + formatTime(forecastEnd.x) : 'Forecast unavailable';
+                setText('data-updated', updated + ' • ' + forecastNote);
+            }
+
+            function categorize(value) {
+                if (!Number.isFinite(value)) return { label: 'No data', note: 'Awaiting readings', className: 'status-warn' };
+                if (value >= 18) return { label: 'Flood risk', note: 'Above typical bankfull', className: 'status-high' };
+                if (value >= 12) return { label: 'Elevated', note: 'Watch for rapid rises', className: 'status-warn' };
+                return { label: 'Normal', note: 'Within normal range', className: 'status-ok' };
+            }
+
+            function formatFeet(value) {
+                return Number.isFinite(value) ? value.toFixed(2) + ' ft' : '--';
+            }
+
+            function formatTime(timestamp) {
+                return new Date(timestamp).toLocaleString('en-US', {
+                    timeZone: 'America/Chicago',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+            }
+
+            function setText(id, text) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            }
+        </script>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </div>
+</body>
+</html>
