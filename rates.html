@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yield Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <style>
+        /* Dark neon-inspired shell layered on Halcyonic */
+        body.subpage {
+            background: radial-gradient(circle at 10% 20%, #0f1b37 0%, #0b1226 40%, #060914 75%);
+            color: #d7e3ff;
+        }
+        .glow-panel {
+            background: linear-gradient(135deg, rgba(34, 54, 96, 0.9), rgba(12, 26, 54, 0.96));
+            border: 1px solid rgba(121, 178, 255, 0.14);
+            border-radius: 14px;
+            padding: 1.8rem;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 220, 255, 0.12), transparent 45%),
+                        radial-gradient(circle at 85% 55%, rgba(255, 90, 196, 0.14), transparent 40%);
+            pointer-events: none;
+        }
+        .hero-title {
+            margin: 0 0 0.35rem;
+            font-size: 2.4rem;
+            letter-spacing: 0.01em;
+            color: #f7fbff;
+        }
+        .hero-sub {
+            margin: 0;
+            color: #9cb6e6;
+            font-size: 1rem;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(0, 194, 255, 0.14);
+            color: #b9e8ff;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 194, 255, 0.35);
+            margin-bottom: 0.8rem;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .metric-card {
+            background: linear-gradient(145deg, rgba(12, 18, 38, 0.9), rgba(12, 18, 38, 0.75));
+            border: 1px solid rgba(114, 164, 255, 0.16);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+        .metric-label {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            color: #7ea4e3;
+            margin: 0 0 0.15rem;
+        }
+        .metric-value {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #f1f6ff;
+        }
+        .metric-hint {
+            margin: 0.15rem 0 0;
+            color: #8da3cd;
+            font-size: 0.95rem;
+        }
+        .delta-up { color: #5ae08b; }
+        .delta-down { color: #ff6f91; }
+        .chart-card {
+            margin-top: 1.4rem;
+            background: linear-gradient(170deg, rgba(8, 14, 30, 0.95), rgba(14, 18, 36, 0.92));
+            border-radius: 14px;
+            border: 1px solid rgba(104, 144, 255, 0.18);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+            padding: 1.3rem 1.5rem;
+        }
+        .chart-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem;
+            align-items: center;
+        }
+        .chart-title {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #e7efff;
+        }
+        .chart-meta {
+            margin: 0;
+            color: #8fa7d6;
+            font-size: 0.95rem;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: #d9e6ff;
+            font-size: 0.9rem;
+            margin-right: 0.4rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            padding: 0;
+            list-style: none;
+        }
+        .info-grid li {
+            color: #8fa7d6;
+            font-size: 0.95rem;
+        }
+        #chart {
+            height: 420px;
+            margin-top: 0.8rem;
+        }
+        @media screen and (max-width: 736px) {
+            .hero-title { font-size: 2rem; }
+            .glow-panel { padding: 1.4rem; }
+        }
+    </style>
+</head>
+
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main -->
+        <section class="wrapper style1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="glow-panel">
+                            <span class="pill">Live market feed • FRED (St. Louis Fed)</span>
+                            <h2 class="hero-title">U.S. Treasury Yields</h2>
+                            <p class="hero-sub">10-year spotlight with 2s/10s spread, 30-year context, and fed funds reference.</p>
+
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <p class="metric-label">10Y Treasury</p>
+                                    <p class="metric-value" id="ten-latest">--</p>
+                                    <p class="metric-hint" id="ten-change">Waiting for data...</p>
+                                </div>
+                                <div class="metric-card">
+                                    <p class="metric-label">2Y Treasury</p>
+                                    <p class="metric-value" id="two-latest">--</p>
+                                    <p class="metric-hint" id="two-change">—</p>
+                                </div>
+                                <div class="metric-card">
+                                    <p class="metric-label">30Y Treasury</p>
+                                    <p class="metric-value" id="thirty-latest">--</p>
+                                    <p class="metric-hint" id="thirty-change">—</p>
+                                </div>
+                                <div class="metric-card">
+                                    <p class="metric-label">Spread (10Y - 2Y)</p>
+                                    <p class="metric-value" id="spread">--</p>
+                                    <p class="metric-hint" id="spread-note">—</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3 class="chart-title">10Y yield with curve context</h3>
+                                <p class="chart-meta" id="chart-meta">Latest update: —</p>
+                            </div>
+                            <div>
+                                <span class="badge" style="border-color: rgba(0, 194, 255, 0.5); color: #80e6ff;">10Y</span>
+                                <span class="badge" style="border-color: rgba(255, 139, 90, 0.55); color: #ffc2a3;">2Y</span>
+                                <span class="badge" style="border-color: rgba(255, 86, 196, 0.55); color: #ffc5ed;">30Y</span>
+                            </div>
+                            <div id="chart"></div>
+                            <ul class="info-grid">
+                                <li><strong>Source:</strong> FRED series DGS10, DGS2, DGS30, DFF</li>
+                                <li><strong>Frequency:</strong> Daily (market close); missing days skipped</li>
+                                <li><strong>Spread:</strong> Negative values indicate curve inversion</li>
+                                <li id="data-note">Fetching latest data...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const API_KEY = '1f0af3a7363393353295b2b47ce73d88';
+            const SERIES = {
+                ten: { id: 'DGS10', label: '10Y' },
+                two: { id: 'DGS2', label: '2Y' },
+                thirty: { id: 'DGS30', label: '30Y' },
+                effr: { id: 'DFF', label: 'Fed Funds' }
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                fetchAndRender();
+            });
+
+            async function fetchAndRender() {
+                try {
+                    const [ten, two, thirty, effr] = await Promise.all([
+                        fetchSeries(SERIES.ten.id, 180),
+                        fetchSeries(SERIES.two.id, 180),
+                        fetchSeries(SERIES.thirty.id, 180),
+                        fetchSeries(SERIES.effr.id, 60)
+                    ]);
+
+                    updateMetrics(ten, two, thirty);
+                    renderChart(ten, two, thirty);
+                    updateNotes(ten, effr);
+                } catch (err) {
+                    console.error(err);
+                    setText('data-note', 'Could not load rates: ' + err.message);
+                }
+            }
+
+            const PROXIES = [
+                { build: url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, wrapper: 'allorigins' },
+                { build: url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}` },
+                { build: url => `https://corsproxy.io/?${encodeURIComponent(url)}` },
+                { build: url => `https://proxy.cors.sh/${url}`, headers: { 'x-cors-api-key': 'temp' } },
+                { build: url => `https://cors.isomorphic-git.org/${url}` },
+                { build: url => `https://thingproxy.freeboard.io/fetch/${url}` },
+                { build: url => `https://yacdn.org/serve/${url}` }
+            ];
+
+            async function fetchSeries(seriesId) {
+                const url = new URL('https://api.stlouisfed.org/fred/series/observations');
+                url.searchParams.set('series_id', seriesId);
+                url.searchParams.set('api_key', API_KEY);
+                url.searchParams.set('file_type', 'json');
+                url.searchParams.set('observation_start', '2018-01-01'); // static start to avoid future-date issues
+                url.searchParams.set('sort_order', 'desc');
+                url.searchParams.set('limit', '520'); // enough for recent history without huge payloads
+
+                const json = await fetchWithProxies(url.toString());
+                return normalizeSeries(seriesId, json);
+            }
+
+            async function fetchWithProxies(targetUrl) {
+                const errors = [];
+                for (const proxy of PROXIES) {
+                    const proxied = proxy.build(targetUrl);
+                    try {
+                        const res = await fetch(proxied, { headers: proxy.headers || {} });
+                        if (!res.ok) throw new Error('Proxy status ' + res.status);
+                        const data = await res.json();
+                        return proxy.wrapper === 'allorigins' ? JSON.parse(data.contents) : data;
+                    } catch (err) {
+                        errors.push(`${proxied}: ${err.message}`);
+                    }
+                }
+                throw new Error('All proxies failed:\n' + errors.join('\n'));
+            }
+
+            function normalizeSeries(seriesId, json) {
+                const observations = Array.isArray(json?.observations) ? json.observations : [];
+                const points = observations
+                    .filter(o => o.value && o.value !== '.')
+                    .map(o => ({ x: Date.parse(o.date), y: Number(o.value) }))
+                    .sort((a, b) => a.x - b.x);
+
+                const latest = points[points.length - 1];
+                const prev = points[points.length - 2];
+
+                return { id: seriesId, points, latest, prev };
+            }
+
+            function renderChart(ten, two, thirty) {
+                Highcharts.chart('chart', {
+                    chart: {
+                        backgroundColor: 'transparent',
+                        style: { fontFamily: 'inherit' }
+                    },
+                    title: { text: null },
+                    credits: { enabled: false },
+                    legend: { enabled: false },
+                    xAxis: {
+                        type: 'datetime',
+                        labels: { style: { color: '#90a8d9' } },
+                        lineColor: 'rgba(255,255,255,0.12)',
+                        tickColor: 'rgba(255,255,255,0.12)'
+                    },
+                    yAxis: {
+                        title: { text: 'Yield (%)', style: { color: '#cddcff' } },
+                        gridLineColor: 'rgba(255,255,255,0.06)',
+                        labels: { style: { color: '#90a8d9' } }
+                    },
+                    tooltip: {
+                        shared: true,
+                        backgroundColor: 'rgba(12,18,38,0.95)',
+                        borderColor: '#62d9ff',
+                        style: { color: '#d7e3ff' },
+                        valueSuffix: '%',
+                        xDateFormat: '%b %e, %Y'
+                    },
+                    series: [
+                        {
+                            name: '10Y',
+                            type: 'spline',
+                            data: ten.points,
+                            color: '#62d9ff',
+                            lineWidth: 3,
+                            marker: { enabled: false }
+                        },
+                        {
+                            name: '2Y',
+                            type: 'spline',
+                            data: two.points,
+                            color: '#ff9c6f',
+                            lineWidth: 2,
+                            marker: { enabled: false },
+                            dashStyle: 'ShortDash'
+                        },
+                        {
+                            name: '30Y',
+                            type: 'spline',
+                            data: thirty.points,
+                            color: '#ff6ec7',
+                            lineWidth: 2.5,
+                            marker: { enabled: false },
+                            dashStyle: 'ShortDot'
+                        }
+                    ]
+                });
+            }
+
+            function updateMetrics(ten, two, thirty) {
+                applyMetric('ten', ten.latest, ten.prev);
+                applyMetric('two', two.latest, two.prev);
+                applyMetric('thirty', thirty.latest, thirty.prev);
+
+                const spreadVal = Number.isFinite(ten.latest?.y) && Number.isFinite(two.latest?.y)
+                    ? (ten.latest.y - two.latest.y)
+                    : null;
+                setText('spread', formatYield(spreadVal));
+                setText('spread-note', spreadVal !== null
+                    ? (spreadVal >= 0 ? 'Curve normal (10Y above 2Y)' : 'Inverted curve (10Y below 2Y)')
+                    : 'Spread unavailable');
+            }
+
+            function applyMetric(prefix, latest, prev) {
+                setText(prefix + '-latest', formatYield(latest?.y));
+                const delta = computeDelta(latest, prev);
+                setDeltaText(prefix + '-change', delta);
+            }
+
+            function updateNotes(ten, effr) {
+                const latestDate = ten.latest ? formatDate(ten.latest.x) : '—';
+                const eff = effr.latest ? formatYield(effr.latest.y) : '—';
+                setText('chart-meta', 'Latest 10Y close: ' + latestDate);
+                setText('data-note', 'Fed Funds (DFF) latest: ' + eff + ' • Data sourced from FRED');
+            }
+
+            function computeDelta(latest, prev) {
+                if (!latest || !prev || !Number.isFinite(latest.y) || !Number.isFinite(prev.y)) return null;
+                return (latest.y - prev.y) * 100; // convert to bps
+            }
+
+            function setDeltaText(id, delta) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (delta === null) {
+                    el.textContent = 'Change unavailable';
+                    el.className = 'metric-hint';
+                    return;
+                }
+                const direction = delta >= 0 ? 'up' : 'down';
+                el.textContent = `${delta >= 0 ? '+' : ''}${delta.toFixed(1)} bps day-over-day`;
+                el.className = 'metric-hint delta-' + direction;
+            }
+
+            function formatYield(val) {
+                return Number.isFinite(val) ? val.toFixed(2) + '%' : '--';
+            }
+
+            function formatDate(ts) {
+                return new Date(ts).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+
+            function setText(id, text) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            }
+        </script>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </div>
+</body>
+</html>
