@@ -1,210 +1,463 @@
 <!DOCTYPE html>
 <html>
-<body>
-
-    <title>Results Page</title>
-
+<head>
+    <title>Current Conditions</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-  
-  
-  </head>
-  <body class ="subpage">
-  
-  
-  
-      
-  <div id="page-wrapper">
-  
-  <!-- Header -->
-  <section id="header">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-  
-                  <!-- Logo -->
-                      <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
-  
-                  <!-- Nav -->
-                      <nav id="nav">
-                          <a href="index.html">Homepage</a>
-                          <a href="threecolumn.html">Three Column</a>
-                          <!--<a href="twocolumn1.html">Two Column #1</a>-->
-                          <!--<a href="twocolumn2.html">Two Column #2</a>-->
-                      </nav>
-  
-              </div>
-          </div>
-      </div>
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <style>
-        /* Styling for the section */
-        #output {
-            background-color: #f2f2f2;
-            padding: 20px;
+        /* Dark, modern shell layered on top of Halcyonic */
+        body.subpage {
+            background: radial-gradient(circle at 20% 20%, #0b1730 0%, #050b18 45%, #02040a 90%);
+            color: #dbe9ff;
+        }
+        .glow-shell {
+            background: linear-gradient(140deg, rgba(24, 37, 73, 0.92), rgba(9, 18, 40, 0.95));
+            border: 1px solid rgba(123, 170, 255, 0.15);
+            border-radius: 14px;
+            padding: 1.8rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-shell::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 18% 28%, rgba(87, 220, 255, 0.16), transparent 40%),
+                        radial-gradient(circle at 82% 68%, rgba(255, 94, 182, 0.18), transparent 38%);
+            pointer-events: none;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(0, 187, 255, 0.16);
+            color: #a8e8ff;
+            border: 1px solid rgba(0, 187, 255, 0.32);
+            font-size: 0.9rem;
+        }
+        .hero-title {
+            margin: 0.3rem 0 0.2rem;
+            font-size: 2.3rem;
+            color: #f5f8ff;
+        }
+        .hero-sub {
+            margin: 0;
+            color: #8fa7d6;
+            font-size: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .card {
+            background: linear-gradient(160deg, rgba(9, 16, 33, 0.92), rgba(12, 20, 46, 0.85));
+            border: 1px solid rgba(116, 160, 255, 0.14);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+        .card h4 {
+            margin: 0 0 0.3rem;
+            font-size: 1.05rem;
+            color: #dfe7ff;
+        }
+        .primary-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            color: #f8fbff;
+        }
+        .muted {
+            color: #8ba2cc;
+            margin: 0.2rem 0 0;
+            font-size: 0.95rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+            color: #dbe9ff;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+        .flex {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .mini-forecast {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .mini-card {
+            background: rgba(12, 20, 46, 0.7);
+            border: 1px solid rgba(107, 148, 255, 0.15);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem;
         }
-    
-        /* Styling for the headings */
-        h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
+        .mini-card h5 {
+            margin: 0 0 0.2rem;
+            color: #dfe7ff;
+            font-size: 0.95rem;
         }
-    
-        /* Styling for the data items */
-        p {
-            margin: 10px 0;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
+        .mini-temp {
+            margin: 0;
+            color: #f7fbff;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
-
-        strong {
-            font-weight: bold;
-            font-size: larger;
+        .mini-muted {
+            margin: 0.1rem 0 0;
+            color: #9eb4df;
+            font-size: 0.9rem;
         }
-    
-        span {
-            font-weight: bold;
-            font-size: normal;
-            color: #666;
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .pressure-chart {
+            margin-top: 0.6rem;
+        }
+        .pressure-chart svg {
+            width: 100%;
+            height: 140px;
+            display: block;
+        }
+        .pressure-chart .legend {
+            margin: 0.3rem 0 0;
+            color: #8ba2cc;
+            font-size: 0.9rem;
+        }
+        @media screen and (max-width: 736px) {
+            .hero-title { font-size: 1.9rem; }
+            .glow-shell { padding: 1.4rem; }
         }
     </style>
+</head>
 
+<body class="subpage">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <h1><a href="index.html" id="logo">Cork and Leather</a></h1>
+                        <!-- Nav -->
+                        <nav id="nav">
+                            <a href="index.html">Homepage</a>
+                            <a href="threecolumn.html">Three Column</a>
+                            <!--<a href="twocolumn1.html">Two Column #1</a>-->
+                            <!--<a href="twocolumn2.html">Two Column #2</a>-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Main -->
+        <section class="wrapper style1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="glow-shell">
+                            <span class="pill">Live NOAA feed • St. Charles, MO</span>
+                            <h2 class="hero-title">Snapshot weather &amp; sky summary</h2>
+                            <p class="hero-sub" id="updated-at">Fetching conditions...</p>
 
-    <h1>Live Data Pull . . .</h1>
-    <div id="output">
-        <p style="color: navy;"><strong>Right Now</strong></p>
-        <p><strong>Current Time:</strong>&nbsp;&nbsp; <span id="currentTime"></span></p>
-        <p><strong>Current Temp:</strong>&nbsp;&nbsp; <span id="temp"></span> °F</p>
-        <p><strong>Weather Description:</strong> &nbsp;&nbsp;<span id="weatherDescription"></span></p>
-        <p style="color: navy;"><strong>Sunrise/Sunset</strong></p>
-        <p><strong>Sunrise Time:</strong> &nbsp;&nbsp;<span id="sunriseTime"></span></p>
-        <p><strong>Sunset Time:</strong>&nbsp;&nbsp; <span id="sunsetTime"></span></p>
+                            <div class="grid">
+                                <div class="card">
+                                    <h4>Right now</h4>
+                                    <p class="primary-value" id="temp-now">--</p>
+                                    <p class="muted" id="feels-like">Feels like —</p>
+                                    <span class="tag" id="desc-now">—</span>
+                                </div>
+                                <div class="card">
+                                    <h4>Sun &amp; light</h4>
+                                    <p class="primary-value" id="sunrise">—</p>
+                                    <p class="primary-value" style="font-size:1.4rem;" id="sunset">Sunset —</p>
+                                    <p class="muted" id="daylight">Daylight —</p>
+                                    <span class="tag" id="uv-index">UV —</span>
+                                </div>
+                                <div class="card">
+                                    <h4>Wind</h4>
+                                    <p class="primary-value" id="wind-now">—</p>
+                                    <p class="muted" id="wind-dir">—</p>
+                                    <span class="tag" id="wind-gust">Gust —</span>
+                                </div>
+                                <div class="card">
+                                    <h4>Sky &amp; air</h4>
+                                    <p class="primary-value" id="clouds">—</p>
+                                    <p class="muted" id="humidity">—</p>
+                                    <span class="tag" id="visibility">—</span>
+                                </div>
+                            </div>
 
+                            <div class="two-column">
+                                <div class="card">
+                                    <h4>Pressure &amp; moisture</h4>
+                                    <p class="muted" id="pressure">—</p>
+                                    <p class="muted" id="dew-point">—</p>
+                                    <p class="muted" id="precip">—</p>
+                                    <div class="pressure-chart" id="pressure-chart"></div>
+                                </div>
+                                <div class="card">
+                                    <h4>Next hours</h4>
+                                    <div class="mini-forecast" id="hourly-forecast"></div>
+                                </div>
+                            </div>
+
+                            <div class="card" style="margin-top:1rem;">
+                                <h4>Coming days</h4>
+                                <div class="mini-forecast" id="daily-forecast"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
+        <script>
+            const site1 = "https://api.openweathermap.org/data/3.0/onecall";
+            const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
+            const lat1 = "38.7881";
+            const lon1 = "-90.4974";
+            const units1 = "imperial";
+
+            const params = new URLSearchParams({
+                lat: lat1,
+                lon: lon1,
+                units: units1,
+                appid: token1
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch(site1 + "?" + params)
+                    .then(res => res.json())
+                    .then(data => renderWeather(data))
+                    .catch(err => {
+                        console.error(err);
+                        document.getElementById('updated-at').textContent = 'Could not load weather right now.';
+                    });
+            });
+
+            function renderWeather(data) {
+                const current = data.current || {};
+                const hourly = Array.isArray(data.hourly) ? data.hourly : [];
+                const daily = Array.isArray(data.daily) ? data.daily.slice(0, 4) : [];
+                const tenAMByDate = buildTenAmLookup(hourly);
+
+                const now = toCT(current.dt);
+                const sunrise = toCT(current.sunrise);
+                const sunset = toCT(current.sunset);
+
+                setText('updated-at', `Updated ${now.toFormat('MMM d, h:mm a')} CT`);
+                setText('temp-now', formatTemp(current.temp));
+                setText('feels-like', `Feels like ${formatTemp(current.feels_like)}`);
+                setText('desc-now', (current.weather && current.weather[0]?.description) ? titleCase(current.weather[0].description) : '—');
+                setText('sunrise', `Sunrise ${sunrise.toFormat('h:mm a')}`);
+                setText('sunset', `Sunset ${sunset.toFormat('h:mm a')}`);
+                setText('daylight', `Daylight ${formatDuration(sunrise, sunset)}`);
+                setText('uv-index', `UV ${formatNumber(current.uvi, 1)}`);
+
+                const windDir = current.wind_deg != null ? bearing(current.wind_deg) : '—';
+                setText('wind-now', `${formatNumber(current.wind_speed, 0)} mph`);
+                setText('wind-dir', `From the ${windDir}`);
+                setText('wind-gust', current.wind_gust != null ? `Gust ${formatNumber(current.wind_gust, 0)} mph` : 'Gust —');
+
+                setText('clouds', `${formatNumber(current.clouds, 0)}% clouds`);
+                setText('humidity', `${formatNumber(current.humidity, 0)}% humidity`);
+                setText('visibility', current.visibility != null ? `${Math.round(current.visibility / 1609)} mi visibility` : 'Visibility —');
+                setText('pressure', current.pressure != null ? `Pressure ${formatInHg(current.pressure)} inHg` : 'Pressure —');
+                setText('dew-point', current.dew_point != null ? `Dew point ${formatTemp(current.dew_point)}` : 'Dew point —');
+
+                const precip = current.rain?.["1h"] ?? current.snow?.["1h"];
+                setText('precip', precip != null ? `Precip last hour ${precip.toFixed(2)} in` : 'Precip last hour —');
+
+                renderHourly(hourly);
+                renderDaily(daily, tenAMByDate);
+                renderPressureChart(hourly, current);
+            }
+
+            function renderHourly(hours) {
+                const container = document.getElementById('hourly-forecast');
+                container.innerHTML = '';
+                const spaced = hours.filter((_, idx) => (idx + 1) % 3 === 0).slice(0, 6);
+                spaced.forEach(item => {
+                    const time = toCT(item.dt).toFormat('h a');
+                    const temp = formatTemp(item.temp);
+                    const pop = item.pop != null ? Math.round(item.pop * 100) + '%' : '—';
+                    const desc = item.weather && item.weather[0]?.description ? titleCase(item.weather[0].description) : '—';
+                    container.innerHTML += `
+                        <div class="mini-card">
+                            <h5>${time}</h5>
+                            <p class="mini-temp">${temp}</p>
+                            <p class="mini-muted">${desc}</p>
+                            <p class="mini-muted">Rain chance: ${pop}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            function renderDaily(days, tenAMByDate) {
+                const container = document.getElementById('daily-forecast');
+                container.innerHTML = '';
+                days.forEach(item => {
+                    const day = toCT(item.dt).toFormat('ccc');
+                    const hi = formatTemp(item.temp?.max);
+                    const lo = formatTemp(item.temp?.min);
+                    const pop = item.pop != null ? Math.round(item.pop * 100) + '%' : '—';
+                    const desc = item.weather && item.weather[0]?.description ? titleCase(item.weather[0].description) : '—';
+                    const dateKey = toCT(item.dt).toFormat('yyyy-MM-dd');
+                    const tenSample = tenAMByDate[dateKey];
+                    const windSpeed = tenSample ? formatNumber(tenSample.wind_speed, 0) : formatNumber(item.wind_speed, 0);
+                    const windDir = tenSample && tenSample.wind_deg != null ? bearing(tenSample.wind_deg) : (item.wind_deg != null ? bearing(item.wind_deg) : '—');
+                    container.innerHTML += `
+                        <div class="mini-card">
+                            <h5>${day}</h5>
+                            <p class="mini-temp">${hi} / ${lo}</p>
+                            <p class="mini-muted">${desc}</p>
+                            <p class="mini-muted">Rain chance: ${pop}</p>
+                            <p class="mini-muted">Wind: ${windSpeed} mph ${windDir}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            function buildTenAmLookup(hours) {
+                const lookup = {};
+                hours.forEach(item => {
+                    const ct = toCT(item.dt);
+                    if (ct.hour === 10) {
+                        lookup[ct.toFormat('yyyy-MM-dd')] = item;
+                    }
+                });
+                return lookup;
+            }
+
+            function setText(id, text) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            }
+
+            function formatTemp(val) {
+                return Number.isFinite(val) ? `${Math.round(val)}°F` : '—';
+            }
+
+            function formatNumber(val, digits) {
+                return Number.isFinite(val) ? val.toFixed(digits) : '—';
+            }
+
+            function formatInHg(hPa) {
+                return Number.isFinite(hPa) ? (hPa / 33.8638866667).toFixed(2) : '--';
+            }
+
+            function toCT(seconds) {
+                return luxon.DateTime.fromSeconds(seconds || 0, { zone: 'utc' }).setZone('America/Chicago');
+            }
+
+            function bearing(deg) {
+                const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+                return dirs[Math.round(deg / 45) % 8];
+            }
+
+            function titleCase(str) {
+                return str.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1));
+            }
+
+            function formatDuration(start, end) {
+                if (!start || !end || !start.isValid || !end.isValid) return '—';
+                const diff = end.diff(start, ['hours', 'minutes']);
+                const hrs = Math.floor(diff.hours);
+                const mins = Math.round(diff.minutes % 60);
+                return `${hrs}h ${mins}m`;
+            }
+
+            function renderPressureChart(hours, current) {
+                const container = document.getElementById('pressure-chart');
+                if (!container) return;
+                let points = [];
+                const nowDt = current?.dt ? toCT(current.dt) : luxon.DateTime.now().setZone('America/Chicago');
+                if (Number.isFinite(current?.pressure)) {
+                    points.push({ x: nowDt.toMillis(), y: Number(current.pressure) });
+                }
+                hours.slice(0, 24).forEach(item => {
+                    if (!Number.isFinite(item.pressure)) return;
+                    points.push({ x: toCT(item.dt).toMillis(), y: Number(item.pressure) });
+                });
+                points = points.sort((a, b) => a.x - b.x);
+                if (points.length < 2) {
+                    container.innerHTML = '<p class="muted">Pressure trend unavailable</p>';
+                    return;
+                }
+
+                const min = Math.min(...points.map(p => p.y));
+                const max = Math.max(...points.map(p => p.y));
+                const range = Math.max(max - min, 0.5); // prevent flat line collapse
+                const start = points[0].x;
+                const end = points[points.length - 1].x;
+                const span = Math.max(end - start, 1);
+
+                const svgPoints = points.map(p => {
+                    const x = ((p.x - start) / span) * 100;
+                    const y = 100 - ((p.y - min) / range) * 80 - 10;
+                    return `${x.toFixed(2)},${y.toFixed(2)}`;
+                }).join(' ');
+
+                const labels = {
+                    min: formatInHg(min),
+                    max: formatInHg(max)
+                };
+
+                const startLabel = toCT(start / 1000).toFormat('h a');
+                const midLabel = toCT((start + span / 2) / 1000).toFormat('h a');
+                const endLabel = toCT(end / 1000).toFormat('h a');
+                const mid = min + range / 2;
+
+                container.innerHTML = `
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="pressureGrad" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="rgba(0, 200, 255, 0.35)"/>
+                                <stop offset="100%" stop-color="rgba(0, 200, 255, 0)"/>
+                            </linearGradient>
+                        </defs>
+                        <polyline points="${svgPoints}" fill="none" stroke="#60d9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polygon points="${svgPoints} 100,100 0,100" fill="url(#pressureGrad)" opacity="0.5"/>
+                        <line x1="0" x2="100" y1="20" y2="20" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
+                        <line x1="0" x2="100" y1="55" y2="55" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
+                        <line x1="0" x2="100" y1="90" y2="90" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
+                        <text x="2" y="23" fill="#9eb4df" font-size="4">${formatInHg(max)}</text>
+                        <text x="2" y="58" fill="#9eb4df" font-size="4">${formatInHg(mid)}</text>
+                        <text x="2" y="93" fill="#9eb4df" font-size="4">${formatInHg(min)}</text>
+                        <text x="4" y="98" fill="#9eb4df" font-size="4" text-anchor="start">${startLabel}</text>
+                        <text x="50" y="98" fill="#9eb4df" font-size="4" text-anchor="middle">${midLabel}</text>
+                        <text x="96" y="98" fill="#9eb4df" font-size="4" text-anchor="end">${endLabel}</text>
+                    </svg>
+                    <div class="legend">Pressure trend (current + next 24h) • Low ${labels.min} / High ${labels.max}</div>
+                `;
+            }
+        </script>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
     </div>
-
-    <h1>And here's your wind detail . . .</h1>
-    <div id="output">
-        <p><strong>Wind Right Now: </strong> &nbsp;&nbsp;<span id="wind"></span> mph</p>
-        <p><strong>Wind Direction: </strong> &nbsp;&nbsp;<span id = "wind_deg"></span>°</p>
-        <p><strong>Wind Description: </strong>&nbsp;&nbsp;<span id = "wind_desc"></span></p>    
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
-    <script> 
-        const site1 = "https://api.openweathermap.org/data/3.0/onecall";
-        const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
-        const zip_code = "63124";
-        let units1 = "imperial";
-        const mode1 = "json";
-
-        // FOR ST CHARLES
-        const lat1 = "38.7881";
-        const lon1 = "-90.4974";
-        units1 = "imperial";
-        const start1 = "1656730800";
-
-        const params = new URLSearchParams({
-            lat: lat1,
-            lon: lon1,
-            units: units1,
-            appid: token1
-        });
-
-        fetch(site1 + "?" + params)
-    .then(response => response.json())
-    .then(data => {
-        const result = data.current;
-        const convertedData = {
-            dt: result.dt,
-            sunrise: result.sunrise,
-            sunset: result.sunset,
-            temp: result.temp,
-            wind: result.wind_speed,
-            weatherDescription: result.weather[0].description,
-            wind_deg: result.wind_deg
-            // ... other data ...
-        };
-        console.log(convertedData);
-        // Use the convertedData object as needed
-
-        // Convert UTC timestamp to Central time
-        const utcTime = luxon.DateTime.fromSeconds(convertedData.dt, { zone: 'utc' });
-        const centralTime = utcTime.setZone('America/Chicago');
-
-        // Format the Central time and sunrise time
-        const currentTime = centralTime.toFormat('MM/dd/yyyy h:mm:ss');
-        const sunriseTime = luxon.DateTime.fromSeconds(convertedData.sunrise, { zone: 'utc' })
-            .setZone('America/Chicago')
-            .toFormat('MM/dd/yyyy h:mm:ss');
-        const sunsetTime = luxon.DateTime.fromSeconds(convertedData.sunset, { zone: 'utc' })
-            .setZone('America/Chicago')
-            .toFormat('MM/dd/yyyy h:mm:ss');
-
-        // Update the HTML elements with the converted times
-        document.getElementById('currentTime').textContent = currentTime;
-        document.getElementById('sunriseTime').textContent = sunriseTime;
-        document.getElementById('sunsetTime').textContent = sunsetTime; 
-        document.getElementById('temp').textContent = convertedData.temp;
-        document.getElementById('wind').textContent = convertedData.wind;
-        document.getElementById('weatherDescription').textContent = convertedData.weatherDescription;
-        document.getElementById('wind_deg').textContent = convertedData.wind_deg;
-
-
-        // Logic for wind description
-        let wind_desc;
-
-        if (convertedData.wind_deg >= 1 && convertedData.wind_deg <= 30) {
-            wind_desc = "North";
-        } else if (convertedData.wind_deg >= 31 && convertedData.wind_deg <= 120) {
-            wind_desc = "East";
-        } else if (convertedData.wind_deg >= 121 && convertedData.wind_deg <= 160) {
-            wind_desc = "SouthEast";
-        } else if (convertedData.wind_deg >= 161 && convertedData.wind_deg <= 210) {
-            wind_desc = "South";
-        } else if (convertedData.wind_deg >= 211 && convertedData.wind_deg <= 240) {
-            wind_desc = "SouthWest";
-        } else if (convertedData.wind_deg >= 241 && convertedData.wind_deg <= 300) {
-            wind_desc = "West";
-        } else if (convertedData.wind_deg >= 301 && convertedData.wind_deg <= 330) {
-            wind_desc = "NorthWest";
-        } else if (convertedData.wind_deg >= 331 && convertedData.wind_deg <= 360) {
-            wind_desc = "North";
-        }
-
-        document.getElementById('wind_desc').textContent = wind_desc;
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-
-    </script>
-
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-
 </body>
 </html>
