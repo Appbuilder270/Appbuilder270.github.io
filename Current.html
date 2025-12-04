@@ -140,6 +140,33 @@
             color: #8ba2cc;
             font-size: 0.9rem;
         }
+        .zip-form {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 0.8rem;
+        }
+        .zip-form input[type="text"] {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #e8f2ff;
+            padding: 0.55rem 0.75rem;
+            border-radius: 10px;
+            min-width: 140px;
+        }
+        .zip-form button {
+            background: linear-gradient(120deg, #2ad1ff, #7a7dff);
+            border: none;
+            color: #041024;
+            padding: 0.55rem 0.95rem;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .zip-form button:hover {
+            opacity: 0.92;
+        }
         @media screen and (max-width: 736px) {
             .hero-title { font-size: 1.9rem; }
             .glow-shell { padding: 1.4rem; }
@@ -174,9 +201,15 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="glow-shell">
-                            <span class="pill">Live NOAA feed • St. Charles, MO</span>
+                            <span class="pill">Live NOAA feed • <span id="location-label">St. Charles, MO (63124)</span></span>
                             <h2 class="hero-title">Snapshot weather &amp; sky summary</h2>
                             <p class="hero-sub" id="updated-at">Fetching conditions...</p>
+                            <form class="zip-form" id="zip-form">
+                                <label for="zip-input" style="color:#9eb4df;">Change ZIP:</label>
+                                <input type="text" id="zip-input" name="zip" placeholder="Enter ZIP" value="63124" />
+                                <button type="submit">Update</button>
+                                <span class="muted" id="zip-status"></span>
+                            </form>
 
                             <div class="grid">
                                 <div class="card">
@@ -233,29 +266,59 @@
         <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
         <script>
             const site1 = "https://api.openweathermap.org/data/3.0/onecall";
+            const geoEndpoint = "https://api.openweathermap.org/geo/1.0/zip";
             const token1 = "9d66b2a166252faa852b4b5558e5e5e4";
-            const lat1 = "38.7881";
-            const lon1 = "-90.4974";
             const units1 = "imperial";
-
-            const params = new URLSearchParams({
-                lat: lat1,
-                lon: lon1,
-                units: units1,
-                appid: token1
-            });
+            const defaultZip = "63124";
 
             document.addEventListener('DOMContentLoaded', () => {
-                fetch(site1 + "?" + params)
-                    .then(res => res.json())
-                    .then(data => renderWeather(data))
-                    .catch(err => {
-                        console.error(err);
-                        document.getElementById('updated-at').textContent = 'Could not load weather right now.';
-                    });
+                const form = document.getElementById('zip-form');
+                form.addEventListener('submit', evt => {
+                    evt.preventDefault();
+                    const zip = (document.getElementById('zip-input').value || '').trim();
+                    if (zip) loadByZip(zip);
+                });
+                loadByZip(defaultZip);
             });
 
-            function renderWeather(data) {
+            async function loadByZip(zip) {
+                setText('zip-status', 'Loading...');
+                try {
+                    const geo = await fetchGeo(zip);
+                    const label = buildLocationLabel(geo, zip);
+                    setText('location-label', label);
+                    setText('zip-status', '');
+                    await loadWeather(geo.lat, geo.lon, label);
+                } catch (err) {
+                    console.error(err);
+                    setText('zip-status', 'Could not load that ZIP');
+                    setText('updated-at', 'Could not load weather right now.');
+                }
+            }
+
+            async function fetchGeo(zip) {
+                const url = `${geoEndpoint}?zip=${encodeURIComponent(zip)},US&appid=${token1}`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Geo lookup failed');
+                const data = await res.json();
+                if (!data || data.lat == null || data.lon == null) throw new Error('Geo missing coords');
+                return data;
+            }
+
+            async function loadWeather(lat, lon, label) {
+                const params = new URLSearchParams({
+                    lat,
+                    lon,
+                    units: units1,
+                    appid: token1
+                });
+                const res = await fetch(site1 + "?" + params);
+                if (!res.ok) throw new Error('Weather fetch failed');
+                const data = await res.json();
+                renderWeather(data, label);
+            }
+
+            function renderWeather(data, locationLabel) {
                 const current = data.current || {};
                 const hourly = Array.isArray(data.hourly) ? data.hourly : [];
                 const daily = Array.isArray(data.daily) ? data.daily.slice(0, 4) : [];
@@ -265,7 +328,7 @@
                 const sunrise = toCT(current.sunrise);
                 const sunset = toCT(current.sunset);
 
-                setText('updated-at', `Updated ${now.toFormat('MMM d, h:mm a')} CT`);
+                setText('updated-at', `${locationLabel} • Updated ${now.toFormat('MMM d, h:mm a')} CT`);
                 setText('temp-now', formatTemp(current.temp));
                 setText('feels-like', `Feels like ${formatTemp(current.feels_like)}`);
                 setText('desc-now', (current.weather && current.weather[0]?.description) ? titleCase(current.weather[0].description) : '—');
@@ -385,6 +448,16 @@
                 const hrs = Math.floor(diff.hours);
                 const mins = Math.round(diff.minutes % 60);
                 return `${hrs}h ${mins}m`;
+            }
+
+            function buildLocationLabel(geo, zip) {
+                const name = geo?.name || '';
+                const state = geo?.state || '';
+                const parts = [];
+                if (name) parts.push(name);
+                if (state) parts.push(state);
+                if (zip) parts.push(`(${zip})`);
+                return parts.join(' ') || `ZIP ${zip}`;
             }
 
             function renderPressureChart(hours, current) {
