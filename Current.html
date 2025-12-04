@@ -30,6 +30,7 @@
         }
         .pill {
             display: inline-flex;
+            justify-content: space-between;
             align-items: center;
             gap: 0.35rem;
             padding: 0.4rem 0.9rem;
@@ -132,7 +133,7 @@
         }
         .pressure-chart svg {
             width: 100%;
-            height: 140px;
+            height: 180px;
             display: block;
         }
         .pressure-chart .legend {
@@ -151,9 +152,10 @@
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.18);
             color: #e8f2ff;
-            padding: 0.55rem 0.75rem;
+            padding: 0.4rem 0.6rem;
             border-radius: 10px;
             min-width: 140px;
+            line-height: 1.2;
         }
         .zip-form button {
             background: linear-gradient(120deg, #2ad1ff, #7a7dff);
@@ -201,9 +203,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="glow-shell">
-                            <span class="pill">Live NOAA feed • <span id="location-label">St. Charles, MO (63124)</span></span>
+                            <span class="pill">Live NOAA feed • <span id="location-label">St. Charles, MO (63124)</span> <span id="updated-at" style="margin-left:auto;">Loading...</span></span>
                             <h2 class="hero-title">Snapshot weather &amp; sky summary</h2>
-                            <p class="hero-sub" id="updated-at">Fetching conditions...</p>
                             <form class="zip-form" id="zip-form">
                                 <label for="zip-input" style="color:#9eb4df;">Change ZIP:</label>
                                 <input type="text" id="zip-input" name="zip" placeholder="Enter ZIP" value="63124" />
@@ -244,7 +245,6 @@
                                     <h4>Pressure &amp; moisture</h4>
                                     <p class="muted" id="pressure">—</p>
                                     <p class="muted" id="dew-point">—</p>
-                                    <p class="muted" id="precip">—</p>
                                     <div class="pressure-chart" id="pressure-chart"></div>
                                 </div>
                                 <div class="card">
@@ -328,7 +328,7 @@
                 const sunrise = toCT(current.sunrise);
                 const sunset = toCT(current.sunset);
 
-                setText('updated-at', `${locationLabel} • Updated ${now.toFormat('MMM d, h:mm a')} CT`);
+                setText('updated-at', `Updated ${now.toFormat('MMM d, h:mm a')} CT`);
                 setText('temp-now', formatTemp(current.temp));
                 setText('feels-like', `Feels like ${formatTemp(current.feels_like)}`);
                 setText('desc-now', (current.weather && current.weather[0]?.description) ? titleCase(current.weather[0].description) : '—');
@@ -347,9 +347,6 @@
                 setText('visibility', current.visibility != null ? `${Math.round(current.visibility / 1609)} mi visibility` : 'Visibility —');
                 setText('pressure', current.pressure != null ? `Pressure ${formatInHg(current.pressure)} inHg` : 'Pressure —');
                 setText('dew-point', current.dew_point != null ? `Dew point ${formatTemp(current.dew_point)}` : 'Dew point —');
-
-                const precip = current.rain?.["1h"] ?? current.snow?.["1h"];
-                setText('precip', precip != null ? `Precip last hour ${precip.toFixed(2)} in` : 'Precip last hour —');
 
                 renderHourly(hourly);
                 renderDaily(daily, tenAMByDate);
@@ -485,8 +482,11 @@
                 const end = points[points.length - 1].x;
                 const span = Math.max(end - start, 1);
 
+                const xPadding = 6;
+                const rightPadding = 4;
+                const plotWidth = 100 - xPadding - rightPadding;
                 const svgPoints = points.map(p => {
-                    const x = ((p.x - start) / span) * 100;
+                    const x = xPadding + ((p.x - start) / span) * plotWidth;
                     const y = 100 - ((p.y - min) / range) * 80 - 10;
                     return `${x.toFixed(2)},${y.toFixed(2)}`;
                 }).join(' ');
@@ -510,7 +510,7 @@
                             </linearGradient>
                         </defs>
                         <polyline points="${svgPoints}" fill="none" stroke="#60d9ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        <polygon points="${svgPoints} 100,100 0,100" fill="url(#pressureGrad)" opacity="0.5"/>
+                        <polygon points="${svgPoints} ${xPadding + plotWidth},100 ${xPadding},100" fill="url(#pressureGrad)" opacity="0.5"/>
                         <line x1="0" x2="100" y1="20" y2="20" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
                         <line x1="0" x2="100" y1="55" y2="55" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
                         <line x1="0" x2="100" y1="90" y2="90" stroke="rgba(255,255,255,0.08)" stroke-width="0.4"/>
