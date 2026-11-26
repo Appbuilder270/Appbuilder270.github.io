@@ -26,11 +26,11 @@
         </div>
       </div>
     </section>
-    
+
     <style>
         h1 {
             margin-top: 1%;
-            margin-left: 2%;   
+            margin-left: 2%;
             margin-right: 2%;
             margin-bottom: 2%;
         }
@@ -54,9 +54,10 @@
         }
     </style>
     <div class="ticker">
-      <h1 style="font-weight: bold; font-size: 20px; color: rgb(4, 68, 37);">Global Headline News . . . .NBC . . . CBS . . .  CNN . . . CNBC . . . . Bloomberg . . . . FoxNews . . . .ESPN . . . . BBC World Service . . . NPR . . . ABC . . . ESPN 2 . . . . New York Times . . . Wall Street Journal . . .  </h1>        
+      <h1 id="ticker-text" style="font-weight: bold; font-size: 20px; color: rgb(4, 68, 37);">Global Headline News . . . . NBC . . . CBS . . . ABC . . . CNBC . . . Fox News . . . ESPN . . . BBC World . . . NPR . . . New York Times . . . Wall Street Journal . . .</h1>
     </div>
-    
+
+    <p id="news-status" class="news-status">Loading headlines...</p>
     <div id="results"></div>
 
     <style>
@@ -73,43 +74,110 @@
             margin-right: 2em;
         }
 
+        .news-meta {
+            margin-bottom: 0.3em;
+            color: #5a6b66;
+        }
+        .news-meta span {
+            font-size: 0.85em;
+        }
+        .news-source {
+            font-weight: bold;
+            color: rgb(4, 68, 37);
+        }
+        .news-status {
+            font-style: italic;
+            color: #5a6b66;
+        }
       </style>
 
 
     <script>
-        function handleResponse(data) {
-          console.log(data); // Log the data to diagnose its structure
-          try {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = ''; // Clear previous results
+        // Headlines are collected every 3 hours from free news feeds by the
+        // "Update news headlines" GitHub Actions workflow and saved to data/news.json.
+        const NEWS_URL = 'data/news.json';
 
-            // Assuming the actual news items are in data.news
-            data.news.forEach(function(newsItem) {
-              const newsElement = document.createElement('div');
-              newsElement.innerHTML = `
-                <h2 style="font-weight: bold;">${newsItem.title}</h2>
-                <p class="news-description">${newsItem.description} <a href="${newsItem.url}" target="_blank">Read More</a></p>
-              `;
-              resultsDiv.appendChild(newsElement);
-            });
-          } catch (error) {
-            console.error('Error parsing JSON response:', error);
-            // Display an error message to the user
-          }
+        function formatTime(iso) {
+          if (!iso) return '';
+          const d = new Date(iso);
+          if (isNaN(d)) return '';
+          return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
         }
 
-        const apiUrl = 'https://api.currentsapi.services/v1/latest-news?language=en&apiKey=q2EMe65Wr8rPJ9mpsUevDId4QKJUJbdvliGsqc4K86TVwjIs';
-        //const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        function showHeadlines(data) {
+          const resultsDiv = document.getElementById('results');
+          resultsDiv.innerHTML = '';
 
-        //fetch(corsProxyUrl + apiUrl)
-        fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => handleResponse(data))
-          .catch(error => console.error('Error fetching news data:', error));
+          const headlines = Array.isArray(data.headlines) ? data.headlines : [];
+          if (headlines.length === 0) {
+            setStatus('No headlines are available right now.');
+            return;
+          }
+
+          if (Array.isArray(data.sources) && data.sources.length) {
+            document.getElementById('ticker-text').textContent =
+              'Global Headline News . . . . ' + data.sources.join(' . . . ') + ' . . .';
+          }
+
+          headlines.forEach(function(item) {
+            // Built with textContent so headline text can never inject HTML into the page.
+            const block = document.createElement('div');
+
+            const title = document.createElement('h2');
+            title.style.fontWeight = 'bold';
+            title.textContent = item.title;
+
+            const meta = document.createElement('p');
+            meta.className = 'news-meta';
+            const source = document.createElement('span');
+            source.className = 'news-source';
+            source.textContent = item.source || '';
+            meta.appendChild(source);
+            const when = formatTime(item.published);
+            if (when) {
+              const time = document.createElement('span');
+              time.textContent = ' • ' + when;
+              meta.appendChild(time);
+            }
+
+            const desc = document.createElement('p');
+            desc.className = 'news-description';
+            if (item.summary) desc.appendChild(document.createTextNode(item.summary + ' '));
+            const link = document.createElement('a');
+            link.href = item.url;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = 'Read More';
+            desc.appendChild(link);
+
+            block.append(title, meta, desc);
+            resultsDiv.appendChild(block);
+          });
+
+          const updated = formatTime(data.updated);
+          setStatus(updated ? 'Headlines last updated ' + updated + '.' : '');
+        }
+
+        function setStatus(text) {
+          document.getElementById('news-status').textContent = text;
+        }
+
+        fetch(NEWS_URL, { cache: 'no-cache' })
+          .then(function(response) {
+            if (response.status === 404) {
+              throw new Error('the headlines file has not been created yet. Run the "Update news headlines" workflow on GitHub.');
+            }
+            if (!response.ok) throw new Error('headlines file returned status ' + response.status);
+            return response.json();
+          })
+          .then(showHeadlines)
+          .catch(function(error) {
+            console.error('Error loading headlines:', error);
+            setStatus('Could not load headlines: ' + error.message);
+          });
     </script>
 
 
-    <!-- ... remaining code ... -->
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
@@ -119,7 +187,3 @@
   </div>
 </body>
 </html>
-
-
-
-   
