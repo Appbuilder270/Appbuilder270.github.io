@@ -171,7 +171,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="glow-panel">
-                            <span class="pill">Live market feed • FRED (St. Louis Fed)</span>
+                            <span class="pill">Updated each weekday • FRED (St. Louis Fed)</span>
                             <h2 class="hero-title">U.S. Treasury Yields</h2>
                             <p class="hero-sub">10-year spotlight with 2s/10s spread, 30-year context, and fed funds reference.</p>
 
@@ -212,7 +212,7 @@
                             <div id="chart"></div>
                             <ul class="info-grid">
                                 <li><strong>Source:</strong> FRED series DGS10, DGS2, DGS30, DFF</li>
-                                <li><strong>Frequency:</strong> Daily (market close); missing days skipped</li>
+                                <li><strong>Frequency:</strong> Daily (market close), refreshed each weekday evening; missing days skipped</li>
                                 <li><strong>Spread:</strong> Negative values indicate curve inversion</li>
                                 <li id="data-note">Fetching latest data...</li>
                             </ul>
@@ -223,13 +223,9 @@
         </section>
 
         <script>
-            const API_KEY = '1f0af3a7363393353295b2b47ce73d88';
-            const SERIES = {
-                ten: { id: 'DGS10', label: '10Y' },
-                two: { id: 'DGS2', label: '2Y' },
-                thirty: { id: 'DGS30', label: '30Y' },
-                effr: { id: 'DFF', label: 'Fed Funds' }
-            };
+            // Data is refreshed each weekday by the "Update rates data" GitHub Actions
+            // workflow, which saves FRED data to data/rates.json on this site.
+            const DATA_URL = 'data/rates.json';
 
             document.addEventListener('DOMContentLoaded', () => {
                 fetchAndRender();
@@ -237,12 +233,18 @@
 
             async function fetchAndRender() {
                 try {
-                    const [ten, two, thirty, effr] = await Promise.all([
-                        fetchSeries(SERIES.ten.id, 180),
-                        fetchSeries(SERIES.two.id, 180),
-                        fetchSeries(SERIES.thirty.id, 180),
-                        fetchSeries(SERIES.effr.id, 60)
-                    ]);
+                    const res = await fetch(DATA_URL, { cache: 'no-cache' });
+                    if (!res.ok) {
+                        throw new Error(res.status === 404
+                            ? 'the data file has not been created yet. Run the "Update rates data" workflow on GitHub.'
+                            : 'data file returned status ' + res.status);
+                    }
+                    const data = await res.json();
+                    const series = data.series || {};
+                    const ten = normalizeSeries('DGS10', series.DGS10);
+                    const two = normalizeSeries('DGS2', series.DGS2);
+                    const thirty = normalizeSeries('DGS30', series.DGS30);
+                    const effr = normalizeSeries('DFF', series.DFF);
 
                     updateMetrics(ten, two, thirty);
                     renderChart(ten, two, thirty);
@@ -253,50 +255,11 @@
                 }
             }
 
-            const PROXIES = [
-                { build: url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, wrapper: 'allorigins' },
-                { build: url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}` },
-                { build: url => `https://corsproxy.io/?${encodeURIComponent(url)}` },
-                { build: url => `https://proxy.cors.sh/${url}`, headers: { 'x-cors-api-key': 'temp' } },
-                { build: url => `https://cors.isomorphic-git.org/${url}` },
-                { build: url => `https://thingproxy.freeboard.io/fetch/${url}` },
-                { build: url => `https://yacdn.org/serve/${url}` }
-            ];
-
-            async function fetchSeries(seriesId) {
-                const url = new URL('https://api.stlouisfed.org/fred/series/observations');
-                url.searchParams.set('series_id', seriesId);
-                url.searchParams.set('api_key', API_KEY);
-                url.searchParams.set('file_type', 'json');
-                url.searchParams.set('observation_start', '2018-01-01'); // static start to avoid future-date issues
-                url.searchParams.set('sort_order', 'desc');
-                url.searchParams.set('limit', '520'); // enough for recent history without huge payloads
-
-                const json = await fetchWithProxies(url.toString());
-                return normalizeSeries(seriesId, json);
-            }
-
-            async function fetchWithProxies(targetUrl) {
-                const errors = [];
-                for (const proxy of PROXIES) {
-                    const proxied = proxy.build(targetUrl);
-                    try {
-                        const res = await fetch(proxied, { headers: proxy.headers || {} });
-                        if (!res.ok) throw new Error('Proxy status ' + res.status);
-                        const data = await res.json();
-                        return proxy.wrapper === 'allorigins' ? JSON.parse(data.contents) : data;
-                    } catch (err) {
-                        errors.push(`${proxied}: ${err.message}`);
-                    }
-                }
-                throw new Error('All proxies failed:\n' + errors.join('\n'));
-            }
-
-            function normalizeSeries(seriesId, json) {
-                const observations = Array.isArray(json?.observations) ? json.observations : [];
-                const points = observations
-                    .filter(o => o.value && o.value !== '.')
-                    .map(o => ({ x: Date.parse(o.date), y: Number(o.value) }))
+            // Turns [["2025-01-02", 4.57], ...] into chart points plus the two most recent values.
+            function normalizeSeries(seriesId, rows) {
+                const points = (Array.isArray(rows) ? rows : [])
+                    .map(([date, value]) => ({ x: Date.parse(date), y: Number(value) }))
+                    .filter(p => Number.isFinite(p.x) && Number.isFinite(p.y))
                     .sort((a, b) => a.x - b.x);
 
                 const latest = points[points.length - 1];
