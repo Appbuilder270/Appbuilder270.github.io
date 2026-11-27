@@ -12,45 +12,297 @@
  ],
  "headlines": [
   {
-   "title": "Underdog Thanksgiving Promo Code FOXNEWS: Play $10, Get $50 on Lions-Bears, Cowboys-Eagles, or Bills-Chiefs",
-   "url": "https://www.foxnews.com/outkick-betting/underdog-thanksgiving-promo-code-foxnews-play-10-get-50-on-lions-bears-cowboys-eagles-or-bills-chiefs",
-   "summary": "Use Underdog Thanksgiving promo code FOXNEWS to play $10 and get $50 in bonus entries on Lions-Bears, Cowboys-Eagles or Bills-Chiefs.",
-   "published": "2026-11-26T17:28:37Z",
+   "title": "New Zealand's ruling coalition falls short of parliamentary majority by one seat",
+   "url": "https://www.bbc.co.uk/news/articles/c670278qk879o?at_medium=RSS&at_campaign=rss",
+   "summary": "The right-leaning ruling bloc led by the National Party has fallen short of the majority needed to govern.",
+   "published": "2026-11-27T01:45:30Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Stock futures tick higher as Wall Street gets set to wrap up a volatile holiday week: Live updates",
+   "url": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
+   "summary": "Investors are wrapping up a turbulent trading week that was shortened due to the Thanksgiving holiday.",
+   "published": "2026-11-27T01:45:16Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "China industrial profits growth surges to a 5-month high of 20.1% in October",
+   "url": "https://www.cnbc.com/2026/11/27/china-industrial-profits-october.html",
+   "summary": "China's economy has been running at two speeds, with AI-related manufacturing and exports powering growth while household consumption has been lagging.",
+   "published": "2026-11-27T01:38:00Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Iowa lead detonation results expected soon, EPA says",
+   "url": "https://www.cbsnews.com/news/iowa-lead-detonation-epa-testing-results-soon/",
+   "summary": "The EPA conducted sampling at more than 130 structures in Iowa, including homes, schools, daycare centers and churches.",
+   "published": "2026-11-27T01:13:00Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Unforgiving rim denies Arkansas a miracle comeback against Michigan State on Thanksgiving",
+   "url": "https://www.foxnews.com/outkick-sports/unforgiving-rim-denies-arkansas-miracle-comeback-michigan-state-thanksgiving",
+   "summary": "No. 11 Michigan State escaped with a 70-67 Thanksgiving win after Jordan Smith Jr.’s potential tying three rattled out in the final seconds.",
+   "published": "2026-11-27T01:08:54Z",
    "source": "Fox News"
   },
   {
-   "title": "Food banks see influx of families ahead of Thanksgiving",
-   "url": "https://www.cbsnews.com/news/thanksgiving-food-bank-demand-meal-costs/",
-   "summary": "Across the U.S., volunteers have noticed more families than usual seeking food assistance as people struggle with higher grocery costs.",
-   "published": "2026-11-26T17:19:34Z",
+   "title": "Democrats, Republicans find rare common ground when asked what they're thankful for",
+   "url": "https://www.foxnews.com/politics/democrats-republicans-find-rare-common-ground-when-asked-what-theyre-thankful",
+   "summary": "Democrats and Republicans on Capitol Hill may clash on policy, but this Thanksgiving, lawmakers say family is what they're most thankful for.",
+   "published": "2026-11-27T01:00:34Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Georgia man accused of killing wife after dispute over children's Christmas presents",
+   "url": "https://www.foxnews.com/us/georgia-man-accused-killing-wife-dispute-childrens-christmas-presents",
+   "summary": "A Georgia man was charged with murder after police say he fatally shot his wife following an argument over Christmas presents for their four children.",
+   "published": "2026-11-27T00:56:49Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "High school band raises $350K to stay for Macy's Thanksgiving parade",
+   "url": "https://www.cbsnews.com/news/macys-thanksgiving-parade-marching-bands-delay-cost/",
+   "summary": "Other marching bands from around the U.S. are also raising funds to cover the cost of staying in New York City after the parade was rescheduled for Saturday.",
+   "published": "2026-11-27T00:52:28Z",
    "source": "CBS News"
   },
   {
-   "title": "Trump’s Latest Tariffs Revive Focus on Pressuring China",
-   "url": "https://www.nytimes.com/2026/11/26/business/trump-tariffs-asia.html",
-   "summary": "President Trump sent a message to trading partners across Asia, many of which depend on trade and investment from both the United States and China, that he is ready to escalate tariffs.",
-   "published": "2026-11-26T17:03:31Z",
+   "title": "Major Thanksgiving storm brings flooding, flight delays across US",
+   "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
+   "summary": "Almost one million customers in the US had no power on Thursday evening as storms descended on both US coasts, bringing wind gusts, heavy rain and flooding.",
+   "published": "2026-11-27T00:52:11Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Texas town helps high school marching band stay in postponed Thanksgiving Day Parade",
+   "url": "https://www.cbsnews.com/video/texas-town-helps-high-school-marching-band-stay-postponed-thanksgiving-day-parade/",
+   "summary": "After the Thanksgiving Day Parade was postponed, a Texas high school saw an outpouring of support to make sure the marching band could still perform.",
+   "published": "2026-11-27T00:44:32Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Trump claims \"fake economic numbers\" were released before election",
+   "url": "https://www.cbsnews.com/news/trump-thanksgiving-commerce-department-gdp-investigation/",
+   "summary": "President Trump demanded an investigation into the Commerce Department's recent revising of the GDP, which happens routinely.",
+   "published": "2026-11-27T00:39:06Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Powerful Thanksgiving Day storm causes flooding, power outages",
+   "url": "https://www.cbsnews.com/news/thanksgiving-day-storm-northeast-midwest-flooding-power-outages/",
+   "summary": "The storm hammered sections of the East Coast with torrential rain, high winds and flooding, knocking out power to hundreds of thousands of customers.",
+   "published": "2026-11-27T00:38:13Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "How to protect your packages from porch pirates",
+   "url": "https://www.cbsnews.com/video/how-to-protect-packages-porch-pirates/",
+   "summary": "'Tis the season for online orders and holiday deliveries. But those packages stacking up outside the house are a lure for thieves, just waiting to steal your stuff. Jason Allen has more on protecting your items.",
+   "published": "2026-11-27T00:37:17Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Inside Visa's effort to protect your money from AI holiday shopping scams",
+   "url": "https://www.cbsnews.com/video/inside-visas-effort-protect-your-money-ai-holiday-shopping-scams/",
+   "summary": "Friday is Black Friday, with Cyber Monday just around the corner, and a lot of shopping will be done by AI assistants. Scammers are using the same technology to rip off customers. Ash-har Quraishi has an exclusive look inside Visa's innovation center.",
+   "published": "2026-11-27T00:34:31Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "After the Iowa Detonation, a Family Gathered for an Unusual Thanksgiving",
+   "url": "https://www.nytimes.com/2026/11/26/us/iowa-detonation-family-thanksgiving.html",
+   "summary": "A family came together at a farmhouse in southeast Iowa the day after the explosion at an ammunition plant. It felt as if a storm had passed.",
+   "published": "2026-11-27T00:33:25Z",
    "source": "New York Times"
   },
   {
-   "title": "Oil prices inch back up as Iran and the Houthis escalate threats",
-   "url": "https://www.cbsnews.com/live-updates/iran-war-us-military-ai-weapons-oil/",
-   "summary": "Increased fighting between Iran's Houthi allies and Saudi Arabia and Tehran's unrelenting threats in the Strait of Hormuz appear to be reversing weeks of oil price declines.",
-   "published": "2026-11-26T17:00:48Z",
+   "title": "Trump signs severe weather disaster declarations from Mar-a-Lago on Thanksgiving",
+   "url": "https://www.cbsnews.com/video/trump-signs-severe-weather-disaster-declarations-mar-a-lago-thanksgiving/",
+   "summary": "President Trump celebrated Thanksgiving at his resort in Palm Beach, Florida. He signed disaster declarations for Florida in the wake of severe weather. Weijia Jiang has more.",
+   "published": "2026-11-27T00:32:27Z",
    "source": "CBS News"
+  },
+  {
+   "title": "Bears TE Colston Loveland carted off with knee injury against Lions",
+   "url": "https://abcnews.com/Sports/wireStory/bears-te-colston-loveland-carted-off-knee-injury-138471920",
+   "summary": "Chicago tight end Colston Loveland was carted off the field with a knee injury in the first quarter against Detroit on Thursday in another setback at the position",
+   "published": "2026-11-27T00:26:14Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "Sovereign wealth funds are acting more like private equity giants — and inheriting their risks",
+   "url": "https://www.cnbc.com/2026/11/27/swf-private-equity-risks.html",
+   "summary": "Sovereign wealth funds are increasingly originating deals, taking controlling stakes and building their own investment platforms.",
+   "published": "2026-11-27T00:22:29Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Caleb Williams' heroics have Bears thinking No. 1 seed in NFC playoffs",
+   "url": "https://www.foxnews.com/outkick-sports/caleb-williams-heroics-bears-thinking-no-1-seed-nfc-playoffs",
+   "summary": "Caleb Williams hit Rome Odunze for a go-ahead TD with 3 seconds left as the Chicago Bears rallied past the Detroit Lions to grab first in the NFC North.",
+   "published": "2026-11-27T00:19:58Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Thanksgiving storm damages buildings, floods streets, causes power outages",
+   "url": "https://abcnews.com/US/new-york-declares-emergency-thanksgiving-storm-threatens-east/story?id=138464273",
+   "summary": "Strong winds ripped the roof off a building in Maryland, as an extreme storm began to move up the East Coast on Thanksgiving morning.",
+   "published": "2026-11-27T00:13:54Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "Monster East Coast storm leaves hundreds of thousands without power",
+   "url": "https://www.nbcnews.com/nightly-news/video/monster-east-coast-storm-leaves-hundreds-of-thousands-without-power-274244677776",
+   "summary": "A major storm along the Eastern Seaboard is bringing heavy rain, strong winds and major coastal flooding on the Thanksgiving holiday. NBC News’ Steven Romo reports from the storm zone in New Jersey.",
+   "published": "2026-11-27T00:06:55Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Performers and marching bands scramble after Macy’s Thanksgiving Day Parade delay",
+   "url": "https://www.nbcnews.com/nightly-news/video/performers-and-marching-bands-scramble-after-macy-s-thanksgiving-day-parade-delay-274245189694",
+   "summary": "After the historic decision to postpone the 100th Macy’s Thanksgiving Day Parade, performers and entire marching bands were forced to scramble to find ways to stay in the New York City area in order to perform during the new parade date on Saturday. NBC News’ Erin McLaughlin reports.",
+   "published": "2026-11-26T23:58:53Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Performers and marching bands scramble after Macy’s Thanksgiving Day Parade delay",
+   "url": "https://www.nbcnews.com/nightly-news/video/performers-and-marching-bands-scramble-after-macy-s-thanksgiving-day-parade-delay-274245189694",
+   "summary": "After the historic decision to postpone the 100th Macy’s Thanksgiving Day Parade, performers and entire marching bands were forced to scramble to find ways to stay in the New York City area in order to perform during the new parade date on Saturday. NBC News’ Erin McLaughlin reports.",
+   "published": "2026-11-26T23:58:53Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Families navigate Thanksgiving after toxic chemical detonation",
+   "url": "https://www.nbcnews.com/nightly-news/video/families-navigate-thanksgiving-after-toxic-chemical-detonation-274245189654",
+   "summary": "In and around Middletown, Iowa, residents are navigating the Thanksgiving holiday after the U.S. Army detonated tons of toxic chemicals in the region. And while officials say no airborne lead has been detected, some families are still concerned. NBC News’ Shaquille Brewster reports.",
+   "published": "2026-11-26T23:45:22Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Iran accuses Zelenskyy of 'false flag' Kuwait drone strike op to get Trump's attention",
+   "url": "https://www.foxnews.com/world/iran-accuses-zelenskyy-false-flag-kuwait-drone-strike-op-get-trumps-attention",
+   "summary": "A former Iran nuclear adviser claimed Thursday the Kuwait drone attack was a Ukrainian \"false flag\" staged to get President Donald Trump's attention.",
+   "published": "2026-11-26T23:19:59Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Trademark Dan Campbell fourth-down gamble backfires, opening door to stunning Bears comeback victory",
+   "url": "https://www.foxnews.com/outkick-sports/trademark-dan-campbell-fourth-down-gamble-backfires-opening-door-stunning-bears-comeback-victory",
+   "summary": "Caleb Williams hit Rome Odunze for a six-yard touchdown with three seconds left as the Chicago Bears stole first place in the NFC North from Detroit.",
+   "published": "2026-11-26T23:11:13Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Universities, schools nationwide use Thanksgiving as chance to promote 'Day of Mourning' and decolonization",
+   "url": "https://www.foxnews.com/politics/universities-schools-nationwide-use-thanksgiving-chance-promote-day-mourning-decolonization",
+   "summary": "Campus Thanksgiving events have been reframed as a \"National Day of Mourning\" for Indigenous remembrance, with Salem State and Pratt citing historical harm.",
+   "published": "2026-11-26T23:00:47Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "WATCH: Tips for navigating the holiday travel rush",
+   "url": "https://abcnews.com/video/138472441/",
+   "summary": "The Points Guy Clint Henderson provides some tips and tricks travelers can use to navigate the Thanksgiving weekend.",
+   "published": "2026-11-26T22:56:49Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "US too focused on Middle East and not pushing Russia hard enough, Zelensky tells BBC",
+   "url": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss",
+   "summary": "Ukraine's president voices frustration with US and says it is \"strange\" Trump has described Vladimir Putin as a friend.",
+   "published": "2026-11-26T22:49:27Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "WATCH: The tradition of Thanksgiving",
+   "url": "https://abcnews.com/video/138468476/",
+   "summary": "ABC News' Michelle Franzen takes us to Plymouth, Massachusetts, where the tradition of Thanksgiving began when English settlers shared a meal with native tribes.",
+   "published": "2026-11-26T22:39:17Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "Chris Van Hollen gains celebrity donor backing as Fonda, De Niro and others support ditching Schumer in letter",
+   "url": "https://www.foxnews.com/media/chris-van-hollen-gains-celebrity-donor-backing-fonda-deniro-support-ditching-schumer-letter",
+   "summary": "Jane Fonda, Robert De Niro and other celebrities and Democratic donors said they supported Sen. Chris Van Hollen over Chuck Schumer for Senate majority leader.",
+   "published": "2026-11-26T22:34:56Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Diesel tanker carrying up to 7,000 tonnes capsizes near Ibiza, killing one",
+   "url": "https://www.bbc.co.uk/news/articles/c9gklryvj24do?at_medium=RSS&at_campaign=rss",
+   "summary": "The possible environmental damage is still being assessed by Spain's sea rescue service.",
+   "published": "2026-11-26T22:01:22Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Trump demands probe into ‘record setting error’ after third-quarter GDP data gets massive revision higher",
+   "url": "https://www.cnbc.com/2026/11/26/trump-gdp-revision-investigation.html",
+   "summary": "President Donald Trump on Thursday deemed the latest gross domestic product revision a mistake, claiming that it should be \"immediately investigated.\"",
+   "published": "2026-11-26T21:13:17Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "New Yorkers and Tourists Try to Salvage a Parade Day Postponed by Rain",
+   "url": "https://www.nytimes.com/2026/11/26/nyregion/macys-thanksgiving-day-parade-empty-streets.html",
+   "summary": "Wind and rain grounded the beloved balloons that typically dominate the Thanksgiving skies, leaving the streets along the parade route mostly deserted on Thursday.",
+   "published": "2026-11-26T20:53:41Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "Macy’s Thanksgiving Day Parade Upends Plans and Adds Costs for Marching Bands",
+   "url": "https://www.nytimes.com/2026/11/25/nyregion/macys-thanksgiving-day-parade-marching-bands.html",
+   "summary": "Nine marching bands were set to perform in the Macy’s Thanksgiving Day Parade. The decision to move the event to Saturday posed new logistical challenges for them.",
+   "published": "2026-11-26T20:21:00Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "Watch: Roofs torn off and streets under water as severe weather hits US",
+   "url": "https://www.bbc.co.uk/news/videos/cq808d704m22o?at_medium=RSS&at_campaign=rss",
+   "summary": "Hundreds of thousands have been affected by storms in the country as the Thanksgiving holiday weekend begins.",
+   "published": "2026-11-26T19:26:16Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Bands drum up support so the show goes on for postponed Macy's Thanksgiving parade",
+   "url": "https://abcnews.com/US/bands-drum-community-support-ensure-postponed-macys-thanksgiving/story?id=138469612",
+   "summary": "Bands from across the country are drumming up support to stay in New York City through the weekend for the now-postponed 100th Macy's Thanksgiving Day Parade.",
+   "published": "2026-11-26T19:08:16Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "WATCH: Viral Thanksgiving story set to be adapted for small screen",
+   "url": "https://abcnews.com/video/138468539/",
+   "summary": "Jamal Hinton and Wanda Dench's viral story of a wrong text that led to a decadelong Thanksgiving tradition is set to become a Lifetime production. Will Ganss shares the buzziest stories in Pop News.",
+   "published": "2026-11-26T18:51:53Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "Iranian Drone Attack Kills Two Italians in Kuwait",
+   "url": "https://www.wsj.com/world/middle-east/iranian-drone-attack-kills-two-italians-in-kuwait-5e360a35?mod=rss_worldnews",
+   "summary": "The attack hit as technicians from Rheinmetall Italia worked on an air-defense system.",
+   "published": "2026-11-26T18:24:00Z",
+   "source": "Wall Street Journal"
+  },
+  {
+   "title": "Europe Has Picked a New Central Bank Chief. He’s in for a Bumpy Ride.",
+   "url": "https://www.wsj.com/world/europe/europe-has-picked-a-new-central-bank-chief-hes-in-for-a-bumpy-ride-7d6f7fea?mod=rss_worldnews",
+   "summary": "Pablo Hernández de Cos is set to take over from Christine Lagarde at the ECB next year.",
+   "published": "2026-11-26T18:00:00Z",
+   "source": "Wall Street Journal"
+  },
+  {
+   "title": "Semiconductor chips are the new oil. Here's why",
+   "url": "https://www.cnbc.com/2026/11/26/semiconductor-chips-are-the-new-oil-heres-why.html",
+   "summary": "Semiconductor exports overtook oil and gas for the first time in 2026, as the AI boom fueled chip demand.",
+   "published": "2026-11-26T17:52:15Z",
+   "source": "CNBC"
   },
   {
    "title": "As Another Wartime Winter Sets In, Kyiv Residents Weigh Finally Leaving",
    "url": "https://www.wsj.com/world/as-another-wartime-winter-sets-in-kyiv-residents-weigh-finally-leaving-c76357dc?mod=rss_worldnews",
    "summary": "Russia is pummeling Ukraine’s power lines and generating plants, making everyday life a survival mission.",
    "published": "2026-11-26T17:00:00Z",
-   "source": "Wall Street Journal"
-  },
-  {
-   "title": "Iranian Drone Attack Kills Two Italians in Kuwait",
-   "url": "https://www.wsj.com/world/middle-east/iranian-drone-attack-kills-two-italians-in-kuwait-5e360a35?mod=rss_worldnews",
-   "summary": "The attack hit as technicians from Rheinmetall Italia worked on an air-defense system.",
-   "published": "2026-11-26T16:55:00Z",
    "source": "Wall Street Journal"
   },
   {
@@ -61,144 +313,32 @@
    "source": "New York Times"
   },
   {
-   "title": "ICE detains man in Mass. after he picks up lottery winnings",
-   "url": "https://www.cbsnews.com/news/ice-arrest-lottery-winnings-massachusetts/",
-   "summary": "The Massachusetts State Lottery posted on social media last week a photo of Ariel Velasquez-Morales, who won $1 million from a scratch-off ticket purchased in Boston.",
-   "published": "2026-11-26T16:45:56Z",
-   "source": "CBS News"
+   "title": "Why the Georgia Tech Couple Became Another Viral TV Moment",
+   "url": "https://www.nytimes.com/2026/11/26/arts/television/georgia-tech-couple-fan-camera-ethics.html",
+   "summary": "A young couple’s argument captured by an ESPN college football broadcast was the latest social media frenzy set off by a roving camera during a live event.",
+   "published": "2026-11-26T16:43:11Z",
+   "source": "New York Times"
   },
   {
-   "title": "Texas band raises $350,000 to stay for Macy's Thanksgiving parade",
-   "url": "https://www.cbsnews.com/news/macys-thanksgiving-parade-marching-bands-delay-cost/",
-   "summary": "Other marching bands from around the U.S. are also raising funds to cover the cost of staying in New York City after the parade was rescheduled for Saturday.",
-   "published": "2026-11-26T16:44:42Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Will Ferrell golf show 'The Hawk' canceled by Netflix after flopping in first season",
-   "url": "https://www.foxnews.com/outkick-sports/will-ferrell-golf-show-hawk-canceled-netflix-flopping-first-season",
-   "summary": "Will Ferrell's \"The Hawk\" is canceled by Netflix after one season, with the golf comedy reportedly among the streamer's priciest series ever made.",
-   "published": "2026-11-26T16:43:40Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Macy’s Thanksgiving Day Parade postponed: Has the holiday tradition ever been canceled?",
-   "url": "https://www.foxnews.com/us/macys-thanksgiving-day-parade-postponed-has-holiday-tradition-ever-been-canceled",
-   "summary": "Macy's Thanksgiving Day Parade was postponed by a powerful coastal storm, but the New York City tradition has been canceled only three times.",
-   "published": "2026-11-26T16:41:45Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Maps show where Thanksgiving storms could disrupt holiday",
-   "url": "https://www.cbsnews.com/news/maps-thanksgiving-storms-disrupt-holiday-festivities-travel/",
-   "summary": "Rain, snow and powerful winds were affecting large stretches of the country on Thanksgiving, potentially disrupting holiday festivities and, in some areas, hampering travel plans.",
-   "published": "2026-11-26T16:40:00Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Italy says two citizens killed in Iranian strike in Kuwait",
-   "url": "https://www.bbc.co.uk/news/articles/c39w9y5dx4k5o?at_medium=RSS&at_campaign=rss",
-   "summary": "The pair were technicians for German company Rheinmetall, according to Italy's foreign ministry.",
-   "published": "2026-11-26T16:39:30Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "The alcohol question that should never be asked at holiday parties, experts say",
-   "url": "https://www.foxnews.com/food-drink/alcohol-question-should-never-asked-holiday-parties-experts-say",
-   "summary": "An etiquette expert told Fox News Digital that asking why someone isn't drinking is very impolite — and shared a graceful way to deflect the question at holiday gatherings.",
-   "published": "2026-11-26T16:30:51Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "New York declares emergency as Thanksgiving storm threatens East Coast",
-   "url": "https://abcnews.com/US/new-york-declares-emergency-thanksgiving-storm-threatens-east/story?id=138464273",
-   "summary": "Gov. Kathy Hochul's office declared a State of Emergency on Thanksgiving.",
-   "published": "2026-11-26T16:23:41Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "Could the Black Sea pull the U.S. into war in Europe?",
-   "url": "https://www.cbsnews.com/news/black-sea-incidents-nato-russia-ukraine-war/",
-   "summary": "The Russia-Ukraine war is spilling into the Black Sea, where violent incidents have surged, running right up to NATO's doorstep.",
-   "published": "2026-11-26T16:18:46Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Aaron Rodgers may be a diva, but he was right to expose his coach and dysfunction in Pittsburgh | Matt Calkins",
-   "url": "https://www.foxnews.com/outkick-sports/rodgers-diva-right-expose-mccarthy-dysfunction-pittsburgh-matt-calkins",
-   "summary": "Aaron Rodgers claims Mike McCarthy fell asleep in meetings before his Steelers benching, and a teammate's text suggests the QB wasn't lying.",
-   "published": "2026-11-26T16:13:56Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Trump, NATO chief caution Russia as attacks on Ukraine’s energy infrastructure intensify",
-   "url": "https://www.cnbc.com/2026/11/26/trump-nato-rutte-russia-ukraine-war.html",
-   "summary": "Trump and NATO chief Mark Rutte urged Russia to avoid actions that could expand the war and called for a rapid peaceful resolution.",
-   "published": "2026-11-26T16:12:47Z",
+   "title": "Buyer beware? Nvidia's volatile swings expose risks of single-stock ETFs",
+   "url": "https://www.cnbc.com/2026/11/26/nvidias-volatile-swings-expose-risks-of-single-stock-etfs.html",
+   "summary": "ETF Action founding partner Mike Akins and GraniteShares CEO Will Rhind react to Nvidia's sharp losses and latest comeback.",
+   "published": "2026-11-26T16:00:01Z",
    "source": "CNBC"
   },
   {
-   "title": "Former NFL players defend Aaron Rodgers after Steelers release him amid Mike McCarthy dispute",
-   "url": "https://www.foxnews.com/outkick-sports/former-nfl-players-defend-aaron-rodgers-steelers-release-him-amid-mike-mccarthy-dispute",
-   "summary": "Frank Murphy and Jack Brewer defend Aaron Rodgers after his Pittsburgh Steelers release, with Brewer urging a health check for Mike McCarthy.",
-   "published": "2026-11-26T16:07:47Z",
-   "source": "Fox News"
+   "title": "Trump Administration’s Cuts to SNAP Threaten Free School Meals",
+   "url": "https://www.nytimes.com/2026/11/26/us/politics/snap-food-stamps-school-meals.html",
+   "summary": "The Trump administration’s cuts and proposed regulatory changes to the Supplemental Nutrition Assistance Program would have consequences for school lunch and breakfast.",
+   "published": "2026-11-26T15:44:53Z",
+   "source": "New York Times"
   },
   {
-   "title": "Kelsey Grammer calls American Dream a ‘gift’ he wants to pass down to his 8 children",
-   "url": "https://www.foxnews.com/entertainment/kelsey-grammer-calls-american-dream-gift-pass-down-8-children",
-   "summary": "Kelsey Grammer says the American Dream is a \"gift\" that he wants to pass down to his eight children as he marks the United States' 250th anniversary with \"The America Opus.\"",
-   "published": "2026-11-26T16:00:53Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Bill Maher says both Trump and Obama have more common sense than critics on either side would admit",
-   "url": "https://www.foxnews.com/media/bill-maher-says-both-trump-obama-have-far-more-common-sense-than-critics-either-side-would-admit",
-   "summary": "Bill Maher and Piers Morgan agree Donald Trump and Barack Obama are less extreme than critics claim, citing Obama's deportations and Trump's NATO stance.",
-   "published": "2026-11-26T16:00:07Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Hundreds of flights cancelled as severe weather disrupts Thanksgiving travel in US",
-   "url": "https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&at_campaign=rss",
-   "summary": "More than 80 million Americans are expected to be traveling as massive storms are forecast on the western and eastern coasts of the US.",
-   "published": "2026-11-26T15:57:26Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Fake online stores may fool AI shopping bots on Black Friday",
-   "url": "https://www.cbsnews.com/news/ai-shopping-agents-fake-online-stores-black-friday/",
-   "summary": "AI bots are accidentally steering shoppers toward websites and online shops created by scammers using AI.",
-   "published": "2026-11-26T15:45:57Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Spain’s Pablo Hernández de Cos set to lead European Central Bank",
-   "url": "https://www.cnbc.com/2026/11/26/pablo-hernandez-de-cos-ecb-president.html",
-   "summary": "De Cos will lead the ECB into a period of political uncertainty and choppy growth, after winning the backing needed to succeed Christine Lagarde next year.",
-   "published": "2026-11-26T15:28:26Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Diesel tanker carrying up to 7,000 tonnes capsizes near Ibiza, killing one",
-   "url": "https://www.bbc.co.uk/news/articles/c9gklryvj24do?at_medium=RSS&at_campaign=rss",
-   "summary": "The possible environmental damage is still being assessed by Spain's sea rescue service.",
-   "published": "2026-11-26T15:17:18Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Where to get the latest CBS Mornings Deals",
-   "url": "https://www.cbsnews.com/video/cbs-mornings-deals-112626/",
-   "summary": "It's Day 2 of CBS Mornings Deals' special series, 12 Days of Gifting, where we show viewers even more products at even lower prices. Visit cbsdeals.com to take advantage of these exclusive deals today. CBS earns commissions on purchases made through cbsdeals.com.",
-   "published": "2026-11-26T15:04:17Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "FIFA says it suffers cyberattack accessing 'personal and business information'",
-   "url": "https://abcnews.com/Sports/wireStory/fifa-victim-cyberattack-accessing-personal-business-information-138465369",
-   "summary": "FIFA says it was the victim of a cyberattack that saw hackers gain access to what soccer’s world governing body describes as a “limited set of personal and business information.\"",
-   "published": "2026-11-26T14:48:05Z",
-   "source": "ABC News"
+   "title": "Democrats Confront a Familiar Question: How Are You Going to Pay for That?",
+   "url": "https://www.nytimes.com/2026/11/26/business/democrats-congress-agenda-taxes-spending.html",
+   "summary": "Many Democratic plans are unlikely to become law under President Trump. But the party is still grappling with the difficult budget math of its agenda.",
+   "published": "2026-11-26T14:50:28Z",
+   "source": "New York Times"
   },
   {
    "title": "Gérard Depardieu to stand trial for alleged rape of actress in 2018, court rules",
@@ -208,46 +348,11 @@
    "source": "BBC World"
   },
   {
-   "title": "Europe Has Picked a New Central Bank Chief. He’s in for a Bumpy Ride.",
-   "url": "https://www.wsj.com/world/europe/europe-has-picked-a-new-central-bank-chief-hes-in-for-a-bumpy-ride-7d6f7fea?mod=rss_worldnews",
-   "summary": "Pablo Hernández de Cos is set to take over from Christine Lagarde at the ECB next year.",
-   "published": "2026-11-26T14:40:00Z",
-   "source": "Wall Street Journal"
-  },
-  {
-   "title": "Pregnant US inmate escapes in prison vehicle after medical appointment",
-   "url": "https://www.bbc.co.uk/news/articles/c9m2jke85xzxo?at_medium=RSS&at_campaign=rss",
-   "summary": "Rebecca Taylor had been imprisoned in New Mexico for multiple theft and burglary charges.",
-   "published": "2026-11-26T14:35:22Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "The Thanksgiving Parade Is on a Saturday. Can They Do That?",
-   "url": "https://www.nytimes.com/2026/11/25/nyregion/thanksgiving-parade-new-york-postponed.html",
-   "summary": "After more than a century of tradition, the Macy’s Thanksgiving Day Parade is suddenly flexible. Sure, this is fine.",
-   "published": "2026-11-26T14:07:50Z",
-   "source": "New York Times"
-  },
-  {
    "title": "Thanksgiving Parade Balloons Are Deflated in New York",
    "url": "https://www.nytimes.com/2026/11/26/nyregion/macys-parade-balloons-thanksgiving.html",
    "summary": "After the Macy’s Thanksgiving Day Parade was postponed because of a powerful storm, crews worked through the night to deflate balloons before the bad weather arrived.",
    "published": "2026-11-26T14:06:46Z",
    "source": "New York Times"
-  },
-  {
-   "title": "Lured by High Salaries, Some Brazilians Were Duped Into Fighting for Russia",
-   "url": "https://www.nytimes.com/2026/11/26/world/americas/brazil-recruiting-russia-army.html",
-   "summary": "Dozens of Brazilians were sent to the front lines with little training, and the high salaries they were promised, they say, turned out to be illusory.",
-   "published": "2026-11-26T14:01:45Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Thanksgiving travelers face long airport lines and packed roads",
-   "url": "https://www.today.com/video/thanksgiving-travelers-face-long-airport-lines-and-packed-roads-274224197586",
-   "summary": "Thousands of flights are canceled or delayed because of storms on one of the busiest travel days of the year. On the roads, families are ending up in standstill traffic.",
-   "published": "2026-11-26T13:53:28Z",
-   "source": "NBC News"
   },
   {
    "title": "Congo Ebola outbreak reaches 12,000 cases as some responders evacuate",
@@ -264,17 +369,10 @@
    "source": "NPR"
   },
   {
-   "title": "Semiconductor chips are the new oil. Here's why",
-   "url": "https://www.cnbc.com/2026/11/26/semiconductor-chips-are-the-new-oil-heres-why.html",
-   "summary": "Semiconductor exports overtook oil and gas for the first time in 2026, as the AI boom fueled chip demand.",
-   "published": "2026-11-26T13:19:25Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Children’s Hospital Throws Thanksgiving Parade for Patients",
-   "url": "https://www.today.com/video/children-s-hospital-throws-thanksgiving-parade-for-patients-274221126000",
-   "summary": "Doctors, nurses and staffers at New York-Presbyterian Morgan Stanley Children’s Hospital got an early start to the Thanksgiving holiday spirit. They threw a special parade complete with floats, balloons and costumes all chosen and designed by patients themselves. TODAY’s Laura Jarrett shares the…",
-   "published": "2026-11-26T12:57:26Z",
+   "title": "Black Friday deals are here, and they’re actually really good — I’m tracking the best ones live",
+   "url": "https://www.nbcnews.com/select/shopping/best-black-friday-deals-11-26-2026-rcna611358",
+   "summary": "Shop Black Friday 2026 deals on tech, home, kitchen, beauty, fashion and more. NBC Selected editors reviewed thousands of discounts to find top-rated products and standout savings worth shopping now.",
+   "published": "2026-11-26T13:06:52Z",
    "source": "NBC News"
   },
   {
@@ -285,18 +383,11 @@
    "source": "NBC News"
   },
   {
-   "title": "WATCH: NYPD releases new images in manhole mystery",
-   "url": "https://abcnews.com/video/138457101/",
-   "summary": "In the latest on the ongoing manhole mystery in New York City, the NYPD has released new images of suspects seen exiting a manhole last week.",
-   "published": "2026-11-26T12:35:49Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "Trump Administration Defends Iowa Detonation, Unveils New Tariffs",
-   "url": "https://www.today.com/video/trump-administration-defends-iowa-detonation-unveils-new-tariffs-274221125815",
-   "summary": "The White House is calling the controversial detonation of old explosives in Iowa a success, saying there is no health impact. This comes as the Trump administration reignites fears over a new trade war, proposing sweeping tariffs targeting 11 countries, the European Union and China. NBC’s Kelly…",
-   "published": "2026-11-26T12:33:42Z",
-   "source": "NBC News"
+   "title": "U.S. tariff-hike threats pile pressure on partners to sign trade deals",
+   "url": "https://www.cnbc.com/2026/11/26/us-tariffs-hike-trade-agreement.html",
+   "summary": "The U.S. planned a fresh tariff salvo on 14 trading partners, while offering some countries lower rates if they secure trade deals with Washington.",
+   "published": "2026-11-26T12:46:55Z",
+   "source": "CNBC"
   },
   {
    "title": "Macy’s Thanksgiving Day Parade Postponed for First Time Ever",
@@ -313,34 +404,6 @@
    "source": "NPR"
   },
   {
-   "title": "Global stocks rally as investors shrug off U.S. tariffs and AI jitters to 'fish for bargains'",
-   "url": "https://www.cnbc.com/2026/11/26/stock-markets-today-.html",
-   "summary": "Investors appeared to have shrugged off a fresh set of tariffs unveiled by the White House on Wednesday, targeting more than a dozen major trading partners.",
-   "published": "2026-11-26T12:22:25Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Egyptian authorities arrest motorist over tanker crash that killed 31",
-   "url": "https://www.bbc.co.uk/news/articles/c3gre90l0g45o?at_medium=RSS&at_campaign=rss",
-   "summary": "Officials say the man confessed to travelling at speed and clipping the fuel truck as he was overtaking traffic.",
-   "published": "2026-11-26T12:16:06Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Nvidia Halts Sales to Southeast Asia as U.S. Tightens China Restrictions",
-   "url": "https://www.nytimes.com/2026/11/26/business/nvidia-southeast-asia-sales.html",
-   "summary": "The shipping halt, which hit four countries, follows a new U.S. rule that would require licenses for companies in the countries to buy advanced A.I. chips.",
-   "published": "2026-11-26T12:04:01Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Microdrama apps chase profits as Hollywood moves into short-form, vertical video",
-   "url": "https://www.cnbc.com/2026/11/26/micro-drama-apps-hollywood-vertical-video.html",
-   "summary": "The microdrama category has exploded at a time when traditional forms of media face waning interest and YouTube claims more viewing hours.",
-   "published": "2026-11-26T12:00:01Z",
-   "source": "CNBC"
-  },
-  {
    "title": "WATCH: Man uses balloon art to pay off $400K in student loans",
    "url": "https://abcnews.com/video/138464693/",
    "summary": "ABC News' Danny New talks to a doctor in New York who's using his balloon twisting talents to help him pay off his student loan debt.",
@@ -355,30 +418,16 @@
    "source": "CNBC"
   },
   {
-   "title": "Thanksgiving Day store hours: Which stores are open and closed",
-   "url": "https://abcnews.com/GMA/Food/kroger-foods-stores-stay-open-thanksgiving-chains-close/story?id=138321899",
-   "summary": "See which national supermarket chains and stores will be staffed as usual and which ones will close for the Thanksgiving holiday.",
-   "published": "2026-11-26T10:10:43Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "Trump Tried to Cripple Huawei. Now It Is Central to China’s A.I. Push.",
-   "url": "https://www.nytimes.com/2026/11/26/business/huawei-trump-china-ai.html",
-   "summary": "As China’s access to Nvidia’s advanced chips shrinks, Huawei is becoming increasingly indispensable to Beijing despite a wide technological gap with its American rival.",
-   "published": "2026-11-26T10:01:56Z",
-   "source": "New York Times"
+   "title": "At Albuquerque's Indian Pueblo Kitchen, Native American dishes are the main course",
+   "url": "https://www.npr.org/2026/11/26/nx-s1-5983712/indian-pueblo-kitchen-native-american-food-albuquerque",
+   "summary": "At an Albuquerque, N.M., museum, the restaurant is just as much of a draw as the exhibitions, with dishes like green chile stew and sweet biscochitos flavored with anise and cinnamon.",
+   "published": "2026-11-26T10:00:00Z",
+   "source": "NPR"
   },
   {
    "title": "'Memories of a Good Meal': How food made a difference during WWII",
    "url": "https://www.npr.org/2026/11/26/nx-s1-6028781/memories-of-a-good-meal-cookbook-chef-alon-shaya",
    "summary": "New Orleans Chef Alon Shaya's new cookbook shares stories of resilience from World War II, centered around food.",
-   "published": "2026-11-26T10:00:00Z",
-   "source": "NPR"
-  },
-  {
-   "title": "At Albuquerque's Indian Pueblo Kitchen, Native American dishes are the main course",
-   "url": "https://www.npr.org/2026/11/26/nx-s1-5983712/indian-pueblo-kitchen-native-american-food-albuquerque",
-   "summary": "At an Albuquerque, N.M., museum, the restaurant is just as much of a draw as the exhibitions, with dishes like green chile stew and sweet biscochitos flavored with anise and cinnamon.",
    "published": "2026-11-26T10:00:00Z",
    "source": "NPR"
   },
@@ -418,13 +467,6 @@
    "source": "Wall Street Journal"
   },
   {
-   "title": "SpaceX, Musk pledge to donate a share each to active Trump Accounts",
-   "url": "https://www.cnbc.com/2026/11/25/spacex-musk-trump-account-stock.html",
-   "summary": "SpaceX said it will donate one share of the company's class A stock to every active Trump Account, and CEO Elon Musk would match it.",
-   "published": "2026-11-26T06:39:34Z",
-   "source": "CNBC"
-  },
-  {
    "title": "Watch: BBC confronts German man suspected of supplying migrant gangs with small boats",
    "url": "https://www.bbc.co.uk/news/videos/cvglrz5yr79go?at_medium=RSS&at_campaign=rss",
    "summary": "Marvin Reuter is contesting extradition to France, where he could face smuggling, criminal conspiracy and involuntary manslaughter charges.",
@@ -453,46 +495,11 @@
    "source": "Wall Street Journal"
   },
   {
-   "title": "Trump Rejoiced in the Market’s Nvidia Surge. It Didn’t Last Long.",
-   "url": "https://www.nytimes.com/2026/11/25/us/politics/trump-nvidia-stock-market.html",
-   "summary": "The retreat of the stock market in recent days shows how President Trump’s push to reinstall the company’s chief executive has collided with the realities of his other policies.",
-   "published": "2026-11-26T01:53:20Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "WATCH: Tips for staying healthy and keeping the peace at the Thanksgiving table",
-   "url": "https://abcnews.com/video/138454493/",
-   "summary": "Nutrition specialist J.J. Virgin and etiquette expert Thomas Farley discuss how you can navigate some of Thanksgiving's tricky problems.",
-   "published": "2026-11-25T23:29:55Z",
-   "source": "ABC News"
-  },
-  {
    "title": "Oil Futures Pick Up as Middle East Tensions Persist",
    "url": "https://www.wsj.com/world/middle-east/oil-prices-fall-as-traders-weigh-supply-outlook-renewed-middle-east-tensions-182b1198?mod=rss_worldnews",
    "summary": "Oil prices settled higher for a second straight session with continuing tensions in the Middle East countering expectations of a coming global supply surplus.",
    "published": "2026-11-25T21:07:00Z",
    "source": "Wall Street Journal"
-  },
-  {
-   "title": "WATCH: Best and worst times to drive",
-   "url": "https://abcnews.com/video/138435898/",
-   "summary": "ABC News' Rhiannon Ally provides the latest updates on the road as gas prices drop, offering some relief for drivers this Thanksgiving.",
-   "published": "2026-11-25T16:48:26Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "Even the price of toys is on the rise. How Americans are scaling back holiday plans",
-   "url": "https://www.cnbc.com/2026/11/25/holiday-inflation-thanksgiving-travel-food-gifts.html",
-   "summary": "U.S. consumers face higher food, travel and gift costs in 2026 as inflation and Iran-war energy shocks pressure holiday budgets.",
-   "published": "2026-11-25T16:17:13Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "A rising political star in China is the latest victim of Xi’s purge",
-   "url": "https://www.nbcnews.com/world/china/rising-star-china-latest-victim-xis-purge-chen-jining-rcna611258",
-   "summary": "He was on the rise among China’s political elite, hosting tech leaders and senior American officials.",
-   "published": "2026-11-25T15:43:53Z",
-   "source": "NBC News"
   },
   {
    "title": "LIVE: ABC News Live",
@@ -502,13 +509,6 @@
    "source": "ABC News"
   },
   {
-   "title": "Steve Kornacki Breaks Down NFL Thanksgiving Matchups",
-   "url": "https://www.today.com/video/steve-kornacki-breaks-down-nfl-thanksgiving-matchups-274163781586",
-   "summary": "NBC’s chief data analyst Steve Kornacki joins TODAY to break down the lineup of NFL games around the Thanksgiving holiday and share trivia for one of the most-watched events of the season.",
-   "published": "2026-11-25T14:22:29Z",
-   "source": "NBC News"
-  },
-  {
    "title": "American entrepreneurs move to China’s tech hub",
    "url": "https://www.nbcnews.com/nightly-news/video/american-entrepreneurs-move-to-china-s-tech-hub-273861701583",
    "summary": "NBC Nightly News anchor Tom Llamas reports from Shenzhen, where some American entrepreneurs are betting on China’s tech boom despite its weakening economy.",
@@ -516,5 +516,5 @@
    "source": "NBC News"
   }
  ],
- "updated": "2026-11-26T17:33:25Z"
+ "updated": "2026-11-27T01:47:57Z"
 }
