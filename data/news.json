@@ -12,32 +12,326 @@
  ],
  "headlines": [
   {
-   "title": "Saudi Arabia shifts Vision 2030 spending amid economic and security pressure",
-   "url": "https://www.cnbc.com/2026/11/28/saudi-arabia-vision-2030-spending.html",
-   "summary": "The Kingdom is moving from \"spending and delivery at any cost\" to \"spending and delivery at the right cost,\" Economic Minister Faisal Alibrahim told CNBC.",
-   "published": "2026-11-28T06:00:01Z",
+   "title": "Macy's Thanksgiving Day Parade brings out crowds after being postponed",
+   "url": "https://www.cbsnews.com/news/macys-thanksgiving-day-parade-2026-nyc/",
+   "summary": "The Macy's Thanksgiving Day Parade took place in New York City Saturday morning after it was postponed for the first time in its 100-year history.",
+   "published": "2026-11-28T17:35:02Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Saturday Sessions: Mondo Cozmo performs \"Jump the River\"",
+   "url": "https://www.cbsnews.com/video/saturday-sessions-mondo-cozmo-performs-jump-the-river/",
+   "summary": "Mondo Cozmo is the moniker of Philadelphia-born musician Josh Ostrander, renowned for his anthemic, emotionally charged songwriting. His latest album \"Sweet Forever\" blends blue-collar Americana with rock 'n' roll. Here's Mondo Cozmo with \"Jump the River.\"",
+   "published": "2026-11-28T17:32:00Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Saturday Sessions: Mondo Cozmo performs \"Sweet Forever\"",
+   "url": "https://www.cbsnews.com/video/saturday-sessions-mondo-cozmo-performs-sweet-forever/",
+   "summary": "Mondo Cozmo is the moniker of Philadelphia-born musician Josh Ostrander, renowned for his anthemic, emotionally charged songwriting. His latest album \"Sweet Forever\" blends blue-collar Americana with rock 'n' roll. Here's Mondo Cozmo with title track \"Sweet Forever.\"",
+   "published": "2026-11-28T17:31:00Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "At least 10 killed across Ukraine; Russia downs over 1,200 drones overnight",
+   "url": "https://www.cbsnews.com/news/russia-ukraine-war-deaths-drones-near-record/",
+   "summary": "Russia said it shot down 1,246 Ukrainian drones overnight — one of the highest numbers reported since the start of the war.",
+   "published": "2026-11-28T17:27:25Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Los Angeles' Pizzeria Sei puts a Tokyo twist on Neapolitan pizza",
+   "url": "https://www.cbsnews.com/video/los-angeles-pizzeria-sei-puts-a-tokyo-twist-on-neapolitan-pizza/",
+   "summary": "Chef William Joo and his wife Jennifer So are serving Tokyo-style Neapolitan pizza to eager Angelenos at Pizzeria Sei.",
+   "published": "2026-11-28T17:24:00Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Pedro Pascal says he'll \"keep drinking 6 shots of espresso\" in the morning",
+   "url": "https://www.cbsnews.com/video/pedro-pascal-says-hell-keep-drinking-6-shots-of-espresso-in-the-morning/",
+   "summary": "Actor Pedro Pascal stars in \"Behemoth!\" as a former cello prodigy who returns to Los Angeles after years on the road. Catch more of Pascal's interview on \"CBS Sunday Morning.\"",
+   "published": "2026-11-28T17:15:48Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "Argentina's bid to stop Falklands oil drilling rejected",
+   "url": "https://www.bbc.co.uk/news/articles/c84gnq3qq9rno?at_medium=RSS&at_campaign=rss",
+   "summary": "A joint venture between UK-Israeli companies is set to start exploring for oil and gas, but Argentina sought to block it as part of its claim to sovereignty.",
+   "published": "2026-11-28T17:11:37Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Inside the student wellness movement sweeping college campuses",
+   "url": "https://www.cbsnews.com/video/inside-the-student-wellness-movement-sweeping-college-campuses/",
+   "summary": "New campus wellness clubs are providing alternative socialization opportunities for college students seeking community.",
+   "published": "2026-11-28T17:08:14Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "\"The Mosquito Bowl\" explores a historic football game during World War II",
+   "url": "https://www.cbsnews.com/video/the-mosquito-bowl-explores-a-historic-football-game-during-world-war-ii/",
+   "summary": "In the midst of World War II, U.S. Marines played a historic football game in the South Pacific. That story is retold in \"The Mosquito Bowl,\" a new film detailing this historic, uniquely American game. Director Peter Burg and author Buzz Bissinger share more.",
+   "published": "2026-11-28T17:05:57Z",
+   "source": "CBS News"
+  },
+  {
+   "title": "A data breach is only the beginning. Here's what criminals may do next",
+   "url": "https://www.foxnews.com/tech/data-breach-beginning-what-criminals-may-do-next",
+   "summary": "Kurt \"CyberGuy\" Knutsson explains why stolen data can resurface years after a breach, plus tips on free credit freezes and password managers.",
+   "published": "2026-11-28T16:57:00Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Dozens killed in Myanmar military strikes on wedding venue and school",
+   "url": "https://www.bbc.co.uk/news/articles/cm752q30q5leo?at_medium=RSS&at_campaign=rss",
+   "summary": "Air strikes by Myanmar's military government have killed dozens of civilians across the South East Asian nation in recent days.",
+   "published": "2026-11-28T16:53:20Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Kentucky head coach Mark Pope does it again, takes full responsibility for bizarre inbounds play in OT loss",
+   "url": "https://www.foxnews.com/outkick-sports/kentucky-head-coach-mark-pope-takes-full-responsibility-bizarre-inbounds-play-ot-loss",
+   "summary": "Kentucky Wildcats coach Mark Pope drew up an illegal inbound play in overtime against Wichita State, and his presser answer left Big Blue Nation fuming.",
+   "published": "2026-11-28T16:51:14Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Mississippi high school phenom breaks state scoring record with an absurd amount of touchdowns",
+   "url": "https://www.foxnews.com/outkick-sports/mississippi-high-school-phenom-breaks-state-scoring-record-absurd-amount-touchdowns",
+   "summary": "Miami recruit Ty Keys scored five touchdowns to push Poplarville High School to 13-0 and a 4A state championship game, breaking Mississippi's record.",
+   "published": "2026-11-28T16:38:14Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "College Football Rivalry Week Betting Promos: $2,000+ to be Claimed Before USC-UCLA and More",
+   "url": "https://www.foxnews.com/outkick-betting/college-football-rivalry-week-betting-promos-2000-claimed-before-usc-ucla-more",
+   "summary": "College football Rivalry Week betting promos worth $2,000+ from BetMGM, Fanatics, FanDuel, Hard Rock Bet, bet365, Underdog and Betr before USC-UCLA and more.",
+   "published": "2026-11-28T16:29:20Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "Supreme Court will decide whether assault weapons bans violate the Second Amendment",
+   "url": "https://www.cnbc.com/2026/11/28/supreme-court-to-decide-if-assault-weapons-bans-violate-2nd-amendment.html",
+   "summary": "The Supreme Court will hear arguments Wednesday over whether state and local assault weapons bans violate the Second Amendment's right \"to keep and bear arms.\"",
+   "published": "2026-11-28T16:25:40Z",
    "source": "CNBC"
   },
   {
-   "title": "Africa’s richest man is taking his mega-refinery public in a blockbuster IPO",
-   "url": "https://www.cnbc.com/2026/11/28/dangote-refinery-oil-ipo-nigeria-africa-energy.html",
-   "summary": "Dangote Refinery’s IPO could value the company at about $47 billion, in what is expected to be Africa’s biggest stock market listing.",
-   "published": "2026-11-28T06:00:01Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Trump’s Embrace of Xi and Huang Stuns China Critics in Washington",
-   "url": "https://www.nytimes.com/2026/11/28/us/politics/trump-china-critics-nvidia.html",
-   "summary": "Warnings from hard-liners have grown more urgent amid what some call a winner-take-all race for A.I. dominance.",
-   "published": "2026-11-28T05:19:36Z",
+   "title": "Freed From a Notorious Syrian Prison, but Still Trapped by Its Terror",
+   "url": "https://www.nytimes.com/2026/11/28/world/middleeast/syria-sednaya-prison-survivor.html",
+   "summary": "Ahmed al-Shalh expected to perish in Sednaya prison. Abruptly released after a decade, he reveled in marriage and fatherhood but struggled to shake his ghosts.",
+   "published": "2026-11-28T16:22:55Z",
    "source": "New York Times"
   },
   {
-   "title": "Arch Manning, Longhorns avoid scare against Texas A&M to punch ticket to SEC Championship Game",
-   "url": "https://www.foxnews.com/outkick-sports/arch-manning-longhorns-avoid-scare-against-texas-am-punch-ticket-sec-championship-game",
-   "summary": "Arch Manning and the Texas Longhorns survived a turnover-filled rivalry battle with Texas A&M, with Tawfiq Byard's pick highlighting a tense night.",
-   "published": "2026-11-28T04:25:11Z",
+   "title": "TSA agent spots strange detail on scanner, finds dangerous object inside Sharpie",
+   "url": "https://www.foxnews.com/travel/tsa-agent-spots-strange-detail-scanner-finds-dangerous-object-inside-sharpie",
+   "summary": "The Transportation Security Administration (TSA) says a double-edged blade was hidden inside a Sharpie marker at Richmond International Airport. Agents found it during screening.",
+   "published": "2026-11-28T16:03:45Z",
    "source": "Fox News"
+  },
+  {
+   "title": "Stephen Baldwin says Hollywood is seeing 'mind-blowing' shift as more celebrities embrace Christianity",
+   "url": "https://www.foxnews.com/entertainment/stephen-baldwin-hollywood-mind-blowing-shift-celebrities-embrace-christianity",
+   "summary": "Stephen Baldwin says a radical move of the Holy Spirit is coming to Hollywood as more celebrities publicly profess Christianity than ever before.",
+   "published": "2026-11-28T16:00:46Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "GOP lawmaker who defied blue wave reveals roadmap to win back Gen Z",
+   "url": "https://www.foxnews.com/politics/gop-lawmaker-who-defied-blue-wave-reveals-roadmap-win-back-gen-z",
+   "summary": "Clay Fuller says the GOP lost its ability to reach young voters after Charlie Kirk's assassination, urging economic policies to restore the American dream.",
+   "published": "2026-11-28T16:00:41Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "BetMGM Bonus Code FOXNEWS: Cover Your First CFB Rivalry Week Bet up to $1500",
+   "url": "https://www.foxnews.com/outkick-betting/betmgm-bonus-code-foxnews-cover-your-first-cfb-rivalry-week-bet-up-1500",
+   "summary": "BetMGM bonus code FOXNEWS covers new users' first CFB Rivalry Week bet up to $1,500, including the Iron Bowl and Michigan at Ohio State.",
+   "published": "2026-11-28T15:50:28Z",
+   "source": "Fox News"
+  },
+  {
+   "title": "WWE star Bronson Reed dies at 38 due to 'medical complications'",
+   "url": "https://abcnews.com/US/wwe-star-bronson-reed-dies-38-due-medical/story?id=138490946",
+   "summary": "Jermaine Haley, the WWE star known as Bronson Reed, has died at 38 due to \"medical complications,\" the company announced on Friday.",
+   "published": "2026-11-28T15:07:52Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "Pedro Pascal’s Life Began With a Rupture. He’s Still Coming to Terms With It.",
+   "url": "https://www.nytimes.com/2026/11/28/magazine/pedro-pascal-interview.html",
+   "summary": "At 51, the actor and “Behemoth!” star is navigating his past and embracing his present.",
+   "published": "2026-11-28T14:48:44Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "The Iran war could shatter rising expectations of surplus oil supply in coming months",
+   "url": "https://www.cnbc.com/2026/11/28/oil-price-iran-war-strait-hormuz-surplus.html",
+   "summary": "Oil prices have sold off in November as investors see a recovery in Middle East exports leading to surpluses for the first time since the war began.",
+   "published": "2026-11-28T14:34:51Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Millions clean up after massive Thanksgiving storms on East Coast",
+   "url": "https://abcnews.com/US/millions-clean-after-massive-thanksgiving-storms-flood-streets/story?id=138484179",
+   "summary": "The East Coast is recovering from the massive Thanksgiving Day storms that flooded streets, toppled trees and left tens of thousands of homes without power.",
+   "published": "2026-11-28T14:29:14Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "COP31 climate talks fail to reach an agreement on fossil fuel language",
+   "url": "https://www.npr.org/2026/11/28/nx-s1-6050187/cop31-talks-fall-apart",
+   "summary": "U.N. climate talks collapsed over whether to mention fossil fuels that cause global warning. Several countries and the E.U. would not accept a final proposal without this.",
+   "published": "2026-11-28T14:28:45Z",
+   "source": "NPR"
+  },
+  {
+   "title": "Afghanistan explosion kills 10 students and injures more than 100, official says",
+   "url": "https://www.bbc.co.uk/news/articles/ckp80jyz6dl8o?at_medium=RSS&at_campaign=rss",
+   "summary": "A spokesman for Afghanistan's interior ministry says the blast was caused by carelessness at an explosives depot nearby.",
+   "published": "2026-11-28T14:10:01Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "AI data center boom strains construction labor across the U.S.",
+   "url": "https://www.cnbc.com/2026/11/28/ai-data-center-construction-worker-shortage-texas.html",
+   "summary": "CNBC traveled to Abilene, Texas to see how the AI data center construction boom is impacting the local economy in both positive and negative ways.",
+   "published": "2026-11-28T14:00:01Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Jefferies says this dip is a rare tech buying opportunity. 5 stocks to pick up now",
+   "url": "https://www.cnbc.com/2026/11/28/jefferies-says-this-dip-is-a-rare-tech-buying-opportunity-5-stocks-to-pick-up-now-.html",
+   "summary": "The investment bank highlighted picks across the technology universe.",
+   "published": "2026-11-28T13:56:15Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Billions on the line for Berkshire utility as Oregon's high court reviews wildfire claims",
+   "url": "https://www.cnbc.com/2026/11/28/berkshire-utility-wildfire-claims.html",
+   "summary": "Berkshire Hathaway's PacifiCorp and attorneys for thousands of plaintiffs are welcoming a decision by Oregon's Supreme Court to widen its review of a 2023 lower court trial in which a jury awarded more than one billion in damages over four wildfires in 2020.",
+   "published": "2026-11-28T13:46:46Z",
+   "source": "CNBC"
+  },
+  {
+   "title": "Ukraine’s Deep Strikes Grow in Scale and Scope Across Russia and Beyond",
+   "url": "https://www.nytimes.com/2026/11/28/world/europe/ukraine-russia-long-range-strikes.html",
+   "summary": "A campaign aimed at depriving Moscow’s war machine of fuel, weapons and money has been criticized by the Trump administration.",
+   "published": "2026-11-28T13:25:27Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "Perspective: A hero's name lives on",
+   "url": "https://www.npr.org/2026/11/28/nx-s1-6045586/perspective-a-heros-name-lives-on",
+   "summary": "During Pearl Harbor, sailor Doris Miller carried the wounded to safety and fired a machine gun at Japanese planes. Next week, construction of a new aircraft carrier, the USS Doris Miller, begins.",
+   "published": "2026-11-28T13:00:00Z",
+   "source": "NPR"
+  },
+  {
+   "title": "What the World’s Richest Man Did to the World’s Poorest Children",
+   "url": "https://www.nytimes.com/2026/11/28/opinion/elon-musk-usaid-south-sudan.html",
+   "summary": "In South Sudan, I discovered more deaths as a result of Elon Musk’s U.S.A.I.D. cuts.",
+   "published": "2026-11-28T12:20:07Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "Americans Have More Riding on the Stock Market Than Ever",
+   "url": "https://www.wsj.com/world/americans-have-more-riding-on-the-stock-market-than-ever-69846861?mod=rss_worldnews",
+   "summary": "Plus, a family feud as big as Texas hangs over Houston’s NFL team, and inside China’s $4 billion secondhand luxury boom.",
+   "published": "2026-11-28T12:02:00Z",
+   "source": "Wall Street Journal"
+  },
+  {
+   "title": "I Survived Auschwitz. A New Play Shows the Leisure Time of My Captors.",
+   "url": "https://www.nytimes.com/2026/11/28/opinion/holocaust-auschwitz-broadway-play-blueberries.html",
+   "summary": "The SS guards weren’t monsters. They were human. That’s worse.",
+   "published": "2026-11-28T12:00:18Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "WATCH: 'Ugly pants exchange' trend goes viral among air travelers",
+   "url": "https://abcnews.com/video/138494154/",
+   "summary": "A new viral trend at airports has emerged among groups of friends traveling together: bringing extra pairs of pants along for a lighthearted swap and reveal.",
+   "published": "2026-11-28T11:58:46Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "OpenAI counter-sues Apple over alleged theft of trade secrets",
+   "url": "https://www.bbc.co.uk/news/articles/cm15ekqvlezeo?at_medium=RSS&at_campaign=rss",
+   "summary": "The ChatGPT-maker alleges that tech giant Apple stole trade secrets through a former employee.",
+   "published": "2026-11-28T11:35:34Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "An explosion at a school in eastern Afghanistan kills 10, wounds 110",
+   "url": "https://www.npr.org/2026/11/28/nx-s1-6056284/explosion-school-eastern-afghanistan",
+   "summary": "Local officials said the blast appeared to have originated in a neighboring depot for mining explosives.",
+   "published": "2026-11-28T11:32:37Z",
+   "source": "NPR"
+  },
+  {
+   "title": "News Quiz for Nov. 28, 2026",
+   "url": "https://www.wsj.com/articles/news-quiz-for-nov-28-2026-62cce1b4?mod=rss_worldnews",
+   "summary": "Test your knowledge of the week’s events with The Wall Street Journal News Quiz.",
+   "published": "2026-11-28T11:00:00Z",
+   "source": "Wall Street Journal"
+  },
+  {
+   "title": "Two staff killed in Israeli strike on Gaza medical clinic, MSF says",
+   "url": "https://www.bbc.co.uk/news/articles/cm5y10yydln3o?at_medium=RSS&at_campaign=rss",
+   "summary": "The Israeli military says it targeted \"Hamas terrorists\" in the strike which has been condemned by the World Health Organization.",
+   "published": "2026-11-28T10:34:58Z",
+   "source": "BBC World"
+  },
+  {
+   "title": "Explosion at a school in eastern Afghanistan kills 7, wounds more than 90",
+   "url": "https://abcnews.com/International/wireStory/explosion-middle-school-eastern-afghanistan-kills-wounds-students-138493977",
+   "summary": "An explosion at a school in eastern Afghanistan's Kunar province Saturday killed seven people and wounded over 90",
+   "published": "2026-11-28T10:33:23Z",
+   "source": "ABC News"
+  },
+  {
+   "title": "S&P Revises Outlook on France’s Credit Rating to Negative From Stable",
+   "url": "https://www.wsj.com/world/europe/s-p-revises-outlook-on-french-credit-rating-to-negative-from-stable-eab7384f?mod=rss_worldnews",
+   "summary": "The decision paves the way for a rating downgrade as mounting public debt and political uncertainty threaten the country’s finances.",
+   "published": "2026-11-28T10:19:00Z",
+   "source": "Wall Street Journal"
+  },
+  {
+   "title": "A toxic detonation in Iowa, and a Founding Father impersonator gets arrested: The news quiz",
+   "url": "https://www.nbcnews.com/news/news-quiz/iowa-detonation-founding-father-arrest-news-quiz-rcna611282",
+   "summary": "A star quarterback gets released, a CEO gets reinstated, and two turkeys get spared.",
+   "published": "2026-11-28T10:15:00Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Trump’s SNAP Cuts Are Costing Millions of Children Food Stamps",
+   "url": "https://www.nytimes.com/2026/11/28/us/politics/snap-cuts-children-trump.html",
+   "summary": "Republicans said the cuts, part of their domestic policy bill, would root out fraud and push adults to work. But two million children have lost benefits.",
+   "published": "2026-11-28T10:02:18Z",
+   "source": "New York Times"
+  },
+  {
+   "title": "New wave of Democratic attorneys general may reshape the justice system",
+   "url": "https://www.npr.org/2026/11/28/g-s1-155837/democratic-attorneys-general-justice-system-texas",
+   "summary": "The Democratic victories could have major effects for what alleged crimes are investigated, lawsuits filed and court cases heard across the U.S.",
+   "published": "2026-11-28T10:00:00Z",
+   "source": "NPR"
+  },
+  {
+   "title": "Zelenskyy questions Trump’s ‘strange’ reference to Putin as a ‘friend’",
+   "url": "https://www.nbcnews.com/world/ukraine/zelenskyy-questions-trumps-strange-reference-putin-friend-rcna611653",
+   "summary": "KYIV, Ukraine — Ukrainian President Volodymyr Zelenskyy expressed frustration with the U.S. stance toward Russian leader Vladimir Putin, in the latest sign of deepening tension between Kyiv and Washington, as new questions emerged about Europe’s future financial commitments to Ukraine.",
+   "published": "2026-11-28T09:16:01Z",
+   "source": "NBC News"
+  },
+  {
+   "title": "Australian wrestler Bronson Reed dies aged 38, WWE says",
+   "url": "https://www.bbc.co.uk/news/articles/cvwy08g70ldko?at_medium=RSS&at_campaign=rss",
+   "summary": "Tributes have flooded in for the 38-year-old Australian who is survived by his pregnant wife, Paige, their daughter.",
+   "published": "2026-11-28T07:31:14Z",
+   "source": "BBC World"
   },
   {
    "title": "Eight killed in Peruvian military helicopter crash",
@@ -45,48 +339,6 @@
    "summary": "The pilot was the sole survivor of the crash during a rescue mission in a remote area known for drug trafficking.",
    "published": "2026-11-28T04:19:16Z",
    "source": "BBC World"
-  },
-  {
-   "title": "Turkish officials 'destroyed' pro-opposition TV channel, owner tells BBC",
-   "url": "https://www.bbc.co.uk/news/articles/cq36gk151xkdo?at_medium=RSS&at_campaign=rss",
-   "summary": "The headquarters of Halk TV were raided last month, the latest in a series of crackdowns on news sources deemed critical of the government.",
-   "published": "2026-11-28T04:13:45Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Power being slowly restored as heavy Thanksgiving storm eases",
-   "url": "https://www.cbsnews.com/news/east-coast-thanksgiving-storm-power-outages-cleanup/",
-   "summary": "Heavy rain over flooded East Coast communities began easing Friday, and power was slowly restored to hundreds of thousands of customers.",
-   "published": "2026-11-28T03:54:12Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Former SEC head coach who landed in the Group of 5 abruptly steps down after underwhelming five-year run",
-   "url": "https://www.foxnews.com/outkick-sports/former-sec-head-coach-landed-group-5-abruptly-steps-down-underwhelming-five-year-run",
-   "summary": "Joe Moorhead is out at Akron football after five seasons, ending a run that saw the Zips go 2-10 this year and never post a winning record under his watch.",
-   "published": "2026-11-28T03:45:17Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Andrea Stewart-Cousins, New York’s First Female Senate Majority Leader, Dies",
-   "url": "https://www.nytimes.com/2026/11/27/us/andrea-stewart-cousins-dead.html",
-   "summary": "Ms. Stewart-Cousins, 76, served in the State Senate for 20 years. Her sudden death leaves a leadership void among top state Democrats.",
-   "published": "2026-11-28T03:28:49Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Former Bears star Revie Sorey, who blocked for Walter Payton, dead at 73",
-   "url": "https://www.foxnews.com/outkick-sports/former-bears-star-revie-sorey-blocked-walter-payton-dead-73",
-   "summary": "Former Chicago Bears guard Revie Sorey, who blocked for Walter Payton and later championed disadvantaged youth, has died at 73, a friend said.",
-   "published": "2026-11-28T03:20:42Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "LA Olympics partnership with oil company prompts climate activist outrage, as board member resigns in protest",
-   "url": "https://www.foxnews.com/outkick-sports/la-olympics-partnership-oil-company-prompts-climate-activist-outrage-board-member-resigns-protest",
-   "summary": "Rita Kampalath resigned from a Los Angeles Olympic environmental advisory group over the LA28 Phillips 66 sponsorship deal, citing fossil fuel concerns.",
-   "published": "2026-11-28T03:05:01Z",
-   "source": "Fox News"
   },
   {
    "title": "A Handgun on His Hip, Colombia’s New President Turns Drug War Into Theater",
@@ -110,109 +362,11 @@
    "source": "Wall Street Journal"
   },
   {
-   "title": "Zeldin touts 'best-case scenario' after massive controlled detonation in Iowa",
-   "url": "https://www.foxnews.com/us/zeldin-touts-best-case-scenario-massive-controlled-detonation-iowa",
-   "summary": "EPA chief Lee Zeldin says air monitoring after an Iowa Army Ammunition Plant detonation found zero detectable airborne lead, calling it a best-case scenario.",
-   "published": "2026-11-28T02:50:44Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Supreme Court Rulings Cheered by Republicans Wound Up Hurting Them",
-   "url": "https://www.nytimes.com/2026/11/27/us/politics/supreme-court-rulings-midterms-voting.html",
-   "summary": "Decisions on voting rights, immigration and corruption generated a backlash that helped spur turnout that drove the Democratic sweep of Congress.",
-   "published": "2026-11-28T02:46:33Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "U.S. Air Force cloud platform breached by hackers, report says",
-   "url": "https://www.cbsnews.com/news/u-s-air-force-cloud-platform-breached-by-hackers/",
-   "summary": "The alleged incident follows a series of breaches and outages that have been reported at federal agencies this month.",
-   "published": "2026-11-28T02:44:55Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Multiple Florida State captains refuse handshakes with Florida at coin toss, raising sportsmanship questions",
-   "url": "https://www.foxnews.com/outkick-sports/multiple-florida-state-captains-refuse-handshakes-florida-coin-toss-raising-sportsmanship-questions",
-   "summary": "Florida State Seminoles captains refused handshakes at the coin toss vs the Florida Gators, drawing fan backlash, with only Duce Robinson offering a hand.",
-   "published": "2026-11-28T02:35:20Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Some Americans canceled or postponed Thanksgiving dinners amid power outages and storms.",
+   "title": "After Storms and Power Outages, Some Try Thanksgiving Do-Overs",
    "url": "https://www.nytimes.com/2026/11/27/us/thanksgiving-delayed-storm.html",
    "summary": "Some Americans canceled or postponed Thanksgiving dinners amid power outages and storms. They were rescheduled to Friday, Saturday and beyond.",
    "published": "2026-11-28T02:07:54Z",
    "source": "New York Times"
-  },
-  {
-   "title": "Seahawks, 49ers matchup changes drastically as Brock Purdy ruled out while Sam Darnold returns from injury",
-   "url": "https://www.foxnews.com/outkick-sports/seahawks-49ers-matchup-changes-drastically-brock-purdy-ruled-out-sam-darnold-returns-injury",
-   "summary": "The Seattle Seahawks will start Sam Darnold as he is back from injury, while the San Francisco 49ers will be without Brock Purdy ahead of a pivotal matchup with an ankle injury.",
-   "published": "2026-11-28T01:47:07Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Taliban reportedly strips women of their names in Afghan province, now being called 'goat' or 'grandmother'",
-   "url": "https://www.foxnews.com/world/taliban-strips-women-names-afghan-province-called-goat-grandmother",
-   "summary": "The Taliban reportedly banned women's names from official records in an Afghan province, five years after reclaiming power amid Biden's chaotic withdrawal.",
-   "published": "2026-11-28T01:42:28Z",
-   "source": "Fox News"
-  },
-  {
-   "title": "Woman surprises hospital valet who supported her through cancer treatment with Bills tickets",
-   "url": "https://www.cbsnews.com/video/woman-surprises-hospital-valet-who-supported-her-through-cancer-treatment-with-bills-tickets/",
-   "summary": "Breast cancer survivor Kate Fink credits hospital valet Jon Avery with helping her fight the disease. She surprised the Buffalo Bills fan with tickets and field passes. Steve Hartman goes on the road.",
-   "published": "2026-11-28T01:14:25Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "U.S. forces disable commercial ship that allegedly tried to breach Iran blockade",
-   "url": "https://www.cbsnews.com/live-updates/iran-war-trump-us-threats-diplomacy-strait-of-hormuz/",
-   "summary": "A U.S. military aircraft struck a Palau-flagged ship with precision munitions after giving multiple warnings, U.S. Central Command said.",
-   "published": "2026-11-28T01:10:47Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Documentary clip reveals new details on Princess Kate's cancer journey",
-   "url": "https://www.cbsnews.com/video/documentary-clip-reveals-new-details-on-princess-kates-cancer-journey/",
-   "summary": "A clip from the upcoming documentary \"Heal\" reveals new details about Princess Kate's cancer journey, which she has long kept private. Jericka Duncan has more.",
-   "published": "2026-11-28T01:10:00Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Pittsburgh Steelers take the field for first game since star quarterback Rodgers' release",
-   "url": "https://www.cbsnews.com/video/pittsburgh-steelers-take-the-field-for-first-game-since-star-quarterback-rodgers-release/",
-   "summary": "The Pittsburgh Steelers took the field Friday for their first game after star quarterback Aaron Rodgers was released following comments accusing coach Mike McCarthy of sleeping through meetings and more. Jason Allen has the story.",
-   "published": "2026-11-28T01:05:28Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "2 American Airlines jets clip wings on tarmac of Reagan Airport",
-   "url": "https://www.cbsnews.com/news/american-airlines-jets-clip-wings-reagan-airport/",
-   "summary": "There were no injuries when the wingtips of two American Airlines jets made contact Friday evening on the tarmac of Ronald Reagan Washington National Airport outside Washington, D.C.",
-   "published": "2026-11-28T01:05:00Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "Lawmakers ask Trump to rescind Putin's G20 invitation over alleged intelligence-sharing with Iran",
-   "url": "https://www.cbsnews.com/video/lawmakers-ask-trump-to-rescind-putins-g20-invitation-over-alleged-intelligence-sharing-with-iran/",
-   "summary": "President Trump is facing renewed criticism over his friendship with Vladimir Putin, with a group of bipartisan lawmakers urging him to disinvite the Russian leader from next month's G20 summit in Florida. Weijia Jiang has more.",
-   "published": "2026-11-28T01:03:29Z",
-   "source": "CBS News"
-  },
-  {
-   "title": "'Poison seller' Kenneth Law apologises in court to the families of his victims",
-   "url": "https://www.bbc.co.uk/news/articles/cmx2898wq2qjo?at_medium=RSS&at_campaign=rss",
-   "summary": "The Canadian man, who pleaded guilty to 14 counts of aiding and abetting suicide earlier this year, said he was remorseful for his actions.",
-   "published": "2026-11-28T00:56:55Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Macy’s Thanksgiving Day Parade marches on after delay",
-   "url": "https://www.nbcnews.com/nightly-news/video/macy-s-thanksgiving-day-parade-marches-on-after-delay-274287685668",
-   "summary": "After a major storm postponed the Macy’s Thanksgiving Day Parade, the event is set to step off on Saturday morning after Americans across the country donated money to help performers stay in New York. NBC News’ Erin McLaughlin reports.",
-   "published": "2026-11-28T00:16:43Z",
-   "source": "NBC News"
   },
   {
    "title": "Mass power outages after Thanksgiving Day storms",
@@ -222,53 +376,11 @@
    "source": "NBC News"
   },
   {
-   "title": "Five Big Questions for the 2028 Presidential Race",
-   "url": "https://www.nytimes.com/2026/11/27/us/politics/2028-presidential-race-questions.html",
-   "summary": "Will JD Vance and Marco Rubio run? What about Kamala Harris and Alexandria Ocasio-Cortez? And, of course, what role will President Trump play?",
-   "published": "2026-11-27T23:51:52Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Biggest Black Friday deals as holiday retail rush kicks in",
-   "url": "https://www.nbcnews.com/nightly-news/video/biggest-black-friday-deals-as-holiday-retail-rush-kicks-in-274286149626",
-   "summary": "It’s expected to be a record-breaking holiday shopping season. On this Black Friday, Adobe Analytics says discounts are averaging 30%. NBC’s Brian Cheung breaks down where shoppers can get the best deals, and what you should wait to buy.",
-   "published": "2026-11-27T23:45:59Z",
-   "source": "NBC News"
-  },
-  {
-   "title": "Cyber attack on U.S. Air Force cloud-based platform",
-   "url": "https://www.nbcnews.com/nightly-news/video/cyber-attack-on-u-s-air-force-cloud-based-platform-274285637711",
-   "summary": "A U.S. official confirms the Air Force’s cloud-based platform “Cloud One” was breached by hackers. An Air Force spokesperson would not offer any details about the severity of the hack and who may be responsible. NBC News’ Kelly O’Donnell reports.",
-   "published": "2026-11-27T23:39:55Z",
-   "source": "NBC News"
-  },
-  {
-   "title": "OpenAI countersues Apple for stealing trade secrets",
-   "url": "https://www.cnbc.com/2026/11/27/openai-countersues-apple-for-stealing-trade-secrets-ft-reports.html",
-   "summary": "Apple in July sued OpenAI and two former employees, alleging misappropriation of its trade secrets to benefit the ChatGPT owner's foray into consumer hardware.",
-   "published": "2026-11-27T23:07:13Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "What to Know About the (Rescheduled) Macy’s Thanksgiving Parade",
-   "url": "https://www.nytimes.com/2026/11/27/nyregion/rescheduled-macys-thanksgiving-parade.html",
-   "summary": "Yes, there will be balloons. Some people even got a sneak peek at them. Here’s what to expect for Saturday’s version of the postponed holiday event.",
-   "published": "2026-11-27T22:32:37Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "NYC Mayor Mamdani has 'successful' surgery on torn Achilles tendon",
-   "url": "https://abcnews.com/US/nyc-mayor-mamdani-successful-surgery-torn-achilles-tendon/story?id=138488280",
-   "summary": "New York City Mayor Zohran Mamdani underwent a \"successful\" surgery on Friday for his torn Achilles tendon.",
-   "published": "2026-11-27T22:32:17Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "S&P Revises Outlook on France’s Credit Rating to Negative From Stable",
-   "url": "https://www.wsj.com/world/europe/s-p-revises-outlook-on-french-credit-rating-to-negative-from-stable-eab7384f?mod=rss_worldnews",
-   "summary": "The decision paves the way for a rating downgrade as mounting public debt and political uncertainty threaten the country’s finances.",
-   "published": "2026-11-27T22:08:00Z",
-   "source": "Wall Street Journal"
+   "title": "Sudan's lost generation: War is stealing the childhood of millions",
+   "url": "https://www.npr.org/2026/11/27/nx-s1-6053049/sudans-lost-generation-war-is-stealing-a-generation-of-childhood",
+   "summary": "Three years of war have stolen childhood from millions of children in Sudan, leaving them displaced, hungry and fighting for survival instead of learning in a classroom.",
+   "published": "2026-11-27T22:54:53Z",
+   "source": "NPR"
   },
   {
    "title": "WATCH: Breaking down the best holiday movies",
@@ -292,38 +404,10 @@
    "source": "BBC World"
   },
   {
-   "title": "Russia’s Big Ambitions for A.I. Are Undercut by Constraints of War",
-   "url": "https://www.nytimes.com/2026/11/27/world/europe/russia-ai-journey-conference.html",
-   "summary": "Russian officials see artificial intelligence as a way to solve the country’s pressing problems. But Russia’s technological development has been held back.",
-   "published": "2026-11-27T21:41:12Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Millions clean up after massive Thanksgiving storms on East Coast",
-   "url": "https://abcnews.com/US/millions-clean-after-massive-thanksgiving-storms-flood-streets/story?id=138484179",
-   "summary": "The East Coast is recovering from the massive Thanksgiving Day storms that flooded streets, toppled trees and left tens of thousands of homes without power.",
-   "published": "2026-11-27T21:16:55Z",
-   "source": "ABC News"
-  },
-  {
    "title": "Oil Futures Settle Lower Ahead of OPEC+ Policy Meeting",
    "url": "https://www.wsj.com/business/energy-oil/oil-prices-rise-ahead-of-opec-meeting-as-middle-east-supply-risks-persist-63fbb550?mod=rss_worldnews",
    "summary": "Oil futures settled lower with traders weighing renewed threats to Middle Eastern supplies and awaiting a weekend meeting of the Organization of the Petroleum Exporting Countries and its allies to discuss output policy for 2027.",
    "published": "2026-11-27T20:31:00Z",
-   "source": "Wall Street Journal"
-  },
-  {
-   "title": "'We couldn't give up that easily': Marching bands scramble to cover costs after Thanksgiving parade rearranged",
-   "url": "https://www.bbc.co.uk/news/articles/ckd71ypy9e8eo?at_medium=RSS&at_campaign=rss",
-   "summary": "Stormy weather in New York City prompted organisers to push back the Macy's parade by two days - leaving some musicians stuck.",
-   "published": "2026-11-27T20:06:31Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Canada’s Supreme Court Upholds Quebec’s Religious-Symbols Ban",
-   "url": "https://www.wsj.com/world/americas/canadas-supreme-court-upholds-quebecs-religious-symbols-ban-c1d8371a?mod=rss_worldnews",
-   "summary": "The law, the first of its kind in North America, bars most public-sector employees from wearing religious symbols, such as the hijab and the kippah, while on the job.",
-   "published": "2026-11-27T19:51:00Z",
    "source": "Wall Street Journal"
   },
   {
@@ -334,60 +418,11 @@
    "source": "Wall Street Journal"
   },
   {
-   "title": "Dow rallies nearly 600 points to close out best week since 2022: Live updates",
-   "url": "https://www.cnbc.com/2026/11/26/stock-market-today-live-updates.html",
-   "summary": "U.S. equities rose on Friday as investors wrapped up a turbulent, holiday-shortened trading week.",
-   "published": "2026-11-27T18:11:52Z",
+   "title": "AI shopping agents are having a moment, but Amazon and a growing number of sites threaten to stunt their growth",
+   "url": "https://www.cnbc.com/2026/11/27/ai-shopping-agents-retailer-blocks.html",
+   "summary": "AI shopping agents from OpenAI, Meta, Google and Instinct promise to help users shop, but they're hitting roadblocks at Amazon and other retailers.",
+   "published": "2026-11-27T16:43:14Z",
    "source": "CNBC"
-  },
-  {
-   "title": "Zelensky criticises 'strange' Trump-Putin friendship in BBC interview",
-   "url": "https://www.bbc.co.uk/news/articles/c820q9wgrpyyo?at_medium=RSS&at_campaign=rss",
-   "summary": "Ukraine's president voices frustration with US and says it is not pushing Russia hard enough in peace talks to end the war.",
-   "published": "2026-11-27T18:00:40Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Israeli Report on Soldiers Using Palestinians as Human Shields Ignites National Backlash",
-   "url": "https://www.wsj.com/world/middle-east/israeli-report-on-soldiers-using-palestinians-as-human-shields-ignites-national-backlash-6a89f6ca?mod=rss_worldnews",
-   "summary": "A public outcry over the TV investigation highlights the nation’s struggle to come to terms with allegations over how it fought the war in Gaza.",
-   "published": "2026-11-27T18:00:00Z",
-   "source": "Wall Street Journal"
-  },
-  {
-   "title": "Canada's top court largely upholds Quebec ban on religious symbols for public servants",
-   "url": "https://www.bbc.co.uk/news/articles/cq3dgpy9lem3o?at_medium=RSS&at_campaign=rss",
-   "summary": "The law faced legal challenges from a range of groups, including female Muslim, Sikh and Catholic teachers, who argued it violated their fundamental rights.",
-   "published": "2026-11-27T16:53:46Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "Josh Brown lost a bet on Disney. It is now on his Best Stocks in the Market list",
-   "url": "https://www.cnbc.com/2026/11/27/josh-brown-lost-a-bet-on-disney-it-is-now-on-his-best-stocks-in-the-market-list.html",
-   "summary": "With a 12.3% total return in 2026, Disney is the 14th-best performing stock in the Dow Jones Industrial Average this year.",
-   "published": "2026-11-27T16:49:35Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Trump demands probe into 'record setting error' after third-quarter GDP data gets massive revision higher",
-   "url": "https://www.cnbc.com/2026/11/26/trump-gdp-revision-investigation.html",
-   "summary": "President Donald Trump on Thursday deemed the latest gross domestic product revision a mistake, claiming that it should be \"immediately investigated.\"",
-   "published": "2026-11-27T15:52:00Z",
-   "source": "CNBC"
-  },
-  {
-   "title": "Black Friday Deals and Holiday Sales Are Big Money for Influencers",
-   "url": "https://www.nytimes.com/2026/11/27/business/influencers-black-friday-deals-holiday-shopping.html",
-   "summary": "A growing part of a brand’s Black Friday and Cyber Monday marketing strategy rests on paying top dollar for social media influencers to post videos.",
-   "published": "2026-11-27T15:29:05Z",
-   "source": "New York Times"
-  },
-  {
-   "title": "Kate Middleton becomes patron of cancer center charity",
-   "url": "https://abcnews.com/GMA/Culture/kate-middleton-patron-cancer-center-charity/story?id=138480841",
-   "summary": "Kate, the Princess of Wales, is supporting a new charity near and dear to her heart.",
-   "published": "2026-11-27T15:06:36Z",
-   "source": "ABC News"
   },
   {
    "title": "WATCH: The Children's Hospital Thanksgiving Day Parade",
@@ -425,6 +460,13 @@
    "source": "NPR"
   },
   {
+   "title": "Why Advent calendars are thriving in the ‘little treat’ economy",
+   "url": "https://www.nbcnews.com/pop-culture/pop-culture-news/advent-calendars-popularity-little-treat-economy-social-media-unboxing-rcna609923",
+   "summary": "Creators on TikTok and Instagram are helping to fuel the advent calendar craze, one review video at a time.",
+   "published": "2026-11-27T11:47:41Z",
+   "source": "NBC News"
+  },
+  {
    "title": "WATCH: 12-year-old soccer star turns hearing loss into inspiration",
    "url": "https://abcnews.com/video/138478123/",
    "summary": "ABC News' Danny New has the story of Delaney Anbardan, a young soccer player in Southern California who has continued pursuing the sport while navigating progressive hearing loss.",
@@ -435,7 +477,7 @@
    "title": "Luka Dončić is a scoring machine. The NBA has rarely seen anything like it.",
    "url": "https://www.nbcnews.com/sports/nba/luka-doncc-scoring-machine-nba-rarely-seen-anything-rcna610109",
    "summary": "Most NBA teams wouldn’t choose to let a player considered perhaps the greatest ever walk away in free agency.",
-   "published": "2026-11-27T11:30:00Z",
+   "published": "2026-11-27T11:30:41Z",
    "source": "NBC News"
   },
   {
@@ -446,41 +488,6 @@
    "source": "NPR"
   },
   {
-   "title": "Can luxury save Macy's?",
-   "url": "https://www.npr.org/2026/11/27/nx-s1-6026486/macys-tries-to-reinvent-with-luxury",
-   "summary": "This week's celebration of Macy's 100th Thanksgiving parade finds the department store at a turning point. After years of losing sales, the retailer is reimagining itself — as a higher-end destination.",
-   "published": "2026-11-27T10:01:00Z",
-   "source": "NPR"
-  },
-  {
-   "title": "Screen-free tweens try their hand at Dungeons & Dragons",
-   "url": "https://www.npr.org/2026/11/27/nx-s1-6042445/screen-free-tweens-try-their-hand-at-dungeons-dragons",
-   "summary": "Some parents, fed up with screens, have found an analog oasis in the role-playing game invented in the 1970s.",
-   "published": "2026-11-27T10:00:00Z",
-   "source": "NPR"
-  },
-  {
-   "title": "12 strategies to cut your risk of dementia. Take this quiz to start",
-   "url": "https://www.npr.org/2026/11/27/nx-s1-6050867/prevent-dementia-alzheimers-your-turn",
-   "summary": "Here's something you can do as you gather with family and friends this holiday season: Take a free, five-minute quiz to assess your brain health. You'll learn simple changes to keep your mind sharp.",
-   "published": "2026-11-27T10:00:00Z",
-   "source": "NPR"
-  },
-  {
-   "title": "Trump effectively ended asylum. Advocates look to the Supreme Court to restore it",
-   "url": "https://www.npr.org/2026/11/27/nx-s1-6037854/trump-effectively-ended-asylum-supreme-court",
-   "summary": "Trump's sweeping immigration changes — an asylum ban, mass firings and new legal maneuvers — have all but ended asylum. The high court will soon consider whether some shifts deny people due process.",
-   "published": "2026-11-27T10:00:00Z",
-   "source": "NPR"
-  },
-  {
-   "title": "Morning news brief",
-   "url": "https://www.npr.org/2026/11/27/nx-s1-6047116/morning-news-brief",
-   "summary": "Thanksgiving storm pummels the East Coast, Americans expected to spend record amount on Black Friday, Israeli rival factions consider deals in race to form a new government.",
-   "published": "2026-11-27T09:47:08Z",
-   "source": "NPR"
-  },
-  {
    "title": "Live updates: The best Black Friday deals up to 70% off, handpicked by a shopping expert",
    "url": "https://www.nbcnews.com/select/shopping/best-black-friday-deals-11-27-2026-rcna611358",
    "summary": "We found the top trending Black Friday 2026 deals across Amazon, Target, Walmart and more. Don’t miss these worthwhile steals before they sell out.",
@@ -488,25 +495,11 @@
    "source": "NBC News"
   },
   {
-   "title": "Millions of wives in South Asia unprotected from marital rape - study",
-   "url": "https://www.bbc.co.uk/news/articles/cw074p95ye5do?at_medium=RSS&at_campaign=rss",
-   "summary": "More than 100 countries have outlawed marital rape, but a large part of South Asia has not.",
-   "published": "2026-11-27T08:13:43Z",
-   "source": "BBC World"
-  },
-  {
-   "title": "WATCH: Viral Thanksgiving story set to be adapted for small screen",
-   "url": "https://abcnews.com/video/138468539/",
-   "summary": "Jamal Hinton and Wanda Dench's viral story of a wrong text that led to a decadelong Thanksgiving tradition is set to become a Lifetime production. Will Ganss shares the buzziest stories in Pop News.",
-   "published": "2026-11-26T18:51:53Z",
-   "source": "ABC News"
-  },
-  {
-   "title": "Macy’s Thanksgiving Day Parade Postponed for First Time Ever",
-   "url": "https://www.today.com/video/macy-s-thanksgiving-day-parade-postponed-for-first-time-ever-274220101982",
-   "summary": "For the first time in its 100-year history, the world-famous Macy’s Thanksgiving Day Parade has been postponed. The unprecedented decision by Macy’s and New York City was made after forecasters warned of potentially dangerous storm conditions. NBC’s Erin McLaughlin reports for TODAY.",
-   "published": "2026-11-26T12:27:56Z",
-   "source": "NBC News"
+   "title": "My Balloon Training for the Macy’s Thanksgiving Day Parade",
+   "url": "https://www.nytimes.com/2026/11/25/podcasts/the-daily/dont-let-go-my-balloon-training-for-the-macys-thanksgiving-day-parade.html",
+   "summary": "For the 100th parade, our host flew one of its icons.",
+   "published": "2026-11-26T10:15:43Z",
+   "source": "New York Times"
   },
   {
    "title": "LIVE: ABC News Live",
@@ -514,7 +507,14 @@
    "summary": "24/7 coverage of breaking news and live events",
    "published": "2026-11-25T15:00:01Z",
    "source": "ABC News"
+  },
+  {
+   "title": "How are you affording the holidays?",
+   "url": "https://www.nbcnews.com/news/us-news/holidays-affording-presents-spending-rcna610963",
+   "summary": "After a year of high gas prices, inflation ticking back up and a lot of Americans feeling pessimistic about the economy, we want to know how people are affording the annual wave of holiday gifts, travel and entertainment costs.",
+   "published": "2026-11-25T12:00:00Z",
+   "source": "NBC News"
   }
  ],
- "updated": "2026-11-28T08:03:33Z"
+ "updated": "2026-11-28T17:38:59Z"
 }
